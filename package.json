@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/issues"
   },
-  "homepage": "https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures#readme"
+  "homepage": "https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures#readme",
+  "devDependencies": {
+    "parcel": "^2.1.1"
+  }
 }
