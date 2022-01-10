@@ -3,6 +3,10 @@ export function randomQuestion() {
     return Questions[Math.trunc(Math.random()*Questions.length)];
 }
 
+export function isCorrectAnswer(question, answer) {
+    return question.correct_answers[answer + "_correct"] === "true";
+}
+
 // Generated from https://quizapi.io/api/v1/questions?category=code&limit=10&tags=JavaScript
 // You need to create an API key at https://quizapi.io/ to generate your own questions
 export const Questions =

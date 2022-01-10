@@ -2,7 +2,7 @@ import * as React from "react";
 import {useState} from "react";
 import * as ReactDOM from "react-dom";
 
-import {randomQuestion} from "./questions";
+import {isCorrectAnswer, randomQuestion} from "./questions";
 
 function Quiz() {
     const [question, setQuestion] = useState(randomQuestion());
@@ -10,7 +10,7 @@ function Quiz() {
 
     if (answer) {
         return <>
-            <h1>{question.correct_answers[answer + "_correct"] === "true" ? "Right" : "Wrong"}</h1>
+            <h1>{isCorrectAnswer(question, answer) ? "Right" : "Wrong"}</h1>
         </>;
     }
 
