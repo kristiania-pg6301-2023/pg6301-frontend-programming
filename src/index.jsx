@@ -11,6 +11,12 @@ function Quiz() {
     if (answer) {
         return <>
             <h1>{isCorrectAnswer(question, answer) ? "Right" : "Wrong"}</h1>
+            <p>
+                <button onClick={() => {
+                    setQuestion(randomQuestion());
+                    setAnswer(undefined);
+                }}>Another question</button>
+            </p>
         </>;
     }
 
