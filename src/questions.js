@@ -27,7 +27,6 @@ export const Questions =
             "answer_e_correct": "false",
             "answer_f_correct": "false"
         },
-        "correct_answer": "answer_a",
         "explanation": null,
         "tip": null,
         "tags": [{"name": "JavaScript"}],
@@ -54,7 +53,6 @@ export const Questions =
             "answer_e_correct": "false",
             "answer_f_correct": "false"
         },
-        "correct_answer": "answer_a",
         "explanation": null,
         "tip": null,
         "tags": [{"name": "JavaScript"}],
@@ -81,7 +79,6 @@ export const Questions =
             "answer_e_correct": "false",
             "answer_f_correct": "false"
         },
-        "correct_answer": "answer_a",
         "explanation": null,
         "tip": null,
         "tags": [{"name": "JavaScript"}],
@@ -108,7 +105,6 @@ export const Questions =
             "answer_e_correct": "false",
             "answer_f_correct": "false"
         },
-        "correct_answer": "answer_a",
         "explanation": null,
         "tip": null,
         "tags": [{"name": "JavaScript"}],
@@ -135,7 +131,6 @@ export const Questions =
             "answer_e_correct": "false",
             "answer_f_correct": "false"
         },
-        "correct_answer": "answer_a",
         "explanation": null,
         "tip": null,
         "tags": [{"name": "JavaScript"}],
@@ -162,7 +157,6 @@ export const Questions =
             "answer_e_correct": "false",
             "answer_f_correct": "false"
         },
-        "correct_answer": "answer_a",
         "explanation": null,
         "tip": null,
         "tags": [{"name": "JavaScript"}],
@@ -189,7 +183,6 @@ export const Questions =
             "answer_e_correct": "false",
             "answer_f_correct": "false"
         },
-        "correct_answer": "answer_a",
         "explanation": null,
         "tip": null,
         "tags": [{"name": "JavaScript"}],
@@ -216,7 +209,6 @@ export const Questions =
             "answer_e_correct": "false",
             "answer_f_correct": "false"
         },
-        "correct_answer": "answer_a",
         "explanation": null,
         "tip": null,
         "tags": [{"name": "JavaScript"}],
@@ -243,7 +235,6 @@ export const Questions =
             "answer_e_correct": "false",
             "answer_f_correct": "false"
         },
-        "correct_answer": "answer_a",
         "explanation": null,
         "tip": null,
         "tags": [{"name": "JavaScript"}],
@@ -270,7 +261,6 @@ export const Questions =
             "answer_e_correct": "false",
             "answer_f_correct": "false"
         },
-        "correct_answer": "answer_a",
         "explanation": null,
         "tip": null,
         "tags": [{"name": "JavaScript"}],

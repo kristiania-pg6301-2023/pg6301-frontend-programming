@@ -9,7 +9,9 @@ function Quiz() {
     const [answer, setAnswer] = useState();
 
     if (answer) {
-        return <h1>Right or wrong</h1>;
+        return <>
+            <h1>{question.correct_answers[answer + "_correct"] === "true" ? "Right" : "Wrong"}</h1>
+        </>;
     }
 
     return <>
@@ -17,7 +19,7 @@ function Quiz() {
         {Object.keys(question.answers)
             .filter(a => question.answers[a])
             .map(a => <p key={a}>
-                <button onClick={e => setAnswer(a)}>{question.answers[a]}</button>
+                <button onClick={() => setAnswer(a)}>{question.answers[a]}</button>
             </p>)}
     </>;
 }
