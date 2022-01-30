@@ -1,0 +1,24 @@
+## Hello and remain indoors
+
+GET {{server}}/quiz/random
+
+### Correct answer
+POST {{server}}/quiz/answer
+Content-Type: application/json
+
+{
+  "id": 974,
+  "answer": "answer_b"
+}
+
+### Incorrect answer
+POST {{server}}/quiz/answer
+Content-Type: application/json
+
+{
+  "id": 976,
+  "answer": "answer_d"
+}
+
+### Get score
+GET {{server}}/quiz/score
