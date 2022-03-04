@@ -1,7 +1,10 @@
 import express from "express";
 import * as path from "path";
+import { MoviesApi } from "./moviesApi.js";
 
 const app = express();
+
+app.use("/api/movies", MoviesApi());
 
 app.use(express.static("../client/dist/"));
 
