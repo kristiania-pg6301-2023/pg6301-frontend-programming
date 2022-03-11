@@ -1,0 +1,26 @@
+{
+  "name": "pg6301-react-and-express-lectures",
+  "version": "1.0.0",
+  "description": "* [ ] Create Express + React project (https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures#quickly-creating-a-express--react-application)\r * [ ] Create server.js and index.html\r * [ ] Routes: FrontPage, Login, LoginCallback, Profile\r * [ ] Deploy to Heroku (https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures#deploy-to-heroku)\r * [ ] Redirect user to authorization url\r * [ ] Application registration in Google Developer Console\r * [ ] Pick up token from callback redirect\r * [ ] Save token in cookie\r * [ ] Fetch user information from userinfo call with token\r * [ ] Move configuration to server\r * [ ] Log out?\r * [ ] Set user on Context",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently npm:dev:client npm:dev:server",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/issues"
+  },
+  "homepage": "https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures#readme",
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
