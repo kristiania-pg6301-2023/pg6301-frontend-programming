@@ -1,5 +1,6 @@
 # OpenID Connect - log on with Google
 
+https://pg6301-8.herokuapp.com
 
 * [x] Create Express + React project (https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures#quickly-creating-a-express--react-application)
 * [x] Create server.js and index.html
