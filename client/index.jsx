@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
@@ -25,7 +25,6 @@ async function fetchJSON(url) {
 }
 
 function Login() {
-  const [redirectUrl, setRedirectUrl] = useState();
   useEffect(async () => {
     const { authorization_endpoint } = await fetchJSON(
       "https://accounts.google.com/.well-known/openid-configuration"
@@ -39,16 +38,13 @@ function Login() {
       redirect_uri: window.location.origin + "/login/callback",
     };
 
-    setRedirectUrl(
-      authorization_endpoint + "?" + new URLSearchParams(parameters)
-    );
+    window.location.href =
+      authorization_endpoint + "?" + new URLSearchParams(parameters);
   }, []);
 
   return (
     <div>
-      <h1>Login updated!</h1>
-      <a href={redirectUrl}>Do login</a>
-      <div>{redirectUrl}</div>
+      <h1>Please wait....</h1>
     </div>
   );
 }
