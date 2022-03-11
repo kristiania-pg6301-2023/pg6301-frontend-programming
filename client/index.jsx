@@ -1,6 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 
 function FrontPage() {
   return (
@@ -50,6 +56,7 @@ function Login() {
 }
 
 function LoginCallback() {
+  const navigate = useNavigate();
   useEffect(async () => {
     const { access_token } = Object.fromEntries(
       new URLSearchParams(window.location.hash.substring(1))
@@ -63,9 +70,54 @@ function LoginCallback() {
       },
       body: JSON.stringify({ access_token }),
     });
+    navigate("/");
   });
 
-  return <h1>Login callback</h1>;
+  return <h1>Please wait...</h1>;
+}
+
+function useLoader(loadingFn) {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState();
+  const [error, setError] = useState();
+
+  async function load() {
+    try {
+      setLoading(true);
+      setData(await loadingFn());
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => load(), []);
+  return { loading, data, error };
+}
+
+function Profile() {
+  const { loading, data, error } = useLoader(async () => {
+    return await fetchJSON("/api/login");
+  });
+
+  if (loading) {
+    return <div>Please wait...</div>;
+  }
+  if (error) {
+    return <div>Error! {error.toString()}</div>;
+  }
+
+  return (
+    <div>
+      <h1>
+        Profile for {data.name} ({data.email})
+      </h1>
+      <div>
+        <img src={data.picture} alt={"Profile picture"} />
+      </div>
+    </div>
+  );
 }
 
 function Application() {
@@ -75,7 +127,7 @@ function Application() {
         <Route path={"/"} element={<FrontPage />} />
         <Route path={"/login"} element={<Login />} />
         <Route path={"/login/callback"} element={<LoginCallback />} />
-        <Route path={"/profile"} element={<h1>Profile</h1>} />
+        <Route path={"/profile"} element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
