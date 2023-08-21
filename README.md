@@ -17,3 +17,12 @@ a whirlwind tour of the course
 * [ ] create server - serve react app
 * [ ] move API to server
 * [ ] deploy to Heroku
+
+
+## Command log
+
+* `npm init -y`
+* `npm install -D parcel`
+* `npm pkg set scripts.dev="parcel serve index.html"`
+* create index.html
+* git ignore node_modules, dist, .parcel-cache
