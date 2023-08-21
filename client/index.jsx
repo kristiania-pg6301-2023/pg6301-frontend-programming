@@ -82,7 +82,6 @@ function Application() {
     }, []);
 
     async function handleAddMovie(movie) {
-        setMovies(old => ([...old, movie]));
         await fetch("/api/movies", {
             method: "POST",
             body: JSON.stringify(movie),
