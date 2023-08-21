@@ -50,11 +50,15 @@ a server. This lecture will be *way too fast to understand* and will serve merel
 as a teaser to topics that will be important through the course. After the
 lecture, you will only be expected to know the basics of how to create a React
 application with Parcel and React Router
-* 
-* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-react-and-express-lectures/tree/reference/01)
-* [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/01)
-* [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/01)
-* [Exercise answer 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/01)
+
+* [Commit log from lecture (only available after lecture)](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/01)
+* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/reference/01)
+* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/exercise/start/01/README.md)
+* [Exercise answer](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/exercise/answer/01)
+
+#### Material from 2022
+
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/01)
 
 ### Lecture 2: React and Jest
 
