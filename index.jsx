@@ -2,14 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import "./application.css";
+import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function FrontPage() {
     return <div>
         <h1>Welcome to the Movie Database</h1>
-        <div><a href="#">Create new movie</a></div>
-        <div><a href="#">List all movies</a></div>
+        <div><Link to={"/movies/create"}>Create new movie</Link></div>
+        <div><Link to={"/movies"}>List all movies</Link></div>
     </div>
 }
 
@@ -35,7 +36,7 @@ function CreateMovie() {
                 <label>
                     Plot:
                     <br/>
-                    <textarea />
+                    <textarea/>
                 </label>
             </div>
             <div>
@@ -57,12 +58,19 @@ function ListMovies() {
 }
 
 function Application() {
-    return <>
+    return <BrowserRouter>
         <header>Movies for Kristiania</header>
-        <nav><a href="#">Front page</a></nav>
-        <main><FrontPage /></main>
+        <nav><Link to={"/"}>Front page</Link></nav>
+        <main>
+            <Routes>
+                <Route path={"/"} element={<FrontPage />}/>
+                <Route path={"/movies"} element={<ListMovies />}/>
+                <Route path={"/movies/create"} element={<CreateMovie />}/>
+                <Route path={"*"} element={<h1>Not found</h1>}/>
+            </Routes>
+        </main>
         <footer>by Johannes Brodwall</footer>
-    </>;
+    </BrowserRouter>;
 }
 
 root.render(<Application/>);
