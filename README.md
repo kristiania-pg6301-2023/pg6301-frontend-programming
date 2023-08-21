@@ -5,14 +5,15 @@ a whirlwind tour of the course
 
 ## TODO:
 
-* [ ] npm install parcel
-* [ ] create index.html
-* [ ] create index.jsx
-  * [ ] npm install react react-dom
-* [ ] create list and create pages with router
-  * [ ] npm install react-router-dom
-* [ ] add new movie with a form
-* [ ] list movies
+* [x] npm install parcel
+* [x] create index.html
+* [x] create index.jsx
+  * [x] npm install react react-dom
+* [x] design application pages
+* [x] create list and create pages with router
+  * [x] npm install react-router-dom
+* [x] add new movie with a form
+* [x] list movies
 * [ ] move client code to subdirectory
 * [ ] create server - serve react app
 * [ ] move API to server
