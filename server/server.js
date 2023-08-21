@@ -5,6 +5,7 @@ const app = express();
 app.get("/api/movies", (req, res) => {
     res.json([
         {title: "Oppenheimer"},
+        {title: "Barbie"}
     ])
 })
 
