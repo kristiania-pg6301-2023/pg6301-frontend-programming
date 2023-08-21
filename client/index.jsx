@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function FrontPage() {
     return <div>
-        <h1>Welcome to the Movie Database</h1>
+        <h1>Welcome to the Kristiania Movie Database</h1>
         <div><Link to={"/movies/create"}>Create new movie</Link></div>
         <div><Link to={"/movies"}>List all movies</Link></div>
     </div>

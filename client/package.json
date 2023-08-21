@@ -4,7 +4,7 @@
   "description": "This application lets you create and list movies. The demonstration is a whirlwind tour of the course",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel serve index.html"
+    "dev": "parcel watch index.html"
   },
   "keywords": [],
   "author": "",
