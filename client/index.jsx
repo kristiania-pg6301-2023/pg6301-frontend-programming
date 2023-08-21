@@ -72,13 +72,25 @@ function ListMovies({movies}) {
 function Application() {
     const [movies, setMovies] = useState([]);
 
-    useEffect(async () => {
+    async function loadMovies() {
         const res = await fetch("/api/movies");
         setMovies(await res.json());
+    }
+
+    useEffect(() => {
+        loadMovies()
     }, []);
 
-    function handleAddMovie(movie) {
+    async function handleAddMovie(movie) {
         setMovies(old => ([...old, movie]));
+        await fetch("/api/movies", {
+            method: "POST",
+            body: JSON.stringify(movie),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        await loadMovies();
     }
     return <BrowserRouter>
         <header>Movies for Kristiania</header>
