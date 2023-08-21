@@ -1,7 +1,7 @@
 # PG6301 Web Development and API design
 
-> :warning: **Not updated for 2023**: This information currently just a copy of the course information for 2022. It will
-> be updated soon
+> :warning: **Not completely updated for 2023**: This information currently contains
+> much of the course information for 2022. It will be updated as we go along
 
 
 Welcome to this course in Web Development and API Design. In this course, we will
@@ -27,34 +27,34 @@ to follow the lectures, but you also have to be able to solve new problems and
 find relevant information along the way. To be able to do this, it's extremely
 valuable for you to follow the exercises along the lectures.
 
+The lectures will be recorded and the recordings will be available in Panopto in Canvas.
+
 ### From last year
 
-In 2021, the first half of this course was taught by
+The course was taught in
+the [Spring of 2022 by Johannes Brodwall](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures)
+and in the Fall of 2022 by Bogdan Marculescu. In 2021, the first half of this course was taught by
 [Andrea Arcuri](https://github.com/arcuri82/web_development_and_api_design)
 and the second half by
 [Johannes Brodwall](https://github.com/kristiania-pg6301-2021/pg6301-react-and-express-lectures)
 
-Andrea's repository contains the slides and exercises for all lectures.
-
-For lecture 7-12, Johannes' GitHub repository contains the code that was
-presented during the lectures. Each lecture contains slides (from Andrea),
-a commit log for the live coding demonstrated during the lecture, a
-reference implementation of the live code objective and the GitHub issues
-resolved during the lecture.
+Lectures of 2023 that has a corresponding lecture in 2022 will have a reference to the code
+from that year's lecture.
 
 ## Lectures
 
 ### Lecture 1: A tour of React, Express and Heroku
 
 We explore the most important parts to the whole application up and running on
-a server. This lecture will be way too fast to understand and will serve merely
+a server. This lecture will be *way too fast to understand* and will serve merely
 as a teaser to topics that will be important through the course. After the
 lecture, you will only be expected to know the basics of how to create a React
 application with Parcel and React Router
-
-* [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/01)
-* [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/01)
-* [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/01)
+* 
+* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-react-and-express-lectures/tree/reference/01)
+* [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/01)
+* [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/01)
+* [Exercise answer 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/01)
 
 ### Lecture 2: React and Jest
 
@@ -62,11 +62,16 @@ We will review the React topics from the last lecture: Creating a React app,
 creating functional components and using props, state and effects. We will
 also explore React Router more in depth
 
-We add tests for the React code and run the test on GitHub Actions
+### Lecture 3: Implementing server code on Express
 
-* [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/02)
-* [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/02)
-* [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/02)
+* [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/04)
+* [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/04)
+* [Exercise text 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/blob/exercise/04/start/README.md)
+* [Exercise answer 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/04)
+
+#### Useful video
+
+* [Fireship.io intro til Express](https://youtu.be/-MTSQjw5DrM)
 
 #### Useful video
 
@@ -74,42 +79,39 @@ We add tests for the React code and run the test on GitHub Actions
 
 * [Fireship: every React hook](https://youtu.be/TNhaISOUy6Q)
 
-### Lecture 3: Code quality
+### Lecture 4: Robust interaction between the client and the server
 
-Jest, Github Actions, Prettier, Eslint and Typescript
+(May be merged with lecture 3 this year)
 
-* [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/03)
-* [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/03)
-* [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/03)
+* [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/06)
+* [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/06)
+* [Exercise answer 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/06)
 
-### Lecture 4: Implementing server code on Express
-
-Express and supertest
-
-* [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/04)
-* [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/04)
-* [Exercise text](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/blob/exercise/04/start/README.md)
-* [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/04)
-
-#### Useful video
-
-* [Fireship.io intro til Express](https://youtu.be/-MTSQjw5DrM)
 
 ### Lecture 5: Publishing your application on Heroku
+
+#### Material from 2022
 
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/05)
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/05)
 * [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/05)
 * [Heroku's documentation on using Node.js](https://www.heroku.com/nodejs)
 
-### Lecture 6: Robust interaction between the client and the server
+### Lecture 6: Code quality
 
-* [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/06)
-* [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/06)
-* [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/06)
+Jest, Github Actions, Prettier, Eslint, Supertest and Typescript
+
+#### Material from 2022
+
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/03)
+* [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/03)
+* [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/03)
+
 
 ### Lecture 7: Storing data MongoDB
 
+#### Material from 2022
+* 
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/07)
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/07)
 * [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/07)
@@ -121,6 +123,11 @@ Express and supertest
 * [MongoDB in 100 seconds (Fireship.io)](https://www.youtube.com/watch?v=-bt_y4Loofg)
 
 ### Lecture 8: Who's your user? OpenID Connect
+
+In this lecture we will implement "log in with Google"-functionality. We will also explore other identity
+services that also implement OpenID Connect, such as ID-porten and Active Directory.
+
+#### Material from 2022
 
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/08)
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/08)
@@ -142,6 +149,8 @@ are sent as JSON objects.
 In our example, we will create a web application that lets users chat with each
 other.
 
+#### Material from 2022
+
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/09)
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/09)
 
@@ -152,6 +161,8 @@ other.
 ### Lecture 10: Jest testing
 
 In this lecture, we continue from lecture 7 (MongoDB) and add tests for frontend and for MongoDB
+
+#### Material from 2022
 
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/10)
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/10)
@@ -165,12 +176,16 @@ In this lecture, we continue from lecture 7 (MongoDB) and add tests for frontend
 In this lecture, I will demonstrate how to set up an already created OpenID Connect server with Active Directory, then
 implement the necessary steps using another ID-provider, so the exact code is left as an exercise
 
+#### Material from 2022
+
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/11)
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/11)
 
 ### Lecture 12: Getting ready for the exam
 
 We examine a solution that probably would qualify for a B on the exam
+
+#### Material from 2022
 
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/12)
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/12)
@@ -185,42 +200,56 @@ When creating a project, make sure you add `node_modules`, `.parcel-cache` and `
 1. `mkdir client server`
 2. Root project
     1. `npm init -y && npm install --save-dev concurrently`
-    2. `npm set-script dev "concurrently npm:dev:client npm:dev:server"`
-    3. `npm set-script dev:client "cd client && npm run dev"`
-    4. `npm set-script dev:server "cd server && npm run dev"`
+    2. `npm pkg set scripts.dev "concurrently npm:dev:client npm:dev:server"`
+    3. `npm pkg set scripts.dev:client "cd client && npm run dev"`
+    4. `npm pkg set scripts.dev:server "cd server && npm run dev"`
 3. Server project
     1. `cd server && npm init -y && npm install --save-dev nodemon && npm install --save express cookie-parser body-parser`
-    2. `npm set-script dev "nodemon server.js"`
+    2. `npm pkg set scripts.dev "nodemon server.js"`
     3. `cd ..`
 4. Client project
     1. `cd client && npm init -y && npm install --save-dev parcel && npm install --save react react-dom react-router-dom @parcel/transformer-react-refresh-wrap`
-    2. `npm set-script dev "parcel watch index.html"`
+    2. `npm pkg set scripts.dev "parcel watch index.html"`
 
 ### Making `npm run dev` work
 
 1. Create a minimal HTML file as `client/index.html`. This is the essence:
-    * `<html><body><div id="app"></div></body><script src="index.jsx" type="module"></script></html>`
+   ```html
+   <html>
+      <body>
+        <div id="root"></div>
+      </body>
+      <script src="index.jsx" type="module"></script>
+   </html>
+   ```
+    * ``
 2. Create a minimal `index.jsx`. In addition to importing React and ReactDOM, this is the essence:
-    * `ReactDOM.render(<h1>Hello World</h1>, document.getElementById("app"));`
+   ```jsx
+   const root = ReactDOM.createRoot(document.getElementById("root"));
+   root.render(<h1>Hello React</h1>);
+    ```
 3. Set `"type": "module"` in `server/package.json`
 4. Create a minimal JavaScript file as `server.js`. This is the essence:
-    * `import express from "express";`
-    * `const app = express();`
-    * `app.use(express.static("../client/dist"));`
-    * `app.listen(process.env.PORT || 3000);`
+   ```js
+   import express from "express";
+   
+   const app = express();
+   app.use(express.static("../client/dist"))
+   app.listen(process.env.PORT || 3000);
+   ```
 
 ### Deploy to Heroku
 
 1. In the root project, define `npm run build` and `npm start`
-    * `npm set-script build "npm run build:client && npm run build:server"`
-    * `npm set-script build:client "cd client && npm run build"`
-    * `npm set-script build:server "cd server && npm run build"`
-    * `npm set-script start "cd server && npm start"`
+    * `npm pkg set scripts.build "npm run build:client && npm run build:server"`
+    * `npm pkg set scripts.build:client "cd client && npm run build"`
+    * `npm pkg set scripts.build:server "cd server && npm run build"`
+    * `npm pkg set scripts.start "cd server && npm start"`
 2. In the client project, define `npm run build`
-    * `cd client && npm set-script build "npm install --include=dev && npm run build:parcel" && npm set-script build:parcel "parcel build index.html"`
+    * `cd client && npm pkg set scripts.build "npm install --include=dev && npm run build:parcel" && npm pkg set scripts.build:parcel "parcel build index.html"`
     * `cd ..`
 3. In the server project, define `npm run build` and `npm start`
-    * `cd server && npm set-script build "npm install" && npm set-script start "node server.js"`
+    * `cd server && npm pkg set scripts.build "npm install" && npm pkg set scripts.start "node server.js"`
     * `cd ..`
 4. Create an application and deploy to heroku (requires [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli))
     1. `heroku login`
