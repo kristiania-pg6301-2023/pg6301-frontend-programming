@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom/client";
 
 import "./application.css";
@@ -15,6 +15,12 @@ function FrontPage() {
 }
 
 function CreateMovie() {
+    const [title, setTitle] = useState("");
+    const [year, setYear] = useState("");
+    const [plot, setPlot] = useState("");
+
+    const movie = { title, year, plot };
+
     return <div>
         <h1>Add a movie</h1>
         <form>
@@ -22,27 +28,28 @@ function CreateMovie() {
                 <label>
                     Title:
                     <br/>
-                    <input/>
+                    <input value={title} onChange={e => setTitle(e.target.value)}/>
                 </label>
             </div>
             <div>
                 <label>
                     Year:
                     <br/>
-                    <input/>
+                    <input value={year} onChange={e => setYear(e.target.value)}/>
                 </label>
             </div>
             <div>
                 <label>
                     Plot:
                     <br/>
-                    <textarea/>
+                    <textarea value={plot} onChange={e => setPlot(e.target.value)}/>
                 </label>
             </div>
             <div>
                 <button>Submit</button>
             </div>
         </form>
+        <pre>{JSON.stringify(movie)}</pre>
     </div>
 }
 
