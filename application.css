@@ -1,0 +1,18 @@
+#root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+body {
+    margin: 0;
+}
+
+header, footer {
+    background-color: lightyellow;
+    border: 1px solid black;
+}
