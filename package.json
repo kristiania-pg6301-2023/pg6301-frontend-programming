@@ -1,0 +1,15 @@
+{
+  "name": "pg6301-frontend-programming",
+  "version": "1.0.0",
+  "description": "Opprett og vise filmer på web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

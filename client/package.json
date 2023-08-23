@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Opprett og vise filmer på web",
   "scripts": {
-    "dev": "parcel watch index.html"
+    "dev": "parcel watch index.html",
+    "build": "npm install --include=dev && parcel build index.html"
   },
   "author": "",
   "license": "ISC",
