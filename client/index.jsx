@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 
 import "./application.css"
-import {HashRouter, Link, Route, Routes, useNavigate} from "react-router-dom";
+import {HashRouter, json, Link, Route, Routes, useNavigate} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -76,13 +76,23 @@ function CreateMovie({onCreateMovie}) {
 function Application() {
     const [movies, setMovies] = useState([]);
 
-    useEffect(async () => {
+    async function fetchMovies() {
         const res = await fetch("/api/movies");
         setMovies(await res.json());
+    }
+
+    useEffect( () => {
+        fetchMovies();
     }, [])
 
-    function handleCreateMovie(movie) {
-        //setMovies(old => ([...old, movie]));
+    async function handleCreateMovie(movie) {
+        await fetch("/api/movies", {
+            method: "post",
+            body: JSON.stringify(movie),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
     }
 
     return <HashRouter>
