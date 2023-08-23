@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import ReactDOM from "react-dom/client";
 
 import "./application.css"
-import {HashRouter, Link, Route, Routes} from "react-router-dom";
+import {HashRouter, Link, Route, Routes, useNavigate} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -16,11 +16,7 @@ function FrontPage() {
     </>;
 }
 
-function ListMovies() {
-    const movies = [
-        {title: "Movie1", year: 2019},
-        {title: "Movie2", year: 2009},
-    ];
+function ListMovies({movies}) {
 
     return <>
         <h2>All the movies</h2>
@@ -30,14 +26,25 @@ function ListMovies() {
     </>
 }
 
-function CreateMovie() {
+function CreateMovie({onCreateMovie}) {
     const [title, setTitle] = useState("");
     const [year, setYear] = useState("");
     const [plot, setPlot] = useState("");
+
+    const navigate = useNavigate();
+
     const movie = {title, year, plot};
+
+    function handleSubmitMovie(e) {
+        e.preventDefault();
+        onCreateMovie(movie);
+        navigate("/movies");
+    }
+
+
     return <>
         <h2>Create new movie</h2>
-        <form>
+        <form onSubmit={handleSubmitMovie}>
             <div>
                 <label>
                     Title:
@@ -67,14 +74,24 @@ function CreateMovie() {
 
 
 function Application() {
+    const [movies, setMovies] = useState([]);
+
+    function handleCreateMovie(movie) {
+        setMovies(old => ([...old, movie]));
+    }
+
     return <HashRouter>
         <header><h1>Movie Application</h1></header>
         <nav><Link to={"/"}>Home page</Link></nav>
         <main>
             <Routes>
                 <Route path={"/"} element={<FrontPage />} />
-                <Route path={"/movies/new"} element={<CreateMovie />} />
-                <Route path={"/movies"} element={<ListMovies />} />
+                <Route path={"/movies/new"} element={
+                    <CreateMovie onCreateMovie={handleCreateMovie} />
+                } />
+                <Route path={"/movies"} element={
+                    <ListMovies movies={movies} />
+                } />
                 <Route path={"*"} element={<h2>Not found</h2>} />
             </Routes>
         </main>
