@@ -212,7 +212,7 @@ When creating a project, make sure you add `node_modules`, `.parcel-cache` and `
     2. `npm pkg set scripts.dev "nodemon server.js"`
     3. `cd ..`
 4. Client project
-    1. `cd client && npm init -y && npm install --save-dev parcel && npm install --save react react-dom react-router-dom @parcel/transformer-react-refresh-wrap`
+    1. `cd client && npm init -y && npm install --save-dev parcel && npm install --save react react-dom react-router-dom`
     2. `npm pkg set scripts.dev "parcel watch index.html"`
 
 ### Making `npm run dev` work
