@@ -81,7 +81,7 @@ function Application() {
     }
 
     return <HashRouter>
-        <header><h1>Movie Application</h1></header>
+        <header><h1>Movie Application with API</h1></header>
         <nav><Link to={"/"}>Home page</Link></nav>
         <main>
             <Routes>
