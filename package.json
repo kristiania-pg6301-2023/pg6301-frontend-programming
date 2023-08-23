@@ -1,0 +1,14 @@
+{
+  "name": "pg6301-frontend-programming",
+  "version": "1.0.0",
+  "description": "Opprett og vise filmer på web",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel serve index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  }
+}
