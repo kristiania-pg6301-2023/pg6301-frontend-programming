@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 
 import "./application.css"
@@ -76,8 +76,13 @@ function CreateMovie({onCreateMovie}) {
 function Application() {
     const [movies, setMovies] = useState([]);
 
+    useEffect(async () => {
+        const res = await fetch("/api/movies");
+        setMovies(await res.json());
+    }, [])
+
     function handleCreateMovie(movie) {
-        setMovies(old => ([...old, movie]));
+        //setMovies(old => ([...old, movie]));
     }
 
     return <HashRouter>
