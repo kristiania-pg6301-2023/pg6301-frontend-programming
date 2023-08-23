@@ -1,0 +1,21 @@
+#root {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+body {
+    margin: 0;
+}
+
+footer, header {
+    background-color: lightblue;
+}
+
+nav {
+    background-color: aqua;
+}
