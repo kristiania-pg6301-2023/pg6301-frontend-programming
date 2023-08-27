@@ -39,8 +39,8 @@ Bonus:
 * [x] `cd client && npm init -y && npm install --save-dev parcel && npm install --save react react-dom react-router-dom`
 * [x] `npm pkg set scripts.dev="parcel watch index.html"`
 * [x] Create `index.html` and `index.tsx`
-* [ ] Create `<Application />` with layout
-* [ ] Create `<FrontPage />`, `<Question />` og `<Answer />` components
+* [x] Create `<Application />` with layout
+* [x] Create `<FrontPage />`, `<Question />` og `<Answer />` components
 * [ ] Add react router: `<HashRouter />`, `<Routes />`, `<Route />` and `<Link />`
 * [ ] Add `useState` with question in `<Application />` and let `handleClickAnswer` call `isCorrectAnswer`
 * [ ] Add tests:
