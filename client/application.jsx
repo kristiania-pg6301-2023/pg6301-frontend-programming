@@ -13,7 +13,7 @@ function FrontPage() {
     </>;
 }
 
-function ListMovies({movies}) {
+export function ListMovies({movies}) {
     return <>
         <h1>List Movies</h1>
         {movies.map(m =>

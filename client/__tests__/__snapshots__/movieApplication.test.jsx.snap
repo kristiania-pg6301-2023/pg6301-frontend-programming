@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the movie application shows movie list 1`] = `
+[
+  <h1>
+    List Movies
+  </h1>,
+  <div>
+    <h3>
+      Oppenheimer
+       (
+      2023
+      )
+    </h3>
+    <div>
+      Manhattan project
+    </div>
+  </div>,
+  <div>
+    <h3>
+      Barbie
+       (
+      2023
+      )
+    </h3>
+    <div>
+      Plastic adventure
+    </div>
+  </div>,
+]
+`;

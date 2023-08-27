@@ -6,5 +6,5 @@
 * [x] List existing movies
 * [x] Add a new movies
 * [x] Add jest
-* [ ] Test movie listing
+* [x] Test movie listing
 * [ ] Test adding movie
