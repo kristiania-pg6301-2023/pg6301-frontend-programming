@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+}
+
+#root {
+    background-color: aqua;
+    height: 100vh;
+    display: grid;
+    grid-auto-rows: auto auto 1fr auto;
+}
+
+main {
+    min-width: 80%;
+    background-color: white;
+    margin: 1em auto;
+    border-radius: 1em;
+    padding-inline: 1em;
+}
