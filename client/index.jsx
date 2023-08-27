@@ -42,14 +42,16 @@ function Question({ question, onClickAnswer }) {
   );
 }
 
-function ShowAnswer() {
+function ShowAnswer({ onAskAnother }) {
   return (
     <>
       <Routes>
         <Route path={"/correct"} element={<h2>That's correct!</h2>} />
         <Route path={"/wrong"} element={<h2>That's wrong!</h2>} />
       </Routes>
-      <Link to={"/question"}>Ask me another question</Link>
+      <div>
+        <button onClick={onAskAnother}>Ask me another question</button>
+      </div>
     </>
   );
 }
@@ -67,10 +69,18 @@ function Quiz() {
     }
   }
 
+  function handleAskAnother() {
+    setQuestion(randomQuestion());
+    navigateFn("/question");
+  }
+
   return (
     <Routes>
       <Route path={"/"} element={<FrontPage />} />
-      <Route path={"/answer/*"} element={<ShowAnswer />} />
+      <Route
+        path={"/answer/*"}
+        element={<ShowAnswer onAskAnother={handleAskAnother} />}
+      />
       <Route
         path={"/question"}
         element={
