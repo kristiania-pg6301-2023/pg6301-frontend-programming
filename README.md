@@ -44,10 +44,10 @@ Bonus:
 * [x] Add react router: `<HashRouter />`, `<Routes />`, `<Route />` and `<Link />`
 * [x] Add `useState` with question in `<Application />` and let `handleClickAnswer` call `isCorrectAnswer`
 * [x] Handle "ask me another"
-* [ ] Add tests:
-  * [ ] `npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer`
-  * [ ] Add `babel.config.js`
-  * [ ] `npm pkg set scripts.test=jest`
+* [x] Add tests:
+  * [x] `npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer`
+  * [x] Add `babel.config.js`
+  * [x] `npm pkg set scripts.test=jest`
 * [ ] Write tests
   * [ ] Snapshot test that question is displayed
   * [ ] Check for onClick
