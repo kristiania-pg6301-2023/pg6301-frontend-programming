@@ -37,8 +37,8 @@ Bonus:
 
 * [x] `mkdir server client`
 * [x] `cd client && npm init -y && npm install --save-dev parcel && npm install --save react react-dom react-router-dom`
-* [ ] `npm pkg set scripts.dev="parcel watch index.html"`
-* [ ] Create `index.html` and `index.tsx`
+* [x] `npm pkg set scripts.dev="parcel watch index.html"`
+* [x] Create `index.html` and `index.tsx`
 * [ ] Create `<Application />` with layout
 * [ ] Create `<FrontPage />`, `<Question />` og `<Answer />` components
 * [ ] Add react router: `<HashRouter />`, `<Routes />`, `<Route />` and `<Link />`
