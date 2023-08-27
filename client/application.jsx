@@ -1,4 +1,5 @@
 import {HashRouter, Link, Route, Routes} from "react-router-dom";
+import {useState} from "react";
 
 function FrontPage() {
     return <>
@@ -12,8 +13,16 @@ function FrontPage() {
     </>;
 }
 
-function ListMovies() {
-    return <h1>List Movies</h1>;
+function ListMovies({movies}) {
+    return <>
+        <h1>List Movies</h1>
+        {movies.map(m =>
+            <div key={m.title}>
+                <h3>{m.title} ({m.year})</h3>
+                <div>{m.plot}</div>
+            </div>
+        )}
+    </>;
 }
 
 function AddNewMovie() {
@@ -21,9 +30,22 @@ function AddNewMovie() {
 }
 
 function MovieRoutes() {
+    const [movies] = useState([
+        {
+            title: "Don't look up",
+            year: "2022",
+            plot: "Politicians ignore impending doom"
+        },
+        {
+            title: "Oppenheimer",
+            year: "2023",
+            plot: "Boom"
+        }
+    ])
+
     return <Routes>
         <Route path={"/"} element={<FrontPage/>}/>
-        <Route path={"/movies"} element={<ListMovies/>}/>
+        <Route path={"/movies"} element={<ListMovies movies={movies}/>}/>
         <Route path={"/movies/new"} element={<AddNewMovie/>}/>
         <Route path={"/*"} element={<h1>Not Found</h1>}/>
     </Routes>;
