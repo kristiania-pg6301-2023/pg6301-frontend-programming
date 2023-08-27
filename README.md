@@ -49,5 +49,5 @@ Bonus:
   * [x] Add `babel.config.js`
   * [x] `npm pkg set scripts.test=jest`
 * [ ] Write tests
-  * [ ] Snapshot test that question is displayed
+  * [x] Snapshot test that question is displayed
   * [ ] Check for onClick

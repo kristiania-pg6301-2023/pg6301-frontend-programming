@@ -1,5 +1,17 @@
+import renderer from "react-test-renderer";
+import { Question } from "../quizApplication";
+
+const question = {
+  question: "What's going on?",
+  answers: {
+    answer_a: "Nothing",
+    answer_b: "Something",
+  },
+};
+
 describe("test questions", () => {
-  it("tests dummy value", () => {
-    expect(6 * 7).toEqual(42);
+  it("shows question", () => {
+    const component = renderer.create(<Question question={question} />);
+    expect(component).toMatchSnapshot();
   });
 });
