@@ -1,9 +1,5 @@
 # PG6301 Web Development and API design
 
-> :warning: **Not completely updated for 2023**: This information currently contains
-> much of the course information for 2022. It will be updated as we go along
-
-
 Welcome to this course in Web Development and API Design. In this course, we will
 look at creating single-page applications with React backed by APIs implemented
 with React. The application will store data in MongoDB and be deployed on Heroku
@@ -45,6 +41,8 @@ from that year's lecture.
 
 ### Lecture 1: A tour of React, Express and Heroku
 
+<details>
+
 We explore the most important parts to the whole application up and running on
 a server. This lecture will be *way too fast to understand* and will serve merely
 as a teaser to topics that will be important through the course. After the
@@ -60,13 +58,23 @@ application with Parcel and React Router
 
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/01)
 
+</details>
+
 ### Lecture 2: React and Jest
 
 We will review the React topics from the last lecture: Creating a React app,
 creating functional components and using props, state and effects. We will
 also explore React Router more in depth
 
+* [Commit log from lecture (only available after lecture)](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/02)
+* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/reference/02)
+* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/exercise/start/02/README.md)
+* [Exercise answer](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/exercise/answer/02)
+
+
 ### Lecture 3: Implementing server code on Express
+
+<details>
 
 * [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/04)
 * [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/04)
@@ -83,7 +91,11 @@ also explore React Router more in depth
 
 * [Fireship: every React hook](https://youtu.be/TNhaISOUy6Q)
 
+</details>
+
 ### Lecture 4: Robust interaction between the client and the server
+
+<details>
 
 (May be merged with lecture 3 this year)
 
@@ -91,8 +103,11 @@ also explore React Router more in depth
 * [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/06)
 * [Exercise answer 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/06)
 
+</details>
 
 ### Lecture 5: Publishing your application on Heroku
+
+<details>
 
 #### Material from 2022
 
@@ -101,7 +116,11 @@ also explore React Router more in depth
 * [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/05)
 * [Heroku's documentation on using Node.js](https://www.heroku.com/nodejs)
 
-### Lecture 6: Code quality
+</details>
+
+### Lecture 6: Quality code
+
+<details>
 
 Jest, Github Actions, Prettier, Eslint, Supertest and Typescript
 
@@ -111,11 +130,14 @@ Jest, Github Actions, Prettier, Eslint, Supertest and Typescript
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/03)
 * [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/03)
 
+</details>
 
 ### Lecture 7: Storing data MongoDB
 
+<details>
+
 #### Material from 2022
-* 
+
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/07)
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/07)
 * [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/07)
@@ -126,7 +148,11 @@ Jest, Github Actions, Prettier, Eslint, Supertest and Typescript
 * [MongoDB University: JavaScript](https://university.mongodb.com/courses/M220JS/about)
 * [MongoDB in 100 seconds (Fireship.io)](https://www.youtube.com/watch?v=-bt_y4Loofg)
 
+</details>
+
 ### Lecture 8: Who's your user? OpenID Connect
+
+<details>
 
 In this lecture we will implement "log in with Google"-functionality. We will also explore other identity
 services that also implement OpenID Connect, such as ID-porten and Active Directory.
@@ -142,7 +168,11 @@ services that also implement OpenID Connect, such as ID-porten and Active Direct
 * [Google Developer Console](https://console.cloud.google.com/apis/credentials)
 * [Google Authentication documentation](https://developers.google.com/identity/protocols/oauth2#clientside)
 
+</details>
+
 ### Lecture 9: Web Sockets
+
+<details>
 
 The purpose of web sockets is to enable responsive communication between the client
 and the server; especially for messages sent by the server. Websockets are established
@@ -162,7 +192,11 @@ other.
 
 * [Fireship.io video on Websockets](https://www.youtube.com/watch?v=1BfCnjr_Vjg)
 
+</details>
+
 ### Lecture 10: Jest testing
+
+<details>
 
 In this lecture, we continue from lecture 7 (MongoDB) and add tests for frontend and for MongoDB
 
@@ -175,7 +209,11 @@ In this lecture, we continue from lecture 7 (MongoDB) and add tests for frontend
 
 * [Fireship.io video on Async/await and promises](https://www.youtube.com/watch?v=vn3tm0quoqE)
 
+</details>
+
 ### Lecture 11: OpenID Connect and Active Directory
+
+<details>
 
 In this lecture, I will demonstrate how to set up an already created OpenID Connect server with Active Directory, then
 implement the necessary steps using another ID-provider, so the exact code is left as an exercise
@@ -185,7 +223,11 @@ implement the necessary steps using another ID-provider, so the exact code is le
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/11)
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/11)
 
+</details>
+
 ### Lecture 12: Getting ready for the exam
+
+<details>
 
 We examine a solution that probably would qualify for a B on the exam
 
@@ -194,6 +236,8 @@ We examine a solution that probably would qualify for a B on the exam
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/12)
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/12)
 * [Mock Exam](./mock-exam.md)
+
+</details>
 
 ## Reference material
 
@@ -204,22 +248,22 @@ When creating a project, make sure you add `node_modules`, `.parcel-cache` and `
 1. `mkdir client server`
 2. Root project
     1. `npm init -y && npm install --save-dev concurrently`
-    2. `npm pkg set scripts.dev "concurrently npm:dev:client npm:dev:server"`
-    3. `npm pkg set scripts.dev:client "cd client && npm run dev"`
-    4. `npm pkg set scripts.dev:server "cd server && npm run dev"`
-3. Server project
+    2. `npm pkg set scripts.dev="concurrently npm:dev:client npm:dev:server"`
+    3. `npm pkg set scripts.dev:client="cd client && npm run dev"`
+    4. `npm pkg set scripts.dev:server="cd server && npm run dev"`
+3. Client project
+   1. `cd client && npm init -y && npm install --save-dev parcel && npm install --save react react-dom react-router-dom`
+   2. `npm pkg set scripts.dev="parcel watch index.html"`
+4. Server project
     1. `cd server && npm init -y && npm install --save-dev nodemon && npm install --save express cookie-parser body-parser`
-    2. `npm pkg set scripts.dev "nodemon server.js"`
+    2. `npm pkg set scripts.dev="nodemon server.js"`
     3. `cd ..`
-4. Client project
-    1. `cd client && npm init -y && npm install --save-dev parcel && npm install --save react react-dom react-router-dom`
-    2. `npm pkg set scripts.dev "parcel watch index.html"`
 
 ### Making `npm run dev` work
 
 1. Create a minimal HTML file as `client/index.html`. This is the essence:
    ```html
-   <html>
+   <html lang="en">
       <body>
         <div id="root"></div>
       </body>
@@ -227,8 +271,11 @@ When creating a project, make sure you add `node_modules`, `.parcel-cache` and `
    </html>
    ```
     * ``
-2. Create a minimal `index.jsx`. In addition to importing React and ReactDOM, this is the essence:
+2. Create a minimal `index.jsx`:
    ```jsx
+   import React, {useEffect, useState} from "react";
+   import ReactDOM from "react-dom/client";
+   
    const root = ReactDOM.createRoot(document.getElementById("root"));
    root.render(<h1>Hello React</h1>);
     ```
@@ -242,36 +289,19 @@ When creating a project, make sure you add `node_modules`, `.parcel-cache` and `
    app.listen(process.env.PORT || 3000);
    ```
 
-### Deploy to Heroku
-
-1. In the root project, define `npm run build` and `npm start`
-    * `npm pkg set scripts.build "npm run build:client && npm run build:server"`
-    * `npm pkg set scripts.build:client "cd client && npm run build"`
-    * `npm pkg set scripts.build:server "cd server && npm run build"`
-    * `npm pkg set scripts.start "cd server && npm start"`
-2. In the client project, define `npm run build`
-    * `cd client && npm pkg set scripts.build "npm install --include=dev && npm run build:parcel" && npm pkg set scripts.build:parcel "parcel build index.html"`
-    * `cd ..`
-3. In the server project, define `npm run build` and `npm start`
-    * `cd server && npm pkg set scripts.build "npm install" && npm pkg set scripts.start "node server.js"`
-    * `cd ..`
-4. Create an application and deploy to heroku (requires [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli))
-    1. `heroku login`
-    2. `heroku create -a <app name>`
-    3. `heroku git:remote -a <app name>`
-    4. `git push heroku`
-
 ### Crucial tasks
 
 When you can get this to work, you will need to master the following:
 
 * Serve the frontend code from Express. In `server.js`:
-    * `app.use(express.static(path.resolve(__dir, "..", "..", "dist")));`
+   * `app.use(express.static(path.resolve(__dir, "..", "..", "dist")));`
 * Use React Router in front-end
 * Make React call API calls on the backend (using `fetch`)
 * Make Express respond to API calls
 
 #### React Router
+
+<details>
 
 ```jsx
 export function MoviesApplication() {
@@ -300,8 +330,11 @@ function FrontPage() {
     </div>;
 }
 ```
+</details>
 
 #### Express middleware for dealing with routing
+
+<details>
 
 ```javascript
 app.use((req, res, next) => {
@@ -313,10 +346,13 @@ app.use((req, res, next) => {
     }
 });
 ```
+</details>
 
 ### Fetching data from server
 
 #### The useLoading hook
+
+<details>
 
 ```javascript
 export function useLoading(loadingFunction, deps = []) {
@@ -341,37 +377,82 @@ export function useLoading(loadingFunction, deps = []) {
     return {loading, data, error};
 }
 ```
+</details>
+
+### Deploy to Heroku
+
+<details>
+
+1. In the root project, define `npm run build` and `npm start`
+    * `npm pkg set scripts.build="npm run build:client && npm run build:server"`
+    * `npm pkg set scripts.build:client="cd client && npm run build"`
+    * `npm pkg set scripts.build:server="cd server && npm run build"`
+    * `npm pkg set scripts.start "cd server && npm start"`
+2. In the client project, define `npm run build`
+    * `cd client && npm pkg set scripts.build="npm install --include=dev && npm run build:parcel" && npm pkg set scripts.build:parcel="parcel build index.html"`
+    * `cd ..`
+3. In the server project, define `npm run build` and `npm start`
+    * `cd server && npm pkg set scripts.build="npm install" && npm pkg set scripts.start="node server.js"`
+    * `cd ..`
+4. Create an application and deploy to heroku (requires [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli))
+    1. `heroku login`
+    2. `heroku create -a <app name>`
+    3. `heroku git:remote -a <app name>`
+    4. `git push heroku`
+
+</details>
+
 
 ### Testing
 
 #### Installing
 
-When using test, we need to add some babel mumbo jumbo to get Jest to understand modern JavaScript syntax as well as JSX
-tags
+Installing Jest is described on [the Jest homepage](https://jestjs.io/docs/tutorial-react)
 
-1. `npm install -D jest babel-jest`
+<details>
 
-You need the following fragment or similar in `package.json`:
-
-```
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
+1. `npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer`
+2. Create a file named `babel.config.js` to support JSX-syntax
+   ```javascript
+   module.exports = {
+      presets: [
+         "@babel/preset-env",
+         ["@babel/preset-react", { runtime: "automatic" }],
       ],
-      "@babel/preset-react"
-    ]
-  }
-```
+   };
+   ```
+3. `npm pkg set scripts.test=jest` (also, consider `npm pkg set scripts.test:watch="jest --watchAll"`)
+4. `npm test`
 
-With this in place, it should be possible to run tests like those below.
+Out of the box, Jest will fail on `import "./....css"` in your JSX files.
+[By installing a moduleNameMapper](https://stackoverflow.com/a/50075709/27658),
+you can fix this problem.
+
+</details>
+
+### A trivial test (failing)
+
+<details>
+
+```javascript
+import renderer from "react-test-renderer";
+
+describe("quiz application", () => {
+  it("knows the answer to the question... (failing)", () => {
+    expect(6 * 9).toEqual(42);
+  });
+  
+  it("renders React", () => {
+     const component = renderer.create(<h1>Hello world</h1>);
+     expect(component).toMatchSnapshot();      
+  });
+});
+```
+</details>
 
 #### Snapshot testing - check that a view is rendered correctly
+
+<details>
 
 ```javascript
   it("loads book", async () => {
@@ -381,77 +462,44 @@ With this in place, it should be possible to run tests like those below.
         author: "Firstname Lastname",
         year: 1999,
     });
-    // Construct an artification dom element to display the app (with jsdom)
-    const container = document.createElement("div");
-    // The act method from react-dom/test-utils ensures that promises are resolved
-    //  - that is, we wait until the `getBook` function returns a value
-    await act(async () => {
-        await ReactDOM.render(
-            <!-- construct an object with the necessary wrapping - in our case, routing -->
-            <MemoryRouter initialEntries={["/books/12/edit"]}>
-                <Route path={"/books/:id/edit"}>
-                    <!-- use shorthand properties to construct an api object with
-                      getBook property with the getBook function
-                      -->
-                    <EditBookPage bookApi={{getBook}}/>
-                </Route>
-            </MemoryRouter>,
-            container
-        );
-    });
+    const component = renderer.create(
+         <!-- construct an object with the necessary wrapping - in our case, routing -->
+         <MemoryRouter initialEntries={["/books/12/edit"]}>
+            <Route path={"/books/:id/edit"}>
+               <!-- use shorthand properties to construct an api object with
+                 getBook property with the getBook function
+                 -->
+               <EditBookPage bookApi={{getBook}}/>
+            </Route>
+         </MemoryRouter>
+    );
     // Snapshot tests fail if the page is changed in any way - intentionally or non-intentionally
-    expect(container.innerHTML).toMatchSnapshot();
-    // querySelector can be used to find dom elements in order to make assertions
-    expect(container.querySelector("h1").textContent).toEqual("Edit book: My Book")
+    expect(container).toMatchSnapshot();
+    // findBy... can be used to find dom elements in order to make assertions
+    expect(container.findByType("h1").children).toEqual([ "Edit book: My Book" ]);
 });
 ```
+</details>
 
 #### Simulate events
 
-```javascript
-  it("updates book on submit", async () => {
-    const getBook = () => ({
-        title: "My Book",
-        author: "Firstname Lastname",
-        year: 1999,
-    });
-    // We create a mock function. Instead of having functionality,
-    // this fake implementation of updateBook() lets us record and
-    // make assertions about the calls to the function
-    const updateBook = jest.fn();
-    const container = document.createElement("div");
-    await act(async () => {
-        await ReactDOM.render(
-            <MemoryRouter initialEntries={["/books/12/edit"]}>
-                <Route path={"/books/:id/edit"}>
-                    <EditBookPage bookApi={{getBook, updateBook}}/>
-                </Route>
-            </MemoryRouter>,
-            container
-        );
-    });
+<details>
 
-    // The simulate function lets us create artificatial events, such as
-    // a change event (which will trigger the `onChange` handler of our 
-    // component
-    Simulate.change(container.querySelector("input"), {
-        // The object we pass must work with e.target.value in the event handler
-        target: {
-            value: "New Value",
-        },
-    });
-    Simulate.submit(container.querySelector("form"));
-    // We check that the call to `updateBook` is as expected
-    // The value "12" is from MemoryRouter intialEntries
-    expect(updateBook).toHaveBeenCalledWith("12", {
-        title: "New Value",
-        author: "Firstname Lastname",
-        year: 1999,
-    });
-});
+```javascript
+  it("handles event", () => {
+      const handleClick = jest.fn();
+      const component = renderer.create(
+              <button onClick={() => handleClick(123)}>Click me</button>,
+      );
+      component.root.findAllByType("button")[0].props.onClick();
+      expect(handleClick).toBeCalledWith(123);
+   });
 ```
+</details>
 
 #### Using supertest to check server side behavior
+
+<details>
 
 ```javascript
 const request = require("supertest");
@@ -482,10 +530,13 @@ describe("...", () => {
 
 });
 ```
+</details>
 
 ## WebSockets
 
 ### Client side:
+
+<details>
 
 ```javascript
     // Connect to ws on the same host as we got the frontend (support both http/ws and https/wss)
@@ -498,8 +549,11 @@ ws.onmessage = (msg) => {
 // send a new message
 ws.send(JSON.stringify({username: "Myself", message: "Hello"}));
 ```
+</details>
 
 ### Server side
+
+<details>
 
 ```javascript
 
@@ -539,6 +593,7 @@ const server = app.listen(3000, () => {
     });
 });
 ```
+</details>
 
 ## OpenID Connect - Log on with Google
 
@@ -556,6 +611,8 @@ protects against some security risks.
 4. Save the `access_token` (e.g. in `localStorage`) and add as a header to all requests to backend
 
 #### Redirect the client to authenticate
+
+<details>
 
 ```javascript
 export function Login() {
@@ -584,8 +641,11 @@ export function Login() {
 In the case of Active Directory, you also need
 parameters `response_type: "code"`, `response_mode: "fragment"`, `code_challenge_method` and `code_challenge` (the
 latest two are needed for PKCE).
+</details>
 
 #### Handle the authentication callback
+
+<details>
 
 ```javascript
 
@@ -619,8 +679,11 @@ export function CompleteLoginPage({onComplete}) {
 For Active Directory, the hash will instead include a `code`, which you will then need to send to the `token_endpoint`
 along with the `client_id` and `redirect_uri` as well as `grant_type: "authorization_code"` and the `code_verifier`
 value from PKCE. This call will return the `access_token`.
+</details>
 
 #### Handle access_token on the backend
+
+<details>
 
 ```javascript
 
@@ -644,3 +707,4 @@ app.get("/profile", (req, res) => {
 });
 ```
 
+</details>
