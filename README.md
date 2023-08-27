@@ -4,7 +4,7 @@
 * [x] Create structure and navigation with React Router
 * [x] Add some CSS to make it look decent
 * [x] List existing movies
-* [ ] Add a new movies
+* [x] Add a new movies
 * [ ] Add jest
 * [ ] Test movie listing
 * [ ] Test adding movie

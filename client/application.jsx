@@ -1,4 +1,4 @@
-import {HashRouter, Link, Route, Routes} from "react-router-dom";
+import {HashRouter, Link, Route, Routes, useNavigate} from "react-router-dom";
 import {useState} from "react";
 
 function FrontPage() {
@@ -25,14 +25,18 @@ function ListMovies({movies}) {
     </>;
 }
 
-function AddNewMovie() {
+function AddNewMovie({onAddMovie}) {
     const [title, setTitle] = useState("");
     const [year, setYear] = useState("");
     const [plot, setPlot] = useState("");
 
-    const movie = {title, year, plot}
+    function handleSubmit(e) {
+        e.preventDefault();
+        const movie = {title, year, plot}
+        onAddMovie(movie);
+    }
 
-    return <form>
+    return <form onSubmit={handleSubmit}>
         <h1>Add Movie to Database</h1>
 
         <div>
@@ -52,30 +56,24 @@ function AddNewMovie() {
 
 
         <button>Submit</button>
-        <pre>
-            {JSON.stringify(movie)}
-        </pre>
     </form>;
 }
 
 function MovieRoutes() {
-    const [movies] = useState([
-        {
-            title: "Don't look up",
-            year: "2022",
-            plot: "Politicians ignore impending doom"
-        },
-        {
-            title: "Oppenheimer",
-            year: "2023",
-            plot: "Boom"
-        }
-    ])
+    const [movies, setMovies] = useState([]);
+    const navigate = useNavigate();
+    function handleAddMovie(movie) {
+        setMovies(oldList => ([
+            ...oldList,
+            movie
+            ]));
+        navigate("/movies")
+    }
 
     return <Routes>
         <Route path={"/"} element={<FrontPage/>}/>
         <Route path={"/movies"} element={<ListMovies movies={movies}/>}/>
-        <Route path={"/movies/new"} element={<AddNewMovie/>}/>
+        <Route path={"/movies/new"} element={<AddNewMovie onAddMovie={handleAddMovie}/>}/>
         <Route path={"/*"} element={<h1>Not Found</h1>}/>
     </Routes>;
 }
