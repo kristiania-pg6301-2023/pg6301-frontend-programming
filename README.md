@@ -48,6 +48,6 @@ Bonus:
   * [x] `npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer`
   * [x] Add `babel.config.js`
   * [x] `npm pkg set scripts.test=jest`
-* [ ] Write tests
+* [x] Write tests
   * [x] Snapshot test that question is displayed
-  * [ ] Check for onClick
+  * [x] Check for onClick
