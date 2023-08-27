@@ -5,6 +5,6 @@
 * [x] Add some CSS to make it look decent
 * [x] List existing movies
 * [x] Add a new movies
-* [ ] Add jest
+* [x] Add jest
 * [ ] Test movie listing
 * [ ] Test adding movie
