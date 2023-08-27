@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`the movie application shows movie list 1`] = `
+exports[`the movie application can show movie list 1`] = `
 [
   <h1>
     List Movies

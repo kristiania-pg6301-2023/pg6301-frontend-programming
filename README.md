@@ -7,4 +7,4 @@
 * [x] Add a new movies
 * [x] Add jest
 * [x] Test movie listing
-* [ ] Test adding movie
+* [x] Test adding movie
