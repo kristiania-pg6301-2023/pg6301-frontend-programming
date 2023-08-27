@@ -26,7 +26,36 @@ function ListMovies({movies}) {
 }
 
 function AddNewMovie() {
-    return <h1>Add Movie to Database</h1>;
+    const [title, setTitle] = useState("");
+    const [year, setYear] = useState("");
+    const [plot, setPlot] = useState("");
+
+    const movie = {title, year, plot}
+
+    return <form>
+        <h1>Add Movie to Database</h1>
+
+        <div>
+            Title:<br />
+            <input type="text" value={title} onChange={e => setTitle(e.target.value)}/>
+        </div>
+
+        <div>
+            Year:<br />
+            <input type="text" value={year} onChange={e => setYear(e.target.value)}/>
+        </div>
+
+        <div>
+            Plot: <br />
+            <textarea value={plot} onChange={e => setPlot(e.target.value)} />
+        </div>
+
+
+        <button>Submit</button>
+        <pre>
+            {JSON.stringify(movie)}
+        </pre>
+    </form>;
 }
 
 function MovieRoutes() {
