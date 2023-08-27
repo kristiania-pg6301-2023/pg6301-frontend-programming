@@ -41,7 +41,7 @@ Bonus:
 * [x] Create `index.html` and `index.tsx`
 * [x] Create `<Application />` with layout
 * [x] Create `<FrontPage />`, `<Question />` og `<Answer />` components
-* [ ] Add react router: `<HashRouter />`, `<Routes />`, `<Route />` and `<Link />`
+* [x] Add react router: `<HashRouter />`, `<Routes />`, `<Route />` and `<Link />`
 * [ ] Add `useState` with question in `<Application />` and let `handleClickAnswer` call `isCorrectAnswer`
 * [ ] Add tests:
   * [ ] `npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer`
