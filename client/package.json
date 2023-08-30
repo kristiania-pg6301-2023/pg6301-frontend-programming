@@ -4,12 +4,14 @@
   "description": "Johannes sin filmdatabase",
   "main": "index.js",
   "scripts": {
+    "dev": "parcel serve index.html",
     "test": "jest"
   },
   "author": "Johannes",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.9.3"
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
   },
   "dependencies": {
     "react": "^18.2.0",
