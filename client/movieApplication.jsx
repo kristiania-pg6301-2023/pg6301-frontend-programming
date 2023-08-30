@@ -15,19 +15,7 @@ function MovieListing({movie: {title, year}}) {
     return <div>{title} ({year})</div>;
 }
 
-function ListMovies() {
-    const movies = [
-        {
-            title: "Oppenheimer",
-            year: "2023"
-        },
-        {
-            title: "Barbie",
-            year: "2023"
-        },
-    ]
-
-
+function ListMovies({movies}) {
     return <>
         <h2>List movies</h2>
         {movies.map(movie => <MovieListing
@@ -42,9 +30,24 @@ function NewMovie() {
 }
 
 function MoviesRoutes() {
+    const movies = [
+        {
+            title: "Oppenheimer",
+            year: "2023"
+        },
+        {
+            title: "Barbie",
+            year: "2023"
+        },
+    ]
+
+
     return <Routes>
         <Route path={"/"} element={<FrontPage/>}/>
-        <Route path={"/movies"} element={<ListMovies/>}/>
+        <Route
+            path={"/movies"}
+            element={<ListMovies movies={movies}/>}
+        />
         <Route path={"/movies/new"} element={<NewMovie/>}/>
         <Route path={"*"} element={<h2>Not found</h2>}/>
     </Routes>;
