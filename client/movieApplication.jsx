@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import React, {useState} from "react";
+import {BrowserRouter, Link, Route, Routes, useNavigate} from "react-router-dom";
 
 function FrontPage() {
     return <>
@@ -25,13 +25,19 @@ function ListMovies({movies}) {
     </>;
 }
 
-function NewMovie() {
+function NewMovie({onNewMovie}) {
     const [title, setTitle] = useState("");
     const [year, setYear] = useState("");
     const [plot, setPlot] = useState("");
     const newMovie = {title, year, plot};
 
-    return <form>
+    function handleSubmitNewMovie(e) {
+        e.preventDefault();
+        onNewMovie(newMovie);
+    }
+
+
+    return <form onSubmit={handleSubmitNewMovie}>
         <h2>Add a movie to the database</h2>
         <div>
             Title:<br/>
@@ -53,7 +59,8 @@ function NewMovie() {
 }
 
 function MoviesRoutes() {
-    const movies = [
+    const navigate = useNavigate();
+    const [movies, setMovies] = useState([
         {
             title: "Oppenheimer",
             year: "2023"
@@ -62,7 +69,14 @@ function MoviesRoutes() {
             title: "Barbie",
             year: "2023"
         },
-    ]
+    ])
+    function handleNewMovie(movie) {
+        setMovies(old => ([
+            ...old,
+            movie
+        ]));
+        navigate("/movies");
+    }
 
 
     return <Routes>
@@ -73,7 +87,7 @@ function MoviesRoutes() {
         />
         <Route
             path={"/movies/new"}
-            element={<NewMovie/>}
+            element={<NewMovie onNewMovie={handleNewMovie}/>}
         />
         <Route path={"*"} element={<h2>Not found</h2>}/>
     </Routes>;
