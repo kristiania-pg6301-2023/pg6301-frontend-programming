@@ -1,0 +1,17 @@
+#root {
+    height: 100vh;
+    background-color: lightyellow;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    background-color: white;
+    min-width: 90%;
+    margin: 0 auto;
+    border-radius: 1em;
+}
