@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 
 function FrontPage() {
@@ -26,7 +26,30 @@ function ListMovies({movies}) {
 }
 
 function NewMovie() {
-    return <h2>Add a movie to the database</h2>;
+    const [title, setTitle] = useState("");
+    const [year, setYear] = useState("");
+    const [plot, setPlot] = useState("");
+    const newMovie = {title, year, plot};
+
+    return <form>
+        <h2>Add a movie to the database</h2>
+        <div>
+            Title:<br/>
+            <input type="text" value={title} onChange={e => setTitle(e.target.value)}/>
+        </div>
+        <div>
+            Year:<br/>
+            <input type="text" value={year} onChange={e => setYear(e.target.value)}/>
+        </div>
+        <div>
+            Plot:<br/>
+            <textarea value={plot} onChange={e => setPlot(e.target.value)} />
+        </div>
+        <button>Submit</button>
+        <pre>
+            {JSON.stringify(newMovie, null, "  ")}
+        </pre>
+    </form>;
 }
 
 function MoviesRoutes() {
@@ -48,7 +71,10 @@ function MoviesRoutes() {
             path={"/movies"}
             element={<ListMovies movies={movies}/>}
         />
-        <Route path={"/movies/new"} element={<NewMovie/>}/>
+        <Route
+            path={"/movies/new"}
+            element={<NewMovie/>}
+        />
         <Route path={"*"} element={<h2>Not found</h2>}/>
     </Routes>;
 }
