@@ -1,0 +1,11 @@
+{
+  "name": "movies-frontend",
+  "version": "1.0.0",
+  "description": "Johannes sin filmdatabase",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Johannes",
+  "license": "ISC"
+}
