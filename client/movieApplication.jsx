@@ -11,8 +11,30 @@ function FrontPage() {
     </>;
 }
 
+function MovieListing({movie: {title, year}}) {
+    return <div>{title} ({year})</div>;
+}
+
 function ListMovies() {
-    return <h2>List movies</h2>;
+    const movies = [
+        {
+            title: "Oppenheimer",
+            year: "2023"
+        },
+        {
+            title: "Barbie",
+            year: "2023"
+        },
+    ]
+
+
+    return <>
+        <h2>List movies</h2>
+        {movies.map(movie => <MovieListing
+            key={movie.title}
+            movie={movie}
+        />)}
+    </>;
 }
 
 function NewMovie() {
