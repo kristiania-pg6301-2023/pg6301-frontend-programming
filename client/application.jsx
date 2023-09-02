@@ -4,7 +4,7 @@ function ListTasks() {
     const [tasks, setTasks] = useState(undefined);
 
     useEffect(async () => {
-        const res = await fetch("http://localhost:3000/api/todos");
+        const res = await fetch("/api/todos");
         setTasks(await res.json());
     }, [])
 
