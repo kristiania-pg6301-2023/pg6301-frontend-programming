@@ -14,6 +14,6 @@ describe("movies api", function () {
 
     const res = await request(app).get("/api/movies");
     expect(res.status).toEqual(200);
-    expect(res.body).toContain(movie);
+    expect(res.body).toContainEqual(movie);
   });
 });
