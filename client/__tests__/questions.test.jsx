@@ -2,6 +2,7 @@ import renderer from "react-test-renderer";
 import { Question } from "../quizApplication";
 
 const question = {
+  id: 123,
   question: "What's going on?",
   answers: {
     answer_a: "Nothing",
@@ -21,6 +22,6 @@ describe("test questions", () => {
       <Question question={question} onClickAnswer={handleClickAnswer} />,
     );
     component.root.findAllByType("button")[1].props.onClick();
-    expect(handleClickAnswer).toHaveBeenCalledWith("answer_b");
+    expect(handleClickAnswer).toHaveBeenCalledWith(question.id, "answer_b");
   });
 });
