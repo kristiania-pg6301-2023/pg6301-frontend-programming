@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test questions shows question 1`] = `
+[
+  <h2>
+    Can you answer this?
+  </h2>,
+  <p>
+    What's going on?
+  </p>,
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      Nothing
+    </button>
+  </div>,
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      Something
+    </button>
+  </div>,
+]
+`;
