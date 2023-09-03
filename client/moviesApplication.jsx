@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 export function ListMovies({ movies }) {
   return (
@@ -14,13 +14,17 @@ export function ListMovies({ movies }) {
   );
 }
 
-function AddMovie() {
+function AddMovie({ onCreate }) {
+  const [title, setTitle] = useState("");
+  async function handleSubmit() {
+    await onCreate({ title });
+  }
   return (
-    <form method="dialog">
+    <form method="dialog" onSubmit={handleSubmit}>
       <h2>Movies</h2>
       <div>
         Title: <br />
-        <input />
+        <input value={title} onChange={(e) => setTitle(e.target.value)} />
       </div>
       <div>
         <button>Submit</button>
@@ -29,7 +33,8 @@ function AddMovie() {
   );
 }
 
-export function MoviesRoutes({ fetchMovies }) {
+export function MoviesRoutes({ fetchMovies, insertMovie }) {
+  const navigate = useNavigate();
   const [movies, setMovies] = useState([]);
 
   async function loadMovies() {
@@ -41,10 +46,19 @@ export function MoviesRoutes({ fetchMovies }) {
     loadMovies();
   }, []);
 
+  async function handleCreate(movie) {
+    await insertMovie(movie);
+    await loadMovies();
+    navigate("/");
+  }
+
   return (
     <Routes>
       <Route path={"/"} element={<ListMovies movies={movies} />} />
-      <Route path={"/movies/new"} element={<AddMovie />} />
+      <Route
+        path={"/movies/new"}
+        element={<AddMovie onCreate={handleCreate} />}
+      />
       <Route path={"*"} element={<h2>Not Found</h2>} />
     </Routes>
   );

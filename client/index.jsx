@@ -12,6 +12,16 @@ async function fetchMovies() {
   return await res.json();
 }
 
+async function insertMovie(movie) {
+  await fetch("/api/movies", {
+    method: "POST",
+    body: JSON.stringify(movie),
+    headers: {
+      "content-type": "application/json",
+    },
+  });
+}
+
 function MoviesApplication() {
   return (
     <BrowserRouter>
@@ -25,7 +35,7 @@ function MoviesApplication() {
         <NavLink to={"/login"}>User profile</NavLink>
       </nav>
       <main>
-        <MoviesRoutes fetchMovies={fetchMovies} />
+        <MoviesRoutes fetchMovies={fetchMovies} insertMovie={insertMovie} />
       </main>
       <footer>Made with 💚 by Johannes</footer>
     </BrowserRouter>

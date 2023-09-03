@@ -23,6 +23,7 @@ exports[`movies database view shows new movies form 1`] = `
 [
   <form
     method="dialog"
+    onSubmit={[Function]}
   >
     <h2>
       Movies
@@ -30,7 +31,10 @@ exports[`movies database view shows new movies form 1`] = `
     <div>
       Title: 
       <br />
-      <input />
+      <input
+        onChange={[Function]}
+        value=""
+      />
     </div>
     <div>
       <button>
