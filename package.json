@@ -2,12 +2,14 @@
   "name": "practice",
   "version": "1.0.0",
   "scripts": {
+    "postinstall": "npm run install:client && npm run install:server",
+    "install:client": "cd client && npm install --include=dev",
+    "install:server": "cd server && npm install",
     "dev": "concurrently npm:dev:client npm:dev:server",
     "dev:client": "cd client && npm run dev",
     "dev:server": "cd server && npm run dev",
-    "build": "npm run check && npm run build:client && npm run build:server",
-    "build:client": "cd client && npm install --include=dev && npm run build",
-    "build:server": "cd server && npm install",
+    "build": "npm run check && npm run build:client",
+    "build:client": "cd client && npm run build",
     "check": "npm run check:prettier && npm run lint && npm run typescript && npm test",
     "check:prettier": "prettier --check .",
     "test": "npm run test:client && npm run test:server",
@@ -19,13 +21,16 @@
     "typescript": "npm run typescript:client && npm run typescript:server",
     "typescript:client": "cd client && npm run typescript",
     "typescript:server": "cd server && npm run typescript",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "clean": "rimraf client/dist client/.parcel-cache",
+    "clean:all": "rimraf client/dist client/.parcel-cache node_modules client/node_modules server/node_modules"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.1",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.1"
   }
 }
