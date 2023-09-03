@@ -1,6 +1,5 @@
 import {HashRouter, Link, Route, Routes, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import {isCorrectAnswer} from "../questions";
 
 function FrontPage() {
   return (
@@ -33,7 +32,7 @@ export function Question({ question, onClickAnswer }) {
           <QuestionAnswerButton
             key={k}
             answer={question.answers[k]}
-            onClick={() => onClickAnswer(k)}
+            onClick={() => onClickAnswer(question.id, k)}
           />
         ))}
     </>
@@ -68,8 +67,16 @@ function Quiz() {
 
   const navigateFn = useNavigate();
 
-  function handleClickAnswer(answer) {
-    if (isCorrectAnswer(question, answer)) {
+  async function handleClickAnswer(id, answer) {
+    const res = await fetch("/api/questions/answer", {
+        method: "POST",
+        body: JSON.stringify({id, answer}),
+        headers: {
+            "content-type": "application/json"
+        }
+    });
+    const response = await res.json();
+    if (response.correct) {
       navigateFn("/answer/correct");
     } else {
       navigateFn("/answer/wrong");
