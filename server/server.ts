@@ -1,6 +1,6 @@
 import express from "express";
 
-import { moviesApi } from "./moviesApi.js";
+import { moviesApi } from "./moviesApi";
 import bodyParser from "body-parser";
 
 const app = express();

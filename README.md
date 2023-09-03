@@ -4,7 +4,7 @@
 
 1. Create basic Movies app
    1. `client` directory -> `index.html` -> `index.jsx` -> Routes -> CSS
-   2. `server` directory -> `server.js` -> static files -> simple API
+   2. `server` directory -> `server.ts` -> static files -> simple API
    3. Root directory concurrently run
 2. Build script -> add check stage
 3. `check:prettier`
