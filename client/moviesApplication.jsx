@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
 export function ListMovies({ movies }) {
   return (
@@ -10,5 +11,34 @@ export function ListMovies({ movies }) {
         </div>
       ))}
     </>
+  );
+}
+
+function AddMovie() {
+  return (
+    <>
+      <h2>Movies</h2>
+    </>
+  );
+}
+
+export function MoviesRoutes() {
+  const [movies, setMovies] = useState([]);
+
+  async function fetchMovies() {
+    const res = await fetch("/api/movies");
+    setMovies(await res.json());
+  }
+
+  useEffect(() => {
+    fetchMovies();
+  }, []);
+
+  return (
+    <Routes>
+      <Route path={"/"} element={<ListMovies movies={movies} />} />
+      <Route path={"/movies/new"} element={<AddMovie />} />
+      <Route path={"*"} element={<h2>Not Found</h2>} />
+    </Routes>
   );
 }
