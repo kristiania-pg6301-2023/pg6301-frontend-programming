@@ -42,7 +42,7 @@ describe("movies database view", () => {
 
   it("Submits a new movie", async () => {
     const insertMovie = jest.fn();
-    const fetchMovies = jest.fn();
+    const fetchMovies = jest.fn(() => []);
     const component = await createMovieApp("/movies/new", {
       insertMovie,
       fetchMovies,
