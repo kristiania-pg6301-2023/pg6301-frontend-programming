@@ -62,6 +62,8 @@ application with Parcel and React Router
 
 ### Lecture 2: React and Jest
 
+<details>
+
 We will review the React topics from the last lecture: Creating a React app,
 creating functional components and using props, state and effects. We will
 also explore React Router more in depth
@@ -69,45 +71,43 @@ also explore React Router more in depth
 * [Commit log from lecture (only available after lecture)](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/02)
 * [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/reference/02)
 * [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/exercise/start/02/README.md)
-* [Exercise answer](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/exercise/answer/02)
-
-
-### Lecture 3: Implementing server code on Express
-
-<details>
-
-* [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/04)
-* [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/04)
-* [Exercise text 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/blob/exercise/04/start/README.md)
-* [Exercise answer 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/04)
+* [Exercise solution](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/exercise/solution/02)
 
 #### Useful video
+
+* [Fireship: React in 100 seconds](https://youtu.be/Tn6-PIqc4UM)
+
+</details>
+
+
+### Lecture 3: Implementing a React backend on Express
+
+We will create an Express server which serves a React application that uses an API implemented in Express to implement functionality.
+
+We will look at routing in Express and user interaction and error handling in React.
+
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/03)
+* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/03)
+* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/exercise/03/start/README.md)
+* [Exercise solution](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/exercise/03/solution)
+
+#### From 2022
+
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/04)
+* [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/04)
+* [Exercise text](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/blob/exercise/04/start/README.md)
+* [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/04)
+
+#### Useful videos
 
 * [Fireship.io intro til Express](https://youtu.be/-MTSQjw5DrM)
-
-#### Useful video
-
-[Fireship: React in 100 seconds](https://youtu.be/Tn6-PIqc4UM)
-
 * [Fireship: every React hook](https://youtu.be/TNhaISOUy6Q)
 
-</details>
-
-### Lecture 4: Robust interaction between the client and the server
+### Lecture 4: Publishing your application on Heroku
 
 <details>
 
-(May be merged with lecture 3 this year)
-
-* [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/06)
-* [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/06)
-* [Exercise answer 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/06)
-
-</details>
-
-### Lecture 5: Publishing your application on Heroku
-
-<details>
+In this lecture, we will upload a simple web application to a cloud service and look at automatic deploys
 
 #### Material from 2022
 
@@ -118,17 +118,30 @@ also explore React Router more in depth
 
 </details>
 
-### Lecture 6: Quality code
+### Lecture 5: Quality code
 
 <details>
 
-Jest, Github Actions, Prettier, Eslint, Supertest and Typescript
+In this lecture, we will look at ways to make sure our code is good, from formatting, to linting, to testing. We will look at the tools prettier, jest, and eslint and using GitHub to run our quality checks automatically.
 
 #### Material from 2022
 
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/03)
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/03)
 * [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/03)
+
+</details>
+
+
+### Lecture 6: Robust interaction between the client and the server
+
+<details>
+
+(May be merged with lecture 3 this year)
+
+* [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/06)
+* [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/06)
+* [Exercise answer 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/06)
 
 </details>
 
