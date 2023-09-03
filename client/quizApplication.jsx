@@ -1,6 +1,6 @@
-import { HashRouter, Link, Route, Routes, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import { isCorrectAnswer, randomQuestion } from "../questions";
+import {HashRouter, Link, Route, Routes, useNavigate} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {isCorrectAnswer} from "../questions";
 
 function FrontPage() {
   return (
@@ -20,6 +20,9 @@ function QuestionAnswerButton({ answer, onClick }) {
 }
 
 export function Question({ question, onClickAnswer }) {
+  if (!question) {
+      return <div>Loading...</div>;
+  }
   return (
     <>
       <h2>Can you answer this?</h2>
@@ -52,7 +55,16 @@ function ShowAnswer({ onAskAnother }) {
 }
 
 function Quiz() {
-  const [question, setQuestion] = useState(randomQuestion());
+  const [question, setQuestion] = useState();
+
+  async function fetchRandomQuestion() {
+      const res = await fetch("/api/questions/random");
+      setQuestion(await res.json());
+  }
+
+  useEffect(() => {
+      fetchRandomQuestion();
+  }, [])
 
   const navigateFn = useNavigate();
 
@@ -64,8 +76,8 @@ function Quiz() {
     }
   }
 
-  function handleAskAnother() {
-    setQuestion(randomQuestion());
+  async function handleAskAnother() {
+    await fetchRandomQuestion();
     navigateFn("/question");
   }
 
