@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
 
@@ -7,8 +7,18 @@ import "./application.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function ListMovies() {
+    const [movies, setMovies] = useState([]);
+    async function fetchMovies() {
+        const res = await fetch("/api/movies");
+        setMovies(await res.json());
+    }
+    useEffect(() => {
+        fetchMovies();
+    }, []);
+
     return <>
         <h2>All movies</h2>
+        {movies.map(m => <div key={m.title}><h3>{m.title}</h3></div>)}
         </>;
 }
 
