@@ -40,4 +40,4 @@ app.get("/api/score", (req, res) => {
     res.json(score);
 })
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
