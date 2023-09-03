@@ -32,17 +32,33 @@ function AddTaskButton() {
         }
     }, [showDialog]);
     const [title, setTitle] = useState("");
+    const [error, setError] = useState();
 
-    async function handleSubmit() {
-
+    async function handleSubmit(e) {
+        e.preventDefault();
+        setError(undefined);
+        const result = await fetch("/api/todos", {
+            method: "POST",
+            body: JSON.stringify({title}),
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+        if (!result.ok) {
+            setError(result.statusText)
+            return false;
+        } else {
+            setShowDialog(false);
+        }
     }
 
     return <>
         <dialog ref={dialogRef}>
             <h2>Add task</h2>
-            <form onSubmit={handleSubmit} method={"dialog"}>
+            <form onSubmit={handleSubmit}>
+                {error && <div>An error occurred: {error.toString()}</div>}
                 <div>
-                    Title <br />
+                    Title <br/>
                     <input autoFocus={true} value={title} onChange={e => setTitle(e.target.value)}/>
                 </div>
                 <div>
