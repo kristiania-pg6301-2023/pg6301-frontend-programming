@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+
+    --color-main-bg: aliceblue;
+    --color-main-fg: rebeccapurple;
+    --color-bg: var(--color-main-bg);
+    --color-fg: var(--color-main-fg);
+    background-color: var(--color-bg);
+}
+
+#root {
+    --color-bg: var(--color-main-fg);
+    background-color: var(--color-bg);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header, nav, footer {
+    --color-fg: var(--color-main-bg);
+    color: var(--color-fg);
+    padding: 0 1em;
+}
+
+nav a {
+    color: var(--color-fg);
+    text-decoration: none;
+}
+
+nav a.active {
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 1em;
+    border: 3px solid var(--color-fg);
+    margin-bottom: 3px;
+}
+
+nav .spacer {
+    flex: 1;
+}
+
+main {
+    --color-bg: var(--color-main-bg);
+    --color-fg: var(--color-main-fg);
+    padding: 0 1em;
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    flex: 1;
+    margin: 0 auto;
+    min-width: 90%;
+    border-radius: 1em;
+}

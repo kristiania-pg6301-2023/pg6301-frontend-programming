@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
+
+import "./application.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -27,7 +29,7 @@ function MoviesRoutes() {
 function MoviesApplication() {
     return <BrowserRouter>
         <header><h1>Movies Database</h1></header>
-        <nav><Link to={"/"}>List movies</Link><Link to={"/movies/new"}>Add movie</Link><div className={"spacer"} /><Link to={"/login"}>User profile</Link></nav>
+        <nav><NavLink to={"/"}>List movies</NavLink><NavLink to={"/movies/new"}>Add movie</NavLink><div className={"spacer"} /><NavLink to={"/login"}>User profile</NavLink></nav>
         <main>
             <MoviesRoutes />
         </main>
