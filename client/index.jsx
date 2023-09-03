@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import {HashRouter, NavLink, Route, Routes} from "react-router-dom";
 
+import "./application.css";
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function TasksRoutes() {

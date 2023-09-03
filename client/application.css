@@ -1,0 +1,23 @@
+#root {
+    height: 100vh;
+    background-color: rebeccapurple;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+}
+
+body {
+    margin: 0;
+}
+
+header, nav, footer, header a, nav a, footer a {
+    color: aliceblue;
+    padding: 0 0.7em;
+}
+
+main {
+    min-width: 90%;
+    margin: 0.5em auto;
+    padding: 0 0.7em;
+    background-color: aliceblue;
+    border-radius: 1em;
+}
