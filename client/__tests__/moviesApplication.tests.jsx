@@ -7,12 +7,15 @@ const movies = [
   { title: "Oppenheimer", year: "2023", plot: "The Manhattan project" },
 ];
 
-async function createMovieApp(path, fetchMovies = jest.fn()) {
+async function createMovieApp(
+  path,
+  { fetchMovies = jest.fn(), insertMovie = jest.fn() } = {},
+) {
   let component;
   await act(async () => {
     component = renderer.create(
       <MemoryRouter initialEntries={[path]}>
-        <MoviesRoutes fetchMovies={fetchMovies} />,
+        <MoviesRoutes fetchMovies={fetchMovies} insertMovie={insertMovie} />,
       </MemoryRouter>,
     );
   });
@@ -21,7 +24,7 @@ async function createMovieApp(path, fetchMovies = jest.fn()) {
 
 describe("movies database view", () => {
   it("matches snapshot", async () => {
-    const component = await createMovieApp("/", () => movies);
+    const component = await createMovieApp("/", { fetchMovies: () => movies });
     expect(component).toMatchSnapshot();
     expect(
       component.root.findAllByType("h3").map((c) => c.children.join(" ")),
@@ -34,5 +37,28 @@ describe("movies database view", () => {
     expect(component.root.findByType("button").children.join(" ")).toEqual(
       "Submit",
     );
+  });
+
+  it("Submits a new movie", async () => {
+    const insertMovie = jest.fn();
+    const fetchMovies = jest.fn();
+    const component = await createMovieApp("/movies/new", {
+      insertMovie,
+      fetchMovies,
+    });
+    fetchMovies.mockClear();
+
+    const title = "My Movie Title";
+    await act(() => {
+      component.root
+        .findByType("input")
+        .props.onChange({ target: { value: title } });
+    });
+    await act(() => {
+      component.root.findByType("form").props.onSubmit();
+    });
+
+    expect(insertMovie).toHaveBeenCalledWith({ title });
+    expect(fetchMovies).toHaveBeenCalled();
   });
 });
