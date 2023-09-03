@@ -18,5 +18,9 @@ app.post("/api/questions/answer", (req, res) => {
     res.json({correct})
 })
 
+app.get("/api/score", (req, res) => {
+    const score = 0;
+    res.json({score});
+})
 
 app.listen(3000);
