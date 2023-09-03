@@ -1,17 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 
-function ListTasks() {
-    const [tasks, setTasks] = useState(undefined);
-
-    useEffect(() => {
-        async function fetchData() {
-            const res = await fetch("/api/todos");
-            setTasks(await res.json());
-        }
-
-        fetchData();
-    }, [])
-
+function ListTasks({tasks}) {
     if (!tasks) {
         return <div>Loading ...</div>;
     }
@@ -21,7 +10,7 @@ function ListTasks() {
     </>;
 }
 
-function AddTaskButton() {
+function AddTaskButton({onRefresh}) {
     const dialogRef = useRef();
     const [showDialog, setShowDialog] = useState(false);
     useEffect(() => {
@@ -49,6 +38,7 @@ function AddTaskButton() {
             return false;
         } else {
             setShowDialog(false);
+            onRefresh();
         }
     }
 
@@ -73,12 +63,21 @@ function AddTaskButton() {
 
 
 export function TodoApplication() {
+    const [tasks, setTasks] = useState(undefined);
+    async function fetchTasks() {
+        const res = await fetch("/api/todos");
+        setTasks(await res.json());
+    }
+
+    useEffect(() => {
+        fetchTasks();
+    }, [])
+
     return <>
         <h1>Welcome to task application</h1>
 
         <h2>Tasks</h2>
-        <AddTaskButton/>
-        <ListTasks/>
-
+        <AddTaskButton onRefresh={fetchTasks}/>
+        <ListTasks tasks={tasks}/>
     </>;
 }
