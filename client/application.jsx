@@ -1,12 +1,21 @@
 import React, {useEffect, useRef, useState} from "react";
 
-function ListTasks({tasks}) {
+function ListTasks({tasks, onRefresh}) {
+    function updateStatus(id, newStatus) {
+        console.log("updateStatus", {id, newStatus});
+        onRefresh();
+    }
+
     if (!tasks) {
         return <div>Loading ...</div>;
     }
 
     return <>
-        {tasks.map(t => <div key={t.title}>{t.title}</div>)}
+        {tasks.map(t => <div key={t.id}>
+            {t.title} ({t.status})
+            {t.status === "todo" && <button onClick={() => updateStatus(t.id, "doing")}>start</button>}
+            {t.status === "doing" && <button onClick={() => updateStatus(t.id, "done")}>complete</button>}
+        </div>)}
     </>;
 }
 
@@ -65,6 +74,7 @@ function AddTaskButton({onRefresh}) {
 export function TodoApplication() {
     const [tasks, setTasks] = useState(undefined);
     async function fetchTasks() {
+        setTasks(undefined);
         const res = await fetch("/api/todos");
         setTasks(await res.json());
     }
@@ -78,6 +88,6 @@ export function TodoApplication() {
 
         <h2>Tasks</h2>
         <AddTaskButton onRefresh={fetchTasks}/>
-        <ListTasks tasks={tasks}/>
+        <ListTasks tasks={tasks} onRefresh={fetchTasks}/>
     </>;
 }

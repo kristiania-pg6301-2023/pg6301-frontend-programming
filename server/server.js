@@ -6,8 +6,8 @@ const app = express();
 app.use(bodyParser.json());
 
 const tasks = [
-    { title: "prepare lecture" },
-    { title: "give lecture" }
+    { id: 0, title: "prepare lecture", status: "done" },
+    { id: 1, title: "give lecture", status: "doing" }
 ];
 
 app.get("/api/todos", (req, res) => {
@@ -16,7 +16,7 @@ app.get("/api/todos", (req, res) => {
 
 app.post("/api/todos", (req, res) => {
     const {title} = req.body;
-    tasks.push({title})
+    tasks.push({id: tasks.length, title, status: "todo"})
     res.send();
 })
 
