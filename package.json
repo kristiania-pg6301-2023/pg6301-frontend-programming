@@ -16,6 +16,9 @@
     "lint": "npm run lint:client && npm run lint:server",
     "lint:client": "cd client && npm run lint",
     "lint:server": "cd server && npm run lint",
+    "typescript": "npm run typescript:client && npm run typescript:server",
+    "typescript:client": "cd client && npm run typescript",
+    "typescript:server": "cd server && npm run typescript",
     "prettier": "prettier --write ."
   },
   "keywords": [],
