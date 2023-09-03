@@ -10,18 +10,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 function FrontPage() {
     const [tasks, setTasks] = useState([]);
 
+    async function fetchTasks() {
+        const res = await fetch("/api/tasks");
+        setTasks(await res.json());
+    }
+
     useEffect(() => {
-        setTasks([
-            {
-                title: "Prepare lecture", state: "done"
-            },
-            {
-                title: "Do lecture", state: "doing"
-            },
-            {
-                title: "Finish lecture", state: "todo"
-            }
-        ])
+        fetchTasks();
     }, []);
 
 
