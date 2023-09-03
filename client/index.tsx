@@ -5,14 +5,14 @@ import { BrowserRouter, NavLink } from "react-router-dom";
 import "./application.css";
 import { MoviesRoutes } from "./moviesApplication";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 
 async function fetchMovies() {
   const res = await fetch("/api/movies");
   return await res.json();
 }
 
-async function insertMovie(movie) {
+async function insertMovie(movie: unknown) {
   await fetch("/api/movies", {
     method: "POST",
     body: JSON.stringify(movie),

@@ -1,6 +1,6 @@
 import React from "react";
-import renderer, { act } from "react-test-renderer";
-import { MoviesRoutes } from "../moviesApplication";
+import renderer, { act, ReactTestRenderer } from "react-test-renderer";
+import { MoviesRoutes, MoviesRoutesProps } from "../moviesApplication";
 import { MemoryRouter } from "react-router-dom";
 
 const movies = [
@@ -9,23 +9,30 @@ const movies = [
 ];
 
 async function createMovieApp(
-  path,
-  { fetchMovies = jest.fn(), insertMovie = jest.fn() } = {},
-) {
+  path: string,
+  props: Partial<MoviesRoutesProps> = {},
+): Promise<ReactTestRenderer> {
+  const { fetchMovies, insertMovie } = props;
   let component;
   await act(async () => {
     component = renderer.create(
       <MemoryRouter initialEntries={[path]}>
-        <MoviesRoutes fetchMovies={fetchMovies} insertMovie={insertMovie} />,
+        <MoviesRoutes
+          fetchMovies={fetchMovies || jest.fn()}
+          insertMovie={insertMovie || jest.fn()}
+        />
+        ,
       </MemoryRouter>,
     );
   });
-  return component;
+  return component!;
 }
 
 describe("movies database view", () => {
   it("matches snapshot", async () => {
-    const component = await createMovieApp("/", { fetchMovies: () => movies });
+    const component = await createMovieApp("/", {
+      fetchMovies: async () => movies,
+    });
     expect(component).toMatchSnapshot();
     expect(
       component.root.findAllByType("h3").map((c) => c.children.join(" ")),
@@ -42,7 +49,7 @@ describe("movies database view", () => {
 
   it("Submits a new movie", async () => {
     const insertMovie = jest.fn();
-    const fetchMovies = jest.fn(() => []);
+    const fetchMovies = jest.fn(async () => []);
     const component = await createMovieApp("/movies/new", {
       insertMovie,
       fetchMovies,

@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
-export function ListMovies({ movies }) {
+interface Movie {
+  title: string;
+}
+
+export function ListMovies({ movies }: { movies: Movie[] }) {
   return (
     <>
       <h2>All movies</h2>
@@ -18,7 +22,7 @@ ListMovies.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-function AddMovie({ onCreate }) {
+function AddMovie({ onCreate }: { onCreate(movie: Movie): void }) {
   const [title, setTitle] = useState("");
   async function handleSubmit() {
     await onCreate({ title });
@@ -40,9 +44,14 @@ AddMovie.propTypes = {
   onCreate: PropTypes.func.isRequired,
 };
 
-export function MoviesRoutes({ fetchMovies, insertMovie }) {
+export interface MoviesRoutesProps {
+  fetchMovies(): Promise<Movie[]>;
+  insertMovie(movie: Movie): Promise<void>;
+}
+
+export function MoviesRoutes({ fetchMovies, insertMovie }: MoviesRoutesProps) {
   const navigate = useNavigate();
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
 
   async function loadMovies() {
     const movies = await fetchMovies();
@@ -53,7 +62,7 @@ export function MoviesRoutes({ fetchMovies, insertMovie }) {
     loadMovies();
   }, []);
 
-  async function handleCreate(movie) {
+  async function handleCreate(movie: Movie) {
     await insertMovie(movie);
     await loadMovies();
     navigate("/");
