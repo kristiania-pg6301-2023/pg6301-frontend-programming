@@ -22,16 +22,16 @@ function AddMovie() {
   );
 }
 
-export function MoviesRoutes() {
+export function MoviesRoutes({ fetchMovies }) {
   const [movies, setMovies] = useState([]);
 
-  async function fetchMovies() {
-    const res = await fetch("/api/movies");
-    setMovies(await res.json());
+  async function loadMovies() {
+    const movies = await fetchMovies();
+    setMovies(movies);
   }
 
   useEffect(() => {
-    fetchMovies();
+    loadMovies();
   }, []);
 
   return (

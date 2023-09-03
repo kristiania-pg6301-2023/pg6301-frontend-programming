@@ -15,5 +15,6 @@ exports[`movies database view matches snapshot 1`] = `
       Oppenheimer
     </h3>
   </div>,
+  ",",
 ]
 `;

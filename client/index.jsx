@@ -7,6 +7,11 @@ import { MoviesRoutes } from "./moviesApplication";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+async function fetchMovies() {
+  const res = await fetch("/api/movies");
+  return await res.json();
+}
+
 function MoviesApplication() {
   return (
     <BrowserRouter>
@@ -20,7 +25,7 @@ function MoviesApplication() {
         <NavLink to={"/login"}>User profile</NavLink>
       </nav>
       <main>
-        <MoviesRoutes />
+        <MoviesRoutes fetchMovies={fetchMovies} />
       </main>
       <footer>Made with 💚 by Johannes</footer>
     </BrowserRouter>
