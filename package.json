@@ -8,8 +8,11 @@
     "build": "npm run check && npm run build:client && npm run build:server",
     "build:client": "cd client && npm install --include=dev && npm run build",
     "build:server": "cd server && npm install",
-    "check": "npm run check:prettier",
+    "check": "npm run check:prettier && npm test",
     "check:prettier": "prettier --check .",
+    "test": "npm run test:client && npm run test:server",
+    "test:client": "cd client && npm test",
+    "test:server": "cd server && npm test",
     "prettier": "prettier --write ."
   },
   "keywords": [],
