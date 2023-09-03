@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 export function ListMovies({ movies }) {
@@ -13,6 +14,9 @@ export function ListMovies({ movies }) {
     </>
   );
 }
+ListMovies.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 function AddMovie({ onCreate }) {
   const [title, setTitle] = useState("");
@@ -32,6 +36,9 @@ function AddMovie({ onCreate }) {
     </form>
   );
 }
+AddMovie.propTypes = {
+  onCreate: PropTypes.func.isRequired,
+};
 
 export function MoviesRoutes({ fetchMovies, insertMovie }) {
   const navigate = useNavigate();
@@ -63,3 +70,7 @@ export function MoviesRoutes({ fetchMovies, insertMovie }) {
     </Routes>
   );
 }
+MoviesRoutes.propTypes = {
+  fetchMovies: PropTypes.func.isRequired,
+  insertMovie: PropTypes.func.isRequired,
+};
