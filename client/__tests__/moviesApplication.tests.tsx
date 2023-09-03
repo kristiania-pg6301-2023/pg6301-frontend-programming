@@ -18,7 +18,7 @@ async function createMovieApp(
     component = renderer.create(
       <MemoryRouter initialEntries={[path]}>
         <MoviesRoutes
-          fetchMovies={fetchMovies || jest.fn()}
+          fetchMovies={fetchMovies || (async () => [])}
           insertMovie={insertMovie || jest.fn()}
         />
         ,

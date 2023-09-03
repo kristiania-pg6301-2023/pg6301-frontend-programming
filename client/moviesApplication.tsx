@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 interface Movie {
@@ -18,9 +17,6 @@ export function ListMovies({ movies }: { movies: Movie[] }) {
     </>
   );
 }
-ListMovies.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
 
 function AddMovie({ onCreate }: { onCreate(movie: Movie): void }) {
   const [title, setTitle] = useState("");
@@ -40,9 +36,6 @@ function AddMovie({ onCreate }: { onCreate(movie: Movie): void }) {
     </form>
   );
 }
-AddMovie.propTypes = {
-  onCreate: PropTypes.func.isRequired,
-};
 
 export interface MoviesRoutesProps {
   fetchMovies(): Promise<Movie[]>;
@@ -79,7 +72,3 @@ export function MoviesRoutes({ fetchMovies, insertMovie }: MoviesRoutesProps) {
     </Routes>
   );
 }
-MoviesRoutes.propTypes = {
-  fetchMovies: PropTypes.func.isRequired,
-  insertMovie: PropTypes.func.isRequired,
-};
