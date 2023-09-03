@@ -1,5 +1,25 @@
 import React, {useEffect, useRef, useState} from "react";
 
+async function sendJson(url, json, method = "POST") {
+    return await fetch(url, {
+        method,
+        body: JSON.stringify(json),
+        headers: {
+            "content-type": "application/json"
+        }
+    })
+}
+
+async function fetchJson(url) {
+    const res = await fetch(url);
+    if (res.ok) {
+        return await res.json();
+    } else {
+        return res;
+    }
+}
+
+
 function ListTasks({tasks, onRefresh}) {
     if (!tasks) {
         return <div>Loading ...</div>;
@@ -14,13 +34,7 @@ function TodoListItem({task: {id, status, title}, onRefresh}) {
     const [error, setError] = useState();
     async function updateStatus(id, newStatus) {
         setError(undefined);
-        const res = await fetch(`/api/todos/${id}`, {
-            method: "PUT",
-            body: JSON.stringify({status: newStatus}),
-            headers: {
-                "content-type": "application/json"
-            }
-        });
+        const res = await sendJson(`/api/todos/${id}`, {status: newStatus}, "PUT");
         if (!res.ok) {
             setError(res.statusText);
         } else {
@@ -54,13 +68,7 @@ function AddTaskButton({onRefresh}) {
     async function handleSubmit(e) {
         e.preventDefault();
         setError(undefined);
-        const result = await fetch("/api/todos", {
-            method: "POST",
-            body: JSON.stringify({title}),
-            headers: {
-                "content-type": "application/json"
-            }
-        })
+        const result = await sendJson("/api/todos", {title})
         if (!result.ok) {
             setError(result.statusText)
             return false;
@@ -94,8 +102,7 @@ export function TodoApplication() {
     const [tasks, setTasks] = useState(undefined);
     async function fetchTasks() {
         setTasks(undefined);
-        const res = await fetch("/api/todos");
-        setTasks(await res.json());
+        setTasks(await fetchJson("/api/todos"));
     }
 
     useEffect(() => {
