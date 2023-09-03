@@ -1,25 +1,43 @@
-Hello and welcome to the Quiz broadcast
-=======================================
+# Exercise 4: Deployment to Heroku
 
-Exercise 3: Creating an API with Express
-========================================
+In this exercise, you should take your previous code and deploy it to Heroku.
 
-Flytt funksjonalitet for quiz til serveren-siden med ExpressJS. Du trenger følgende endepunkt:
+### Be prepared:
 
-* `GET /api/questions/random` - returner et tilfeldig spørsmål **uten å inkludere korrekt svar**
-* `POST /api/questions/answer` - send inn svar med
-  `{id: <id>, answer: "answer_a"|"answer_b"|"answer_c"|"answer_d"|"answer_e"}`.
-  Skal returnere `{result: "correct"|"incorrect"}`
-* Ekstra-mål: `GET /api/score` - returnerer `{answered: <number>, correct: <number>}`
+1. Make sure you have solved [exercise 3](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/blob/exercise/03/start/README.md)
+   before your start. You need to have a working React/Express application
+2. Make sure you are signed up for [GitHub Student Developer Pack](https://education.github.com/pack) so you
+   don't have to pay for the hosting
+3. Read through the documentation about [Heroku for GitHub Students](https://www.heroku.com/github-students) so
+   you understand how to avoid cloud bills
 
-Bruk koden for quiz fra øving 2 som utgangspunkt.
+### Make your application ready for Heroku
 
-Dersom du ikke har implementer øving 2 enda anbefaler jeg at du starter med denne. Sørg for at koden ligger i et
-directory som heter `client`. Oppretter du et `server`-prosjekt som beskrevet i README-fila til emnet og implementerer
-`GET /api/questions/random` og `POST /api/questions/answer`. Kopier inn `questions.js` for å implementere
-logikken (*merk: express liker ikke å importere "../questions.js"*)
+1. Make sure `npm run build` at the top level works correctly (it should install `node_modules` and build `client/dist`)
+2. Make sure `npm start` at the top level works correctly (it should start the server so you can access the React
+   application at http://localhost:3000)
+3. Make sure `server/server.js` lets Heroku specify the port. The listen statement should look like this:
+   `app.listen(process.env.PORT || 3000)`
+4. Create a repository on GitHub and push your code there
 
-Erstatt koden i klienten med kode som kaller Express-API-et
+### Create the Heroku app
 
-For `GET /quiz/score` må du ta i bruk [cookie-parser](http://expressjs.com/en/resources/middleware/cookie-parser.html).
-Vi skal se på dette på forelesning 6, men du kan prøve ut med instruksjonene nå dersom du har tid
+1. Go to the [Heroku Dashboard](https://dashboard.heroku.com/apps)
+2. Select New > Create New App
+3. When your app is created, go to Deploy and select GitHub as the Deployment Method
+4. Specify your GitHub repository under Manual deploy to make sure the app deploys the first time
+5. Verify that the application is running
+6. Specify your GitHub repository under Automatic deploy to make sure the app redeploys automatically
+7. Make a change to your app, commit to git and push to GitHub
+8. Verify that the change is deployed to Heroku
+9. Share the link to your repositories to your classmates on
+   [Mattermost](https://mattermost.kristiania.no/it2022/channels/pg6301-webutvikling-og-api-design)
+
+### Upcoming tasks
+
+Here are some things you may want to work on:
+
+* `<BrowserRouter />` won't refresh correctly when serving with Express
+* We will need to use cookies pretty soon
+* The next major topic is MongoDb with Atlas
+* We need to work on code style (prettier), tests (jest) and correctness checks (eslint)
