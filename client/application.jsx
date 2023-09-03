@@ -1,23 +1,42 @@
 import React, {useEffect, useRef, useState} from "react";
 
 function ListTasks({tasks, onRefresh}) {
-    function updateStatus(id, newStatus) {
-        console.log("updateStatus", {id, newStatus});
-        onRefresh();
-    }
-
     if (!tasks) {
         return <div>Loading ...</div>;
     }
 
     return <>
-        {tasks.map(t => <div key={t.id}>
-            {t.title} ({t.status})
-            {t.status === "todo" && <button onClick={() => updateStatus(t.id, "doing")}>start</button>}
-            {t.status === "doing" && <button onClick={() => updateStatus(t.id, "done")}>complete</button>}
-        </div>)}
+        {tasks.map(t => <TodoListItem key={t.id} task={t} onRefresh={onRefresh} />)}
     </>;
 }
+
+function TodoListItem({task: {id, status, title}, onRefresh}) {
+    const [error, setError] = useState();
+    async function updateStatus(id, newStatus) {
+        setError(undefined);
+        const res = await fetch(`/api/todos/${id}`, {
+            method: "PUT",
+            body: JSON.stringify({status: newStatus}),
+            headers: {
+                "content-type": "application/json"
+            }
+        });
+        if (!res.ok) {
+            setError(res.statusText);
+        } else {
+            onRefresh();
+        }
+    }
+
+    return <div>
+        {title} ({status})
+        {status === "todo" && <button onClick={() => updateStatus(id, "doing")}>start</button>}
+        {status === "doing" && <button onClick={() => updateStatus(id, "done")}>complete</button>}
+        {error && <div>Error: {error}</div>}
+    </div>
+}
+
+
 
 function AddTaskButton({onRefresh}) {
     const dialogRef = useRef();
