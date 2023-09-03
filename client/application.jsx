@@ -3,9 +3,12 @@ import React, {useEffect, useState} from "react";
 function ListTasks() {
     const [tasks, setTasks] = useState(undefined);
 
-    useEffect(async () => {
-        const res = await fetch("/api/todos");
-        setTasks(await res.json());
+    useEffect(() => {
+        async function fetchData() {
+            const res = await fetch("/api/todos");
+            setTasks(await res.json());
+        }
+        fetchData()
     }, [])
 
     if (!tasks) {
@@ -20,7 +23,7 @@ function ListTasks() {
 
 export function TodoApplication() {
     return <>
-        <h1>Welcome to the task application</h1>
+        <h1>Welcome to task application</h1>
 
         <ListTasks />
 
