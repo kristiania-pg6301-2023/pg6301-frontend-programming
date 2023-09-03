@@ -55,6 +55,15 @@ function ShowAnswer({ onAskAnother }) {
 
 function ShowScore() {
     const [score, setScore] = useState(undefined);
+    async function fetchScore() {
+        const res = await fetch("/api/score");
+        const result = await res.json();
+        setScore(result.score);
+    }
+    useEffect(() => {
+        fetchScore();
+    }, [])
+
     return (
         <>
             <h2>Your score is {score}</h2>
