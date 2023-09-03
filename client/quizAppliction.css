@@ -19,3 +19,7 @@ main {
     flex: 1;
 }
 
+nav {
+    display: flex;
+    gap: 1em;
+}

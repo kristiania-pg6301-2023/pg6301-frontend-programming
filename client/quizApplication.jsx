@@ -53,6 +53,15 @@ function ShowAnswer({ onAskAnother }) {
   );
 }
 
+function ShowScore() {
+    const [score, setScore] = useState(undefined);
+    return (
+        <>
+            <h2>Your score is {score}</h2>
+        </>
+    )
+}
+
 function Quiz() {
   const [question, setQuestion] = useState();
 
@@ -101,6 +110,7 @@ function Quiz() {
           <Question question={question} onClickAnswer={handleClickAnswer} />
         }
       />
+      <Route path={"/score"} element={<ShowScore />} />
       <Route path={"*"} element={<h2>Not Found</h2>} />
     </Routes>
   );
@@ -114,6 +124,7 @@ export function QuizApplication() {
       </header>
       <nav>
         <Link to={"/"}>Front page</Link>
+        <Link to={"/score"}>See my score</Link>
       </nav>
       <main>
         <Quiz />
