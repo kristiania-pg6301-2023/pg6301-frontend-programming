@@ -8,7 +8,7 @@ function ListTasks() {
             const res = await fetch("/api/todos");
             setTasks(await res.json());
         }
-        fetchData()
+        fetchData();
     }, [])
 
     if (!tasks) {
@@ -17,7 +17,7 @@ function ListTasks() {
 
     return <>
         <h2>Tasks</h2>
-        {tasks.map(t => <div>{t.title}</div>)}
+        {tasks.map(t => <div key={t.title}>{t.title}</div>)}
         </>;
 }
 
