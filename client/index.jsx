@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function ListMovies() {
     return <>
-        <h2>Movies</h2>
+        <h2>All movies</h2>
         </>;
 }
 
