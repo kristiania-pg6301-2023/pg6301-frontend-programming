@@ -1,0 +1,17 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "1. Create client project which shows todo items\r 2. Create server project with /api/todos\r 3. Ready deployment with Heroku\r    * npm build script\r    * npm start script\r 4. Create project on Heroku\r 5. Deploy changes\r    * create new task\r    * update tasks",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently npm:dev:client npm:dev:server",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  }
+}

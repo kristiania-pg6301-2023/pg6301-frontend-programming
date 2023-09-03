@@ -41,7 +41,7 @@ function TasksRoutes() {
 
 function TaskApplication() {
     return <HashRouter>
-        <header><h1>todo application</h1></header>
+        <header><h1>The task application</h1></header>
         <nav><NavLink to={"/"}>Front page</NavLink></nav>
         <main>
             <TasksRoutes/>
