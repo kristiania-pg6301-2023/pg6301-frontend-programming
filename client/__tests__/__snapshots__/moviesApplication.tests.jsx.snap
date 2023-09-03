@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`movies database view matches snapshot 1`] = `
+[
+  <h2>
+    All movies
+  </h2>,
+  <div>
+    <h3>
+      Barbie
+    </h3>
+  </div>,
+  <div>
+    <h3>
+      Oppenheimer
+    </h3>
+  </div>,
+]
+`;
