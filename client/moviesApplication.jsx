@@ -16,9 +16,16 @@ export function ListMovies({ movies }) {
 
 function AddMovie() {
   return (
-    <>
+    <form method="dialog">
       <h2>Movies</h2>
-    </>
+      <div>
+        Title: <br />
+        <input />
+      </div>
+      <div>
+        <button>Submit</button>
+      </div>
+    </form>
   );
 }
 

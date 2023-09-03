@@ -18,3 +18,26 @@ exports[`movies database view matches snapshot 1`] = `
   ",",
 ]
 `;
+
+exports[`movies database view shows new movies form 1`] = `
+[
+  <form
+    method="dialog"
+  >
+    <h2>
+      Movies
+    </h2>
+    <div>
+      Title: 
+      <br />
+      <input />
+    </div>
+    <div>
+      <button>
+        Submit
+      </button>
+    </div>
+  </form>,
+  ",",
+]
+`;

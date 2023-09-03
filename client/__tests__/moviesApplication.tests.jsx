@@ -12,7 +12,7 @@ describe("movies database view", () => {
     let component;
     await act(async () => {
       component = renderer.create(
-        <MemoryRouter basename={"/"}>
+        <MemoryRouter>
           <MoviesRoutes fetchMovies={() => movies} />,
         </MemoryRouter>,
       );
@@ -21,5 +21,20 @@ describe("movies database view", () => {
     expect(
       component.root.findAllByType("h3").map((c) => c.children.join(" ")),
     ).toEqual(["Barbie", "Oppenheimer"]);
+  });
+
+  it("shows new movies form", async () => {
+    let component;
+    await act(async () => {
+      component = renderer.create(
+        <MemoryRouter initialEntries={["/movies/new"]}>
+          <MoviesRoutes fetchMovies={jest.fn()} />,
+        </MemoryRouter>,
+      );
+    });
+    expect(component).toMatchSnapshot();
+    expect(component.root.findByType("button").children.join(" ")).toEqual(
+      "Submit",
+    );
   });
 });
