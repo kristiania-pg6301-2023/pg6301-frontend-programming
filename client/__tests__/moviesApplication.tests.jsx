@@ -7,16 +7,21 @@ const movies = [
   { title: "Oppenheimer", year: "2023", plot: "The Manhattan project" },
 ];
 
+async function createMovieApp(path, fetchMovies = jest.fn()) {
+  let component;
+  await act(async () => {
+    component = renderer.create(
+      <MemoryRouter initialEntries={[path]}>
+        <MoviesRoutes fetchMovies={fetchMovies} />,
+      </MemoryRouter>,
+    );
+  });
+  return component;
+}
+
 describe("movies database view", () => {
   it("matches snapshot", async () => {
-    let component;
-    await act(async () => {
-      component = renderer.create(
-        <MemoryRouter>
-          <MoviesRoutes fetchMovies={() => movies} />,
-        </MemoryRouter>,
-      );
-    });
+    const component = await createMovieApp("/", () => movies);
     expect(component).toMatchSnapshot();
     expect(
       component.root.findAllByType("h3").map((c) => c.children.join(" ")),
@@ -24,14 +29,7 @@ describe("movies database view", () => {
   });
 
   it("shows new movies form", async () => {
-    let component;
-    await act(async () => {
-      component = renderer.create(
-        <MemoryRouter initialEntries={["/movies/new"]}>
-          <MoviesRoutes fetchMovies={jest.fn()} />,
-        </MemoryRouter>,
-      );
-    });
+    const component = await createMovieApp("/movies/new");
     expect(component).toMatchSnapshot();
     expect(component.root.findByType("button").children.join(" ")).toEqual(
       "Submit",
