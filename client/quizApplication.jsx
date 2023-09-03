@@ -91,7 +91,7 @@ export function QuizApplication() {
   return (
     <HashRouter>
       <header>
-        <h1>The Quiz App</h1>
+        <h1>React quiz app with express backend</h1>
       </header>
       <nav>
         <Link to={"/"}>Front page</Link>

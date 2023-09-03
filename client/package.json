@@ -2,10 +2,9 @@
   "name": "client",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "parcel serve index.html",
+    "dev": "parcel watch index.html",
     "test:watch": "jest --watchAll"
   },
   "keywords": [],
