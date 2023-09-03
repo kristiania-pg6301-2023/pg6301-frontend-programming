@@ -57,16 +57,19 @@ function ShowScore() {
     const [score, setScore] = useState(undefined);
     async function fetchScore() {
         const res = await fetch("/api/score");
-        const result = await res.json();
-        setScore(result.score);
+        setScore(await res.json());
     }
     useEffect(() => {
         fetchScore();
     }, [])
 
+    if (!score) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <>
-            <h2>Your score is {score}</h2>
+            <h2>Your have {score.correctAnswers} out of {score.answers} correct answers</h2>
         </>
     )
 }
