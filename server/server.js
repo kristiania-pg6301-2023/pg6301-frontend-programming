@@ -6,7 +6,8 @@ const app = express();
 app.use(express.static("../client/dist"));
 
 app.get("/api/questions/random", (req, res) => {
-    res.json(randomQuestion()).send()
+    const {id, question, answers} = randomQuestion();
+    res.json({id, question, answers})
 })
 
 
