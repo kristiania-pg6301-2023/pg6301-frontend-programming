@@ -134,17 +134,6 @@ You can now write tests with `react-test-renderer`:
 Typescript is incredibly useful. But it can be a bit tricky to set up. This is why we don't spend much time on it
 in the course.
 
-Here is how to set it up:
-
-- At the root level, update the `npm run check` script to include typescript
-  - `npm pkg set scripts.check="npm run check:prettier && npm run typescript && npm test"`
-- Add a `npm run typescript` script which executes `npm run typescript:client && npm run typescript:server`
-  - `npm pkg set scripts.typescript="npm run typescript:client && npm run typescript:server"`
-- Add a `npm run typescript:client` script which executes `npm run typescript` in the client directory
-  - `npm pkg set scripts.typescript:client="cd client && npm run typescript"`
-- Add a `npm run typescript:server` script which executes `npm run typescript` in the server directory
-  - `npm pkg set scripts.typescript:server="cd server && npm run typescript"`
-
 ### For the server
 
 - In the server directory add a `npm run typescript` script which executes `tsc --noEmit`
@@ -189,6 +178,21 @@ You should now try to get the tests to work:
   - `npm install --save-dev @types/jest @types/react @types/react-dom @types/react-test-renderer`
 
 Parcel is smart enough that it doesn't need any changes to work with Typescript.
+
+### For the top level project
+
+Here is how to set it up:
+
+- At the root level, update the `npm run check` script to include typescript
+  - `npm pkg set scripts.check="npm run check:prettier && npm run typescript && npm test"`
+- Add a `npm run typescript` script which executes `npm run typescript:client && npm run typescript:server`
+  - `npm pkg set scripts.typescript="npm run typescript:client && npm run typescript:server"`
+- Add a `npm run typescript:client` script which executes `npm run typescript` in the client directory
+  - `npm pkg set scripts.typescript:client="cd client && npm run typescript"`
+- Add a `npm run typescript:server` script which executes `npm run typescript` in the server directory
+  - `npm pkg set scripts.typescript:server="cd server && npm run typescript"`
+
+Run `npm run check` to verify that everything is okay
 
 ## Eslint
 
