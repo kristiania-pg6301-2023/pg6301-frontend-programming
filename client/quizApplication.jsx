@@ -76,7 +76,7 @@ function ShowScore() {
   );
 }
 
-export function Quiz({fetchQuestion, postAnswer}) {
+export function Quiz({ fetchQuestion, postAnswer }) {
   const [question, setQuestion] = useState();
 
   async function loadRandomQuestion() {
@@ -133,12 +133,11 @@ export function QuizApplication() {
       method: "POST",
       body: JSON.stringify({ id, answer }),
       headers: {
-        "content-type": "application/json"
-      }
+        "content-type": "application/json",
+      },
     });
     return await res.json();
   }
-
 
   return (
     <HashRouter>

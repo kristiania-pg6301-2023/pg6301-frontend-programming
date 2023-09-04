@@ -8,41 +8,43 @@ const sampleQuestion = {
   answers: {
     answer_a: "Nothing",
     answer_b: "Nothing much",
-    answer_c: "'sup!"
-  }
-}
+    answer_c: "'sup!",
+  },
+};
 
 describe("quiz application", () => {
-
   it("shows a question", async () => {
     let component;
     await act(async () => {
       component = renderer.create(
         <MemoryRouter initialEntries={["/question"]}>
           <Quiz fetchQuestion={() => sampleQuestion} />
-        </MemoryRouter>
+        </MemoryRouter>,
       );
     });
     expect(component).toMatchSnapshot();
-    expect(component.root.findByType("p").children.join(" ")).toEqual(sampleQuestion.question);
-  })
+    expect(component.root.findByType("p").children.join(" ")).toEqual(
+      sampleQuestion.question,
+    );
+  });
 
   it("submits answer", async () => {
-    const postAnswer = jest.fn(() => ({correct: false}));
+    const postAnswer = jest.fn(() => ({ correct: false }));
     let component;
     await act(async () => {
       component = renderer.create(
         <MemoryRouter initialEntries={["/question"]}>
           <Quiz fetchQuestion={() => sampleQuestion} postAnswer={postAnswer} />
-        </MemoryRouter>
+        </MemoryRouter>,
       );
     });
     await act(async () => {
       component.root.findAllByType("button")[1].props.onClick();
-    })
+    });
     expect(postAnswer).toHaveBeenCalledWith(sampleQuestion.id, "answer_b");
     expect(component).toMatchSnapshot();
-    expect(component.root.findByType("h2").children.join(" ")).toEqual("That's wrong!");
-  })
-
-})
+    expect(component.root.findByType("h2").children.join(" ")).toEqual(
+      "That's wrong!",
+    );
+  });
+});
