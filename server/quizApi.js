@@ -22,7 +22,6 @@ quizApi.post("/api/questions/answer", (req, res) => {
     answers: answers + 1,
     correctAnswers: correctAnswers + (correct ? 1 : 0),
   };
-  console.log(req.signedCookies, { score, newScore });
   res
     .cookie("quizScore", JSON.stringify(newScore), { signed: true })
     .json({ correct });
