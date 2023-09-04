@@ -213,6 +213,7 @@ Install eslint in the server directory:
 - `npm install --save-dev eslint`
 - `npm init @eslint/config`
 - Answer the questions to get it set up correctly
+- `npm pkg set scripts.lint="eslint ."`
 - `npm run lint` to check and fix problems
   - You will need to add `ignorePatterns: ["jest.config.js"]` to `.eslintrc.js`
 
@@ -222,6 +223,7 @@ Install eslint in the client directory:
 - `npm install --save-dev eslint`
 - `npm init @eslint/config`
 - Answer the questions to get it set up correctly
+- `npm pkg set scripts.lint="eslint ."`
 - `npm run lint` to check and fix problems
   - You will need to add `ignorePatterns: ["dist", "jest.config.js"]` to `.eslintrc.js`
 

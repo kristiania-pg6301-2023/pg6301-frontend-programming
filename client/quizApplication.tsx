@@ -40,7 +40,7 @@ export function Question({
   onClickAnswer,
 }: {
   question?: Question;
-  onClickAnswer(id: any, k: string): void;
+  onClickAnswer(id: number, k: string): void;
 }) {
   if (!question) {
     return <div>Loading...</div>;
@@ -66,8 +66,8 @@ function ShowAnswer({ onAskAnother }: { onAskAnother(): void }) {
   return (
     <>
       <Routes>
-        <Route path={"/correct"} element={<h2>That's correct!</h2>} />
-        <Route path={"/wrong"} element={<h2>That's wrong!</h2>} />
+        <Route path={"/correct"} element={<h2>That&apos;s correct!</h2>} />
+        <Route path={"/wrong"} element={<h2>That&apos;s wrong!</h2>} />
       </Routes>
       <div>
         <button onClick={onAskAnother}>Ask me another question</button>
