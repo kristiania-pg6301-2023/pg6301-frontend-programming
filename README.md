@@ -61,15 +61,6 @@ temporarily downgrade prettier:
 
 ## Jest
 
-* At the root level, update the `npm run check` script to include tests
-  * `npm pkg set scripts.check="npm run check:prettier && npm test"`
-* Add a `npm test` script which executes `npm run test:client && npm run test:server`
-  * `npm pkg set scripts.test="npm run test:client && npm run test:server"`
-* Add a `npm run test:client` script which executes `npm test` in the client directory
-  * `npm pkg set scripts.test:client="cd client && npm test"`
-* Add a `npm run test:server` script which executes `npm test` in the server directory
-  * `npm pkg set scripts.test:server="cd server && npm test"`
-
 ### For the server
 
 * In the server directory add a `npm test` script which executes `jest`
@@ -84,7 +75,7 @@ temporarily downgrade prettier:
   ```
   "babel": {
     "presets": [
-      "@babel/preset-env",
+      "@babel/preset-env"
     ]
   }
   ```
@@ -128,6 +119,18 @@ You can now write tests with `react-test-renderer`:
 1. First, extract your components to a separate file
 2. Second, write tests using `renderer.create`, `expect(...).toMatchSnapshot()`, `component.root.findBy...`
    `component.root.findBy...props.onChange()` and `jest.fn()`
+
+### Tests at the top level
+
+* At the root level, update the `npm run check` script to include tests
+  * `npm pkg set scripts.check="npm run check:prettier && npm test"`
+* Add a `npm test` script which executes `npm run test:client && npm run test:server`
+  * `npm pkg set scripts.test="npm run test:client && npm run test:server"`
+* Add a `npm run test:client` script which executes `npm test` in the client directory
+  * `npm pkg set scripts.test:client="cd client && npm test"`
+* Add a `npm run test:server` script which executes `npm test` in the server directory
+  * `npm pkg set scripts.test:server="cd server && npm test"`
+
 
 
 ## Typescript
