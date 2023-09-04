@@ -180,7 +180,6 @@ You can now `npm uninstall nodemon`.
   - `npm install --save-dev @types/react @types/react-dom @types/react-test-renderer @types/jest`
   - You have to add quite a bit of typing, especially to component props
 
-
 You should now try to get the tests to work:
 
 - `npm install --save-dev ts-jest`
