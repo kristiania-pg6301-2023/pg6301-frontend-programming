@@ -142,7 +142,13 @@ in the course.
 - Install typescript:
   - `npm install --save-dev typescript`
   - `npx tsc --init` to set up `tsconfig.json`
-- Rename all `.js` files to `.ts`, including for the tests
+- Rename all `.js` files in server to `.ts`, including for the tests
+- Run `npm run typescript` to detect problems and fix them
+  - You will need to install type definitions for many libraries: `npm install --save-dev @types/supertest @types/express @types/body-parser @types/cookie-parser @types/jest`
+  - You will need to change imports to not use file extensions
+  - You need to define a `Question` type and update `question.ts` to use it:
+    - `export const Questions: Question[] = ...`
+    - `isCorrectAnswer(question: Question, answer: string)`
 
 You should now try to get the tests to work:
 

@@ -3,7 +3,7 @@ import request from "supertest";
 import express from "express";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import { quizApi } from "../quizApi.js";
+import { quizApi } from "../quizApi";
 
 const app = express();
 app.use(bodyParser.json());

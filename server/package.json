@@ -4,8 +4,8 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js",
+    "dev": "nodemon server.ts",
+    "start": "node server.ts",
     "test": "jest",
     "typescript": "tsc --noEmit"
   },
@@ -19,6 +19,11 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.15",
+    "@types/body-parser": "^1.19.2",
+    "@types/cookie-parser": "^1.4.4",
+    "@types/express": "^4.17.17",
+    "@types/jest": "^29.5.4",
+    "@types/supertest": "^2.0.12",
     "babel-jest": "^29.6.4",
     "jest": "^29.6.4",
     "nodemon": "^3.0.1",

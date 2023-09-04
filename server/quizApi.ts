@@ -1,5 +1,5 @@
 import express from "express";
-import { isCorrectAnswer, Questions, randomQuestion } from "./questions.js";
+import { isCorrectAnswer, Questions, randomQuestion } from "./questions";
 
 export const quizApi = express.Router();
 
@@ -10,7 +10,7 @@ quizApi.get("/api/questions/random", (req, res) => {
 
 quizApi.post("/api/questions/answer", (req, res) => {
   const { id, answer } = req.body;
-  const question = Questions.find((q) => q.id === id);
+  const question = Questions.find((q) => q.id === id)!;
   const correct = isCorrectAnswer(question, answer);
 
   const score = req.signedCookies?.quizScore
