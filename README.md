@@ -149,13 +149,14 @@ in the course.
   - You need to define a `Question` type and update `question.ts` to use it:
     - `export const Questions: Question[] = ...`
     - `isCorrectAnswer(question: Question, answer: string)`
+  - Typescript will also force you to deal with the fact that the user may send in an invalid question id
 
 You should now try to get the tests to work:
 
 - `npm install --save-dev ts-jest`
 - `npx ts-jest config:init`
-- Try to run the tests with `npm test`, you will now get an error message of missing type definitions. Fix it by installing:
-  - `npm install --save-dev @types/jest @types/express @types/supertest`
+- Try to run the tests with `npm test`
+- You will probably have to remove `"type": "module"` in `package.json`
 
 Make `npm start` and `npm run dev` work:
 
