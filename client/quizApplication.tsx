@@ -1,6 +1,17 @@
 import { HashRouter, Link, Route, Routes, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
+interface Question {
+  id: number;
+  question: string;
+  answers: Record<string, string>;
+}
+
+interface Score {
+  answers: number;
+  correctAnswers: number;
+}
+
 function FrontPage() {
   return (
     <>
@@ -10,7 +21,13 @@ function FrontPage() {
   );
 }
 
-function QuestionAnswerButton({ answer, onClick }) {
+function QuestionAnswerButton({
+  answer,
+  onClick,
+}: {
+  answer: string;
+  onClick(): void;
+}) {
   return (
     <div>
       <button onClick={onClick}>{answer}</button>
@@ -18,7 +35,13 @@ function QuestionAnswerButton({ answer, onClick }) {
   );
 }
 
-export function Question({ question, onClickAnswer }) {
+export function Question({
+  question,
+  onClickAnswer,
+}: {
+  question?: Question;
+  onClickAnswer(id: any, k: string): void;
+}) {
   if (!question) {
     return <div>Loading...</div>;
   }
@@ -39,7 +62,7 @@ export function Question({ question, onClickAnswer }) {
   );
 }
 
-function ShowAnswer({ onAskAnother }) {
+function ShowAnswer({ onAskAnother }: { onAskAnother(): void }) {
   return (
     <>
       <Routes>
@@ -54,7 +77,7 @@ function ShowAnswer({ onAskAnother }) {
 }
 
 function ShowScore() {
-  const [score, setScore] = useState(undefined);
+  const [score, setScore] = useState<Score>();
   async function fetchScore() {
     const res = await fetch("/api/score");
     setScore(await res.json());
@@ -76,8 +99,14 @@ function ShowScore() {
   );
 }
 
-export function Quiz({ fetchQuestion, postAnswer }) {
-  const [question, setQuestion] = useState();
+export function Quiz({
+  fetchQuestion,
+  postAnswer,
+}: {
+  fetchQuestion(): Promise<Question>;
+  postAnswer(id: number, answer: string): Promise<{ correct: boolean }>;
+}) {
+  const [question, setQuestion] = useState<Question>();
 
   async function loadRandomQuestion() {
     setQuestion(await fetchQuestion());
@@ -89,7 +118,7 @@ export function Quiz({ fetchQuestion, postAnswer }) {
 
   const navigateFn = useNavigate();
 
-  async function handleClickAnswer(id, answer) {
+  async function handleClickAnswer(id: number, answer: string) {
     const response = await postAnswer(id, answer);
     if (response.correct) {
       navigateFn("/answer/correct");
@@ -128,7 +157,7 @@ export function QuizApplication() {
     return await res.json();
   }
 
-  async function postAnswer(id, answer) {
+  async function postAnswer(id: number, answer: string) {
     const res = await fetch("/api/questions/answer", {
       method: "POST",
       body: JSON.stringify({ id, answer }),
@@ -136,7 +165,7 @@ export function QuizApplication() {
         "content-type": "application/json",
       },
     });
-    return await res.json();
+    return (await res.json()) as { correct: boolean };
   }
 
   return (
