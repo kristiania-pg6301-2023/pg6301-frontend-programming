@@ -32,7 +32,7 @@ client and server together with the root project:
 * At the root level, install prettier
   * `npm install --save-dev prettier`
 * Update the `npm run build` script to run `npm run check` before it builds on the client and server
-  * `npm pkg set scripts.build="npm run check && npm run build:client && npm run build:server"`
+  * `npm pkg set scripts.build="npm run check && npm run build:client"`
 * Add a `npm run check` script which executes `npm run check:prettier`
   * `npm pkg set scripts.check="npm run check:prettier"`
 * Add a `npm run check:prettier` script which executes `prettier --check .`
@@ -50,13 +50,13 @@ You can set up Prettier in IntelliJ:
 * File > Settings > Languages & Frameworks > JavaScript > Prettier
   * Select the prettier installation (if not done automatically)
   * Check "On reformat action" and "On save" to automatically run Prettier
-* Open a `package.json`-file and right-click on the editor. Select the option "Apply Prettier Formatting Rules"
+* Open a `package.json`-file and right-click on the editor. Select the option "Apply Prettier Code Style Rules"
 
 **Tip:** The Apply Prettier Formatting Rules action seems to be broken with prettier 3.0+. A workaround is to
 temporarily downgrade prettier:
 
 1. `npm install prettier@2`
-2. Right-click and select "Apply Prettier Formatting Rules"
+2. Right-click and select "Apply Prettier Code Style Rules"
 3. `npm install prettier@latest`
 
 ## Jest

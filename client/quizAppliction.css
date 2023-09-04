@@ -1,25 +1,25 @@
 body {
-    margin: 0;
+  margin: 0;
 }
 
 #root {
-    background-color: pink;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  background-color: pink;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-    min-width: 50ch;
-    max-width: 100ch;
-    margin: 1em auto;
-    background-color: white;
-    border-radius: 1em;
-    padding: 1em;
-    flex: 1;
+  min-width: 50ch;
+  max-width: 100ch;
+  margin: 1em auto;
+  background-color: white;
+  border-radius: 1em;
+  padding: 1em;
+  flex: 1;
 }
 
 nav {
-    display: flex;
-    gap: 1em;
+  display: flex;
+  gap: 1em;
 }

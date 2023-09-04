@@ -1,5 +1,5 @@
-import {HashRouter, Link, Route, Routes, useNavigate} from "react-router-dom";
-import React, {useEffect, useState} from "react";
+import { HashRouter, Link, Route, Routes, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 function FrontPage() {
   return (
@@ -20,7 +20,7 @@ function QuestionAnswerButton({ answer, onClick }) {
 
 export function Question({ question, onClickAnswer }) {
   if (!question) {
-      return <div>Loading...</div>;
+    return <div>Loading...</div>;
   }
   return (
     <>
@@ -54,47 +54,49 @@ function ShowAnswer({ onAskAnother }) {
 }
 
 function ShowScore() {
-    const [score, setScore] = useState(undefined);
-    async function fetchScore() {
-        const res = await fetch("/api/score");
-        setScore(await res.json());
-    }
-    useEffect(() => {
-        fetchScore();
-    }, [])
+  const [score, setScore] = useState(undefined);
+  async function fetchScore() {
+    const res = await fetch("/api/score");
+    setScore(await res.json());
+  }
+  useEffect(() => {
+    fetchScore();
+  }, []);
 
-    if (!score) {
-        return <div>Loading...</div>;
-    }
+  if (!score) {
+    return <div>Loading...</div>;
+  }
 
-    return (
-        <>
-            <h2>Your have {score.correctAnswers} out of {score.answers} correct answers</h2>
-        </>
-    )
+  return (
+    <>
+      <h2>
+        Your have {score.correctAnswers} out of {score.answers} correct answers
+      </h2>
+    </>
+  );
 }
 
 function Quiz() {
   const [question, setQuestion] = useState();
 
   async function fetchRandomQuestion() {
-      const res = await fetch("/api/questions/random");
-      setQuestion(await res.json());
+    const res = await fetch("/api/questions/random");
+    setQuestion(await res.json());
   }
 
   useEffect(() => {
-      fetchRandomQuestion();
-  }, [])
+    fetchRandomQuestion();
+  }, []);
 
   const navigateFn = useNavigate();
 
   async function handleClickAnswer(id, answer) {
     const res = await fetch("/api/questions/answer", {
-        method: "POST",
-        body: JSON.stringify({id, answer}),
-        headers: {
-            "content-type": "application/json"
-        }
+      method: "POST",
+      body: JSON.stringify({ id, answer }),
+      headers: {
+        "content-type": "application/json",
+      },
     });
     const response = await res.json();
     if (response.correct) {
