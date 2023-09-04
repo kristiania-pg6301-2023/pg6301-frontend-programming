@@ -175,14 +175,17 @@ You can now `npm uninstall nodemon`.
   - `npm install --save-dev typescript`
   - `npx tsc --init` to set up `tsconfig.json`
 - Rename all `.js` files to `.ts` and `.jsx` to `.tsx`, including for the tests
+- `npm run typescript` and fix errors
+  - In `tsconfig.json`, add the property `"jsx": "react"`
+  - `npm install --save-dev @types/react @types/react-dom @types/react-test-renderer @types/jest`
+  - You have to add quite a bit of typing, especially to component props
+
 
 You should now try to get the tests to work:
 
 - `npm install --save-dev ts-jest`
 - `npx ts-jest config:init`
-- You will have to update `tsconfig.json` to support "jsx"-syntax
-- Try to run the tests with `npm test`, you will now get an error message of missing type definitions. Fix it by installing:
-  - `npm install --save-dev @types/jest @types/react @types/react-dom @types/react-test-renderer`
+- Try to run the tests with `npm test`
 
 Parcel is smart enough that it doesn't need any changes to work with Typescript.
 
