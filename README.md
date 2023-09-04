@@ -207,6 +207,26 @@ Run `npm run check` to verify that everything is okay
 
 Eslint checks your code for common mistakes. Here is how you set it up
 
+Install eslint in the server directory:
+
+- `cd server`
+- `npm install --save-dev eslint`
+- `npm init @eslint/config`
+- Answer the questions to get it set up correctly
+- `npm run lint` to check and fix problems
+  - You will need to add `ignorePatterns: ["jest.config.js"]` to `.eslintrc.js`
+
+Install eslint in the client directory:
+
+- `cd client`
+- `npm install --save-dev eslint`
+- `npm init @eslint/config`
+- Answer the questions to get it set up correctly
+- `npm run lint` to check and fix problems
+  - You will need to add `ignorePatterns: ["dist", "jest.config.js"]` to `.eslintrc.js`
+
+Install eslint at the root level
+
 - At the root level, update the `npm run check` script to include eslint
   - `npm pkg set scripts.check="npm run check:prettier && npm run typescript && npm run lint && npm test"`
 - Add a `npm run lint` script which executes `npm run lint:client && npm run lint:server`
@@ -215,19 +235,5 @@ Eslint checks your code for common mistakes. Here is how you set it up
   - `npm pkg set scripts.lint:client="cd client && npm run lint"`
 - Add a `npm run lint:server` script which executes `npm run lint` in the server directory
   - `npm pkg set scripts.lint:server="cd server && npm run lint"`
-
-Install eslint in the client directory:
-
-- `cd client`
-- `npm install --save-dev eslint`
-- `npm init @eslint/config`
-- Answer the questions to get it set up correctly
-
-Install eslint in the server directory:
-
-- `cd server`
-- `npm install --save-dev eslint`
-- `npm init @eslint/config`
-- Answer the questions to get it set up correctly
 
 When you're done try to execute `npm run check` at the root level and verify that everything works
