@@ -76,16 +76,15 @@ function ShowScore() {
   );
 }
 
-function Quiz() {
+export function Quiz({fetchQuestion}) {
   const [question, setQuestion] = useState();
 
-  async function fetchRandomQuestion() {
-    const res = await fetch("/api/questions/random");
-    setQuestion(await res.json());
+  async function loadRandomQuestion() {
+    setQuestion(await fetchQuestion());
   }
 
   useEffect(() => {
-    fetchRandomQuestion();
+    loadRandomQuestion();
   }, []);
 
   const navigateFn = useNavigate();
@@ -107,7 +106,7 @@ function Quiz() {
   }
 
   async function handleAskAnother() {
-    await fetchRandomQuestion();
+    await loadRandomQuestion();
     navigateFn("/question");
   }
 
@@ -131,6 +130,12 @@ function Quiz() {
 }
 
 export function QuizApplication() {
+  async function fetchQuestion() {
+    const res = await fetch("/api/questions/random");
+    return await res.json();
+  }
+
+
   return (
     <HashRouter>
       <header>
@@ -141,7 +146,7 @@ export function QuizApplication() {
         <Link to={"/score"}>See my score</Link>
       </nav>
       <main>
-        <Quiz />
+        <Quiz fetchQuestion={fetchQuestion} />
       </main>
       <footer>
         Created by Johannes Brodwall @ Kristiania University College

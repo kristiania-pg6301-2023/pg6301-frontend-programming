@@ -1,6 +1,6 @@
-import renderer, {act} from "react-test-renderer";
-
-import { Question } from "../quizApplication";
+import renderer, { act } from "react-test-renderer";
+import { MemoryRouter } from "react-router-dom";
+import { Quiz } from "../quizApplication";
 
 const sampleQuestion = {
   id: 1,
@@ -18,7 +18,9 @@ describe("quiz application", () => {
     let component;
     await act(async () => {
       component = renderer.create(
-        <Question question={sampleQuestion} onClickAnswer={jest.fn} />
+        <MemoryRouter initialEntries={["/question"]}>
+          <Quiz fetchQuestion={() => sampleQuestion} />
+        </MemoryRouter>
       );
     });
     expect(component).toMatchSnapshot();
