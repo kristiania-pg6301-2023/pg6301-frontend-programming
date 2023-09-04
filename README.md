@@ -3,9 +3,21 @@
 In this exercise, you should take your previous code and add code quality tools to it. We will add the following:
 
 - Prettier: Formatting your code in a consistent way
+  - Install with `npm install --save-dev prettier` and run with `prettier --check .` and `prettier --write .`
 - Jest: Running automated tests
+  - For server, install with `npm install --save-dev jest babel-jest @babel/preset-env supertest` and add
+    `"@babel/preset-env"` to a new `babel.presets` section in `package.json`
+  - For client, install with `npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer`
+    and add `"@babel/preset-env"` and `"@babel/preset-react"` to a new `babel.presets` section in `package.json`
 - Typescript: Static type verification of your code
+  - Install with `npm install --save-dev typescript` and `npx tsc --init`
+  - Add @types/... dependencies
+  - Install ts-jest with `npm install --save-dev ts-jest` and `npx ts-jest config:init`
 - Eslint: Check for common coding errors
+  - Install with `npm install --save-dev eslint` and `npm init @eslint/config`
+  - Make sure to add generated files and `jest.config.js` to `ignorePatterns` in `.eslintrc.js`
+
+Detailed instructions follow
 
 ## Be prepared:
 
