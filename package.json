@@ -6,10 +6,13 @@
     "dev": "concurrently npm:dev:client npm:dev:server",
     "dev:client": "cd client && npm run dev",
     "dev:server": "cd server && npm run dev",
-    "build": "npm run build:client && npm run build:server",
-    "build:client": "cd client && npm install --include=dev && npm run build",
+    "build": "npm run build:client",
+    "build:client": "cd client && npm run build",
     "build:server": "cd server && npm install",
-    "start": "cd server && npm start"
+    "start": "cd server && npm start",
+    "postinstall": "npm run install:client && npm run install:server",
+    "install:client": "cd client && npm install --include=dev",
+    "install:server": "cd server && npm install --include=dev"
   },
   "keywords": [],
   "author": "",

@@ -25,6 +25,7 @@ client and server together with the root project:
 * `npm run build` only has to run build in the client directory
   * `npm pkg set scripts.build="npm run build:client"`
   * `npm pkg set scripts.build:client="cd client && npm run build"`
+* Make sure that `npm install` and `npm run build` works
 
 ## Prettier
 
