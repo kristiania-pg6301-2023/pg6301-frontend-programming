@@ -51,8 +51,8 @@ application with Parcel and React Router
 
 * [Commit log from lecture (only available after lecture)](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/01)
 * [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/reference/01)
-* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/exercise/start/01/README.md)
-* [Exercise answer](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/exercise/answer/01)
+* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/exercise/01/start/README.md)
+* [Exercise answer](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/exercise/01/solution)
 
 #### Material from 2022
 
@@ -68,10 +68,12 @@ We will review the React topics from the last lecture: Creating a React app,
 creating functional components and using props, state and effects. We will
 also explore React Router more in depth
 
+See [Creating the frontend project](#creating-the-frontend-project) for a summary of the steps to set up the application
+
 * [Commit log from lecture (only available after lecture)](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/02)
 * [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/reference/02)
-* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/exercise/start/02/README.md)
-* [Exercise solution](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/exercise/solution/02)
+* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/exercise/02/start/README.md)
+* [Exercise solution](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/exercise/02/solution)
 
 #### Useful video
 
@@ -83,6 +85,8 @@ also explore React Router more in depth
 ### Lecture 3: Implementing a React backend on Express
 
 We will create an Express server which serves a React application that uses an API implemented in Express to implement functionality.
+See [Convert to serve from Express](#converting-react-to-serve-from-express) on the steps to take the code from the previous lecture
+to be served from Express.
 
 We will look at routing in Express and user interaction and error handling in React.
 
@@ -107,14 +111,24 @@ We will look at routing in Express and user interaction and error handling in Re
 
 <details>
 
-In this lecture, we will upload a simple web application to a cloud service and look at automatic deploys
+In this lecture, we will upload a simple web application to a cloud service and look at automatic deploys.
+See [the steps to deploy to Heroku](#deploy-to-heroku)
+
+If we have time, we will take a look at the details of `<BrowserRouter>`.
+
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/04)
+* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/04)
+* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/blob/exercise/04/start/README.md)
+* [Exercise solution](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/exercise/04/solution)
+
+* [Heroku's documentation on using Node.js](https://www.heroku.com/nodejs)
+* [Heroku free credits for students](https://www.heroku.com/github-students)
 
 #### Material from 2022
 
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/05)
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/05)
 * [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/05)
-* [Heroku's documentation on using Node.js](https://www.heroku.com/nodejs)
 
 </details>
 
@@ -122,7 +136,15 @@ In this lecture, we will upload a simple web application to a cloud service and 
 
 <details>
 
-In this lecture, we will look at ways to make sure our code is good, from formatting, to linting, to testing. We will look at the tools prettier, jest, and eslint and using GitHub to run our quality checks automatically.
+In this lecture, we will look at ways to make sure our code is good, from formatting, to linting, to testing.
+We will look at the tools prettier, jest, and eslint and using GitHub to run our quality checks automatically.
+
+Installing Jest can be tricky and is [described in the course notes](#testing)
+
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/05)
+* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/05)
+* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/blob/exercise/05/start/README.md)
+* [Exercise solution](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/exercise/05/solution)
 
 #### Material from 2022
 
@@ -133,19 +155,7 @@ In this lecture, we will look at ways to make sure our code is good, from format
 </details>
 
 
-### Lecture 6: Robust interaction between the client and the server
-
-<details>
-
-(May be merged with lecture 3 this year)
-
-* [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/06)
-* [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/06)
-* [Exercise answer 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/06)
-
-</details>
-
-### Lecture 7: Storing data MongoDB
+### Lecture 6: Storing data MongoDB
 
 <details>
 
@@ -163,7 +173,7 @@ In this lecture, we will look at ways to make sure our code is good, from format
 
 </details>
 
-### Lecture 8: Who's your user? OpenID Connect
+### Lecture 7: Who's your user? OpenID Connect
 
 <details>
 
@@ -180,6 +190,18 @@ services that also implement OpenID Connect, such as ID-porten and Active Direct
 * [Johannes' talk on OpenID Connect from NDC 2021](https://www.youtube.com/watch?v=CX8UfflxVMI)
 * [Google Developer Console](https://console.cloud.google.com/apis/credentials)
 * [Google Authentication documentation](https://developers.google.com/identity/protocols/oauth2#clientside)
+
+</details>
+
+### Lecture 8: Robust interaction between the client and the server
+
+<details>
+
+(May be merged with lecture 3 this year)
+
+* [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/06)
+* [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/06)
+* [Exercise answer 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/06)
 
 </details>
 
@@ -277,7 +299,7 @@ After all the steps, you will have a resulting structure that looks something li
 ```
 
 
-### Creating the frontend project (ready for backend)
+### Creating the frontend project
 
 1. Create a new directory. In IntelliJ, you can use File > New > Project. I recommend creating an Empty project
 2. When creating a project, make sure you add `node_modules`, `.parcel-cache` and `dist` to `.gitignore`
@@ -356,7 +378,7 @@ import express from "express";
 
 const app = express();
 app.use(express.static("../client/dist"))
-app.listen(process.env.PORT || 3000);
+app.listen(3000);
 ```
 
 When you can get this to work, you will need to master the following:
@@ -378,6 +400,56 @@ You can set up the top level directory above `client` and `server` to run both c
     3. `npm pkg set scripts.dev="concurrently npm:dev:client npm:dev:server"`
     4. `npm pkg set scripts.dev:client="cd client && npm run dev"`
     5. `npm pkg set scripts.dev:server="cd server && npm run dev"`
+
+
+### Deploy to Heroku
+
+<details>
+
+Heroku is a cloud based Platform-as-a-Service (PaaS) that is extremely easy to use to host Node applications, like our
+Express server. They require paying for deployments, but with [GitHub Student Developer Pack](https://education.github.com/pack)
+you [get credits to use Heroku for free](https://www.heroku.com/github-students)
+
+
+1. In the root project make sure `npm install` is run at `postinstall`
+   * `npm pkg set scripts.postinstall="npm run install:client && npm run install:server"`
+   * `npm pkg set scripts.install:client="cd client && npm install --include=dev"`
+   * `npm pkg set scripts.install:server="cd server && npm install --include=dev"`
+2. In the root project, define `npm run build` and `npm start`
+   * `npm pkg set scripts.build="npm run build:client"`
+   * `npm pkg set scripts.build:client="cd client && npm run build"`
+   * `npm pkg set scripts.start "cd server && npm start"`
+3. In the client project, define `npm run build`
+   * `cd client`
+   * `npm pkg set scripts.build="parcel build index.html"`
+   * `cd ..`
+4. In the server project, define `npm start`
+   * `cd server`
+   * `npm pkg set scripts.start="node server.js"`
+   * `cd ..`
+5. In the server project, update `server.js` to let Heroku inject the server port as an environment variable:
+   ```js
+   app.listen(process.env.PORT || 3000);
+   ```
+6. Create an application and deploy to heroku 
+   1. Sign up at the [Heroku Dashboard](https://dashboard.heroku.com/apps/)
+   2. [Create a new Heroku app](https://dashboard.heroku.com/new-app)
+   3. Under Deployment for your new app, select GitHub as the deployment method and select your repository
+   4. Select the branch you wish to deploy
+   5. Under Manual Deploy, select your branch and press Deploy for the first time deployment
+   6. Watch the build log to see errors and try to correct them
+   7. Press "Open app" to see your app running
+   8. Enable Automatic deploys to make sure every change get deployed
+7. You can see the deployment log under Activity in the Heroku Dashboard for your app
+
+Common problems:
+
+* "sh: 1: parcel: not found": This means that you ran `npm install` instead of `npm install --include=dev` on the `client` project
+* Strange error message during `npm run build`: It's possible that parcel or some library that parcel uses had a short-lived bug. Search the web for the error message
+  and see if you should `override` some dependency. Alternatively, use an older version of `parcel`
+
+
+</details>
 
 
 ### Crucial tasks
@@ -466,28 +538,6 @@ export function useLoading(loadingFunction, deps = []) {
 ```
 </details>
 
-### Deploy to Heroku
-
-<details>
-
-1. In the root project, define `npm run build` and `npm start`
-    * `npm pkg set scripts.build="npm run build:client && npm run build:server"`
-    * `npm pkg set scripts.build:client="cd client && npm run build"`
-    * `npm pkg set scripts.build:server="cd server && npm run build"`
-    * `npm pkg set scripts.start "cd server && npm start"`
-2. In the client project, define `npm run build`
-    * `cd client && npm pkg set scripts.build="npm install --include=dev && npm run build:parcel" && npm pkg set scripts.build:parcel="parcel build index.html"`
-    * `cd ..`
-3. In the server project, define `npm run build` and `npm start`
-    * `cd server && npm pkg set scripts.build="npm install" && npm pkg set scripts.start="node server.js"`
-    * `cd ..`
-4. Create an application and deploy to heroku (requires [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli))
-    1. `heroku login`
-    2. `heroku create -a <app name>`
-    3. `heroku git:remote -a <app name>`
-    4. `git push heroku`
-
-</details>
 
 
 ### Testing
@@ -499,14 +549,19 @@ Installing Jest is described on [the Jest homepage](https://jestjs.io/docs/tutor
 <details>
 
 1. `npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer`
-2. Create a file named `babel.config.js` to support JSX-syntax
-   ```javascript
-   module.exports = {
-      presets: [
-         "@babel/preset-env",
-         ["@babel/preset-react", { runtime: "automatic" }],
-      ],
-   };
+2. Add the following to `client/package.json` to support JSX-files
+   ```
+   "babel": {
+     "presets": [
+       "@babel/preset-env",
+       [
+         "@babel/preset-react",
+         {
+           "runtime": "automatic"
+         }
+       ]
+     ]
+   }
    ```
 3. `npm pkg set scripts.test=jest` (also, consider `npm pkg set scripts.test:watch="jest --watchAll"`)
 4. `npm test`
@@ -517,12 +572,12 @@ you can fix this problem.
 
 </details>
 
-### A trivial test (failing)
+#### A trivial test (failing)
 
 <details>
 
 ```javascript
-import renderer from "react-test-renderer";
+import renderer, {act} from "react-test-renderer";
 
 describe("quiz application", () => {
   it("knows the answer to the question... (failing)", () => {
@@ -542,29 +597,20 @@ describe("quiz application", () => {
 <details>
 
 ```javascript
-  it("loads book", async () => {
-    // Fake data instead of calling the real backend
-    const getBook = () => ({
-        title: "My Book",
-        author: "Firstname Lastname",
-        year: 1999,
+  it("matches snapshot", async () => {
+    let component;
+    await act(async () => {
+      component = renderer.create(
+              <MemoryRouter initialEntries={["/"]}>
+                 <MoviesRoutes fetchMovies={() => movies} />,
+              </MemoryRouter>,
+      );
     });
-    const component = renderer.create(
-         <!-- construct an object with the necessary wrapping - in our case, routing -->
-         <MemoryRouter initialEntries={["/books/12/edit"]}>
-            <Route path={"/books/:id/edit"}>
-               <!-- use shorthand properties to construct an api object with
-                 getBook property with the getBook function
-                 -->
-               <EditBookPage bookApi={{getBook}}/>
-            </Route>
-         </MemoryRouter>
-    );
-    // Snapshot tests fail if the page is changed in any way - intentionally or non-intentionally
-    expect(container).toMatchSnapshot();
-    // findBy... can be used to find dom elements in order to make assertions
-    expect(container.findByType("h1").children).toEqual([ "Edit book: My Book" ]);
-});
+    expect(component).toMatchSnapshot();
+    expect(
+           component.root.findAllByType("h3").map((c) => c.children.join(" ")),
+    ).toEqual(["Barbie", "Oppenheimer"]);
+  });
 ```
 </details>
 
@@ -588,13 +634,41 @@ describe("quiz application", () => {
 
 <details>
 
+***Setup***:
+
+1. `npm install --save-dev jest babel-jest @babel/preset-env supertest`
+2. Add the following to `server/package.json`
+   ```
+   "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+   }
+   ```
+
+
+To test a bookApi defined in `server/booksApi.js` like this:
+
 ```javascript
-const request = require("supertest");
-const express = require("express");
+import express from "express";
+
+export const booksApi = new express.Router();
+booksApi.get(":id", (req, res) => {
+    // ...
+});
+```
+
+you can use a test in `server/__tests__/booksApi.test.js` like this:
+
+```javascript
+import request from "supertest";
+import express from "express";
+import bodyParser from "body-parser";
+import { booksApi } from "../booksApi";
 
 const app = express();
-app.use(require("body-parser").json());
-app.use(require("../src/server/booksApi"));
+app.use(bodyParser.json());
+app.use(booksApi);
 
 describe("...", () => {
 
@@ -617,6 +691,7 @@ describe("...", () => {
 
 });
 ```
+
 </details>
 
 ## WebSockets
