@@ -76,7 +76,7 @@ function ShowScore() {
   );
 }
 
-export function Quiz({fetchQuestion}) {
+export function Quiz({fetchQuestion, postAnswer}) {
   const [question, setQuestion] = useState();
 
   async function loadRandomQuestion() {
@@ -90,14 +90,7 @@ export function Quiz({fetchQuestion}) {
   const navigateFn = useNavigate();
 
   async function handleClickAnswer(id, answer) {
-    const res = await fetch("/api/questions/answer", {
-      method: "POST",
-      body: JSON.stringify({ id, answer }),
-      headers: {
-        "content-type": "application/json",
-      },
-    });
-    const response = await res.json();
+    const response = await postAnswer(id, answer);
     if (response.correct) {
       navigateFn("/answer/correct");
     } else {
@@ -135,6 +128,17 @@ export function QuizApplication() {
     return await res.json();
   }
 
+  async function postAnswer(id, answer) {
+    const res = await fetch("/api/questions/answer", {
+      method: "POST",
+      body: JSON.stringify({ id, answer }),
+      headers: {
+        "content-type": "application/json"
+      }
+    });
+    return await res.json();
+  }
+
 
   return (
     <HashRouter>
@@ -146,7 +150,7 @@ export function QuizApplication() {
         <Link to={"/score"}>See my score</Link>
       </nav>
       <main>
-        <Quiz fetchQuestion={fetchQuestion} />
+        <Quiz fetchQuestion={fetchQuestion} postAnswer={postAnswer} />
       </main>
       <footer>
         Created by Johannes Brodwall @ Kristiania University College

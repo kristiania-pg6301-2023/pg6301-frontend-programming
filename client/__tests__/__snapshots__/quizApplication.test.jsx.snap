@@ -31,3 +31,18 @@ exports[`quiz application shows a question 1`] = `
   </div>,
 ]
 `;
+
+exports[`quiz application submits answer 1`] = `
+[
+  <h2>
+    That's wrong!
+  </h2>,
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      Ask me another question
+    </button>
+  </div>,
+]
+`;
