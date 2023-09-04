@@ -13,7 +13,7 @@
     "postinstall": "npm run install:client && npm run install:server",
     "install:client": "cd client && npm install --include=dev",
     "install:server": "cd server && npm install --include=dev",
-    "check": "npm run check:prettier && npm run typescript && npm test",
+    "check": "npm run check:prettier && npm run typescript && npm run lint && npm test",
     "check:prettier": "prettier --check .",
     "prettier": "prettier --write .",
     "test": "npm run test:client && npm run test:server",
@@ -21,7 +21,10 @@
     "test:server": "cd server && npm test",
     "typescript": "npm run typescript:client && npm run typescript:server",
     "typescript:client": "cd client && npm run typescript",
-    "typescript:server": "cd server && npm run typescript"
+    "typescript:server": "cd server && npm run typescript",
+    "lint": "npm run lint:client && npm run lint:server",
+    "lint:client": "cd client && npm run lint",
+    "lint:server": "cd server && npm run lint"
   },
   "keywords": [],
   "author": "",
