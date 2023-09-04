@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`quiz application shows a question 1`] = `
+[
+  <h2>
+    Can you answer this?
+  </h2>,
+  <p>
+    What's up
+  </p>,
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      Nothing
+    </button>
+  </div>,
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      Nothing much
+    </button>
+  </div>,
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      'sup!
+    </button>
+  </div>,
+]
+`;
