@@ -66,6 +66,7 @@ function TaskApplication() {
         <AddTaskButton reload={loadTasks}/>
         {tasks && tasks.map(t => <div>
             <h3>{t.title} ({t.status})</h3>
+            <button>Start task</button>
         </div>)}
         {!tasks && <div>Loading...</div>}
     </>;
