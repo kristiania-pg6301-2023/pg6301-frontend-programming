@@ -5,8 +5,8 @@ const app = express();
 app.get("/api/todos", (req, res) => {
     res.send([
         {
-            title: "implement server",
-            status: "doing"
+            title: "implement first version of server",
+            status: "done"
         },
         {
             title: "first version of client",
