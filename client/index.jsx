@@ -49,6 +49,24 @@ function AddTaskButton({reload}) {
     </>;
 }
 
+function TaskListEntry({task, reload}) {
+    async function handleStartTask() {
+        await fetch(`/api/todos/${task.id}`, {
+            method: "PUT",
+            body: JSON.stringify({status: "doing"}),
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+        reload();
+    }
+
+    return <div>
+        <h3>{task.title} ({task.status}): ID: {task.id}</h3>
+        {task.status === "todo" && <button onClick={handleStartTask}>Start task</button>}
+    </div>;
+}
+
 function TaskApplication() {
     const [tasks, setTasks] = useState();
     useEffect(() => {
@@ -64,10 +82,7 @@ function TaskApplication() {
     return <>
         <h1>The task application</h1>
         <AddTaskButton reload={loadTasks}/>
-        {tasks && tasks.map(t => <div>
-            <h3>{t.title} ({t.status})</h3>
-            <button>Start task</button>
-        </div>)}
+        {tasks && tasks.map(t => <TaskListEntry task={t} />)}
         {!tasks && <div>Loading...</div>}
     </>;
 }
