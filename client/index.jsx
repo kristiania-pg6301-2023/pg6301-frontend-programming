@@ -61,9 +61,21 @@ function TaskListEntry({task, reload}) {
         reload();
     }
 
+    async function handleFinishTask() {
+        await fetch(`/api/todos/${task.id}`, {
+            method: "PUT",
+            body: JSON.stringify({status: "done"}),
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+        reload();
+    }
+
     return <div>
         <h3>{task.title} ({task.status}): ID: {task.id}</h3>
         {task.status === "todo" && <button onClick={handleStartTask}>Start task</button>}
+        {task.status === "doing" && <button onClick={handleFinishTask}>Finish task</button>}
     </div>;
 }
 
@@ -82,7 +94,7 @@ function TaskApplication() {
     return <>
         <h1>The task application</h1>
         <AddTaskButton reload={loadTasks}/>
-        {tasks && tasks.map(t => <TaskListEntry task={t} />)}
+        {tasks && tasks.map(t => <TaskListEntry task={t} reload={loadTasks} />)}
         {!tasks && <div>Loading...</div>}
     </>;
 }
