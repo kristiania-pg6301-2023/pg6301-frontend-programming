@@ -1,7 +1,28 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import ReactDOM from "react-dom/client";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+function AddTaskButton() {
+    const dialogRef = useRef();
+    function handleClick() {
+        dialogRef.current.showModal();
+    }
+
+    function handleCancel() {
+        dialogRef.current.close();
+    }
+
+    return <>
+        <dialog ref={dialogRef}>
+            <h2>Add a new task</h2>
+            <div>
+                <button onClick={handleCancel}>Cancel</button>
+            </div>
+        </dialog>
+        <button onClick={handleClick}>Add new task</button>
+    </>;
+}
 
 function TaskApplication() {
     const [tasks, setTasks] = useState();
@@ -17,12 +38,12 @@ function TaskApplication() {
 
     return <>
         <h1>The task application</h1>
-        <button>Add new task</button>
+        <AddTaskButton/>
         {tasks && tasks.map(t => <div>
             <h3>{t.title} ({t.status})</h3>
         </div>)}
         {!tasks && <div>Loading...</div>}
-        </>;
+    </>;
 }
 
-root.render(<TaskApplication />)
+root.render(<TaskApplication/>)
