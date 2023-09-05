@@ -33,6 +33,12 @@ app.post("/api/todos", (req, res) => {
     res.send();
 });
 
+app.put("/api/todos/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    tasks.find(t => t.id === id).status = req.body.status;
+    res.send();
+})
+
 app.use(express.static("../client/dist"));
 
 
