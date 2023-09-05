@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-function AddTaskButton() {
+function AddTaskButton({reload}) {
     const dialogRef = useRef();
     const [taskTitle, setTaskTitle] = useState("");
 
@@ -23,6 +23,7 @@ function AddTaskButton() {
                 "content-type": "application/json"
             }
         })
+        reload();
     }
 
     return <>
@@ -62,7 +63,7 @@ function TaskApplication() {
 
     return <>
         <h1>The task application</h1>
-        <AddTaskButton/>
+        <AddTaskButton reload={loadTasks}/>
         {tasks && tasks.map(t => <div>
             <h3>{t.title} ({t.status})</h3>
         </div>)}
