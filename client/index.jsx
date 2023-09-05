@@ -16,7 +16,7 @@ function TaskApplication() {
 
 
     return <>
-        <h1>Here are the tasks</h1>
+        <h1>The task application</h1>
         <button>Add new task</button>
         {tasks && tasks.map(t => <div>
             <h3>{t.title} ({t.status})</h3>

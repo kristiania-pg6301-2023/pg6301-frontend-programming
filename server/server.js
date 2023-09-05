@@ -11,6 +11,10 @@ app.get("/api/todos", (req, res) => {
         {
             title: "first version of client",
             status: "done"
+        },
+        {
+            title: "Better dev ex with client and server",
+            status: "doing"
         }
     ]);
 });
