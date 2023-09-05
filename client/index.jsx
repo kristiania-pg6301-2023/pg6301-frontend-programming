@@ -5,6 +5,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function AddTaskButton() {
     const dialogRef = useRef();
+    const [taskTitle, setTaskTitle] = useState("");
+
     function handleClick() {
         dialogRef.current.showModal();
     }
@@ -13,12 +15,31 @@ function AddTaskButton() {
         dialogRef.current.close();
     }
 
+    async function handleSubmit() {
+        await fetch("/api/todos", {
+            method: "POST",
+            body: JSON.stringify({title: taskTitle})
+        })
+    }
+
     return <>
         <dialog ref={dialogRef}>
-            <h2>Add a new task</h2>
-            <div>
-                <button onClick={handleCancel}>Cancel</button>
-            </div>
+            <form method={"dialog"}>
+                <h2>Add a new task</h2>
+                <div>
+                    Task title:<br />
+                    <input
+                        value={taskTitle}
+                        onChange={e => setTaskTitle(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <button onClick={handleSubmit}>Submit</button>
+                </div>
+                <div>
+                    <button onClick={handleCancel}>Cancel</button>
+                </div>
+            </form>
         </dialog>
         <button onClick={handleClick}>Add new task</button>
     </>;
