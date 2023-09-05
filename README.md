@@ -367,6 +367,7 @@ function Application() {
    "watch" for changes and output the contents of the `dist` directory
    * `cd ../client`
    * `npm pkg set scripts.dev="parcel watch index.html"`
+   * The `package.json` file generated with `npm init` will contain the line `"main": "index.js"`, which parcel doesn't like. You should delete this line
 
 #### Create a minimal `server.js`
 
