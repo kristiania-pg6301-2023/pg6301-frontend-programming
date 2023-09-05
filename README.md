@@ -3,6 +3,7 @@
 * Implement the frontend in React
   * set up project with Parcel
   * create index.html and index.jsx with initial application
+  * list tasks
   * create dialog for adding tasks
 * Implement APIs in Express
   * set up project with npm and express
