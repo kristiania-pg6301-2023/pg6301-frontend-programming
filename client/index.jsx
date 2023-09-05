@@ -6,18 +6,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 function TaskApplication() {
     const [tasks, setTasks] = useState();
     useEffect(() => {
-        setTasks([
-            {
-                title: "Prepare lecture",
-                status: "done"
-            },
-            {
-                title: "Give lecture",
-                status: "doing"
-            }
-        ])
+        loadTasks();
     }, []);
 
+    async function loadTasks() {
+        const res = await fetch("http://localhost:3000/api/todos")
+        setTasks(await res.json());
+    }
 
 
     return <>
