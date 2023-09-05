@@ -18,7 +18,10 @@ function AddTaskButton() {
     async function handleSubmit() {
         await fetch("/api/todos", {
             method: "POST",
-            body: JSON.stringify({title: taskTitle})
+            body: JSON.stringify({title: taskTitle}),
+            headers: {
+                "content-type": "application/json"
+            }
         })
     }
 
