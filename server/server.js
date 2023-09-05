@@ -33,6 +33,7 @@ app.post("/api/todos", (req, res) => {
     console.log("body", req.body);
     const newTask = {title, status: "todo"};
     tasks.push(newTask);
+    res.send();
 });
 
 app.use(express.static("../client/dist"));
