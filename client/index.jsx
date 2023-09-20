@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-function TaskListEntry({task}) {
+function TaskListEntry({task, onRefresh}) {
     const [title, setTitle] = useState(task.title);
     async function handleUpdate() {
         await fetch(`/api/tasks/${task.id}`, {
@@ -13,10 +13,11 @@ function TaskListEntry({task}) {
                 "content-type": "application/json"
             }
         });
-
+        onRefresh();
     }
 
     return <p>
+        <h3>{task.title}</h3>
         <input value={title} onChange={e => setTitle(e.target.value)} />
         <br/>
         <button onClick={handleUpdate}>Update</button>
@@ -38,7 +39,7 @@ function TaskApplication() {
 
     return <>
         <h1>Kristiania React Task Application on Heroku</h1>
-        {tasks.map(t => <TaskListEntry task={t} />)}
+        {tasks.map(t => <TaskListEntry task={t} onRefresh={loadTasks} />)}
     </>;
 }
 
