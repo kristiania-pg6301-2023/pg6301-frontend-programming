@@ -84,6 +84,8 @@ See [Creating the frontend project](#creating-the-frontend-project) for a summar
 
 ### Lecture 3: Implementing a React backend on Express
 
+<details>
+
 We will create an Express server which serves a React application that uses an API implemented in Express to implement functionality.
 See [Convert to serve from Express](#converting-react-to-serve-from-express) on the steps to take the code from the previous lecture
 to be served from Express.
@@ -107,9 +109,10 @@ We will look at routing in Express and user interaction and error handling in Re
 * [Fireship.io intro til Express](https://youtu.be/-MTSQjw5DrM)
 * [Fireship: every React hook](https://youtu.be/TNhaISOUy6Q)
 
+</details>
+
 ### Lecture 4: Publishing your application on Heroku
 
-<details>
 
 In this lecture, we will upload a simple web application to a cloud service and look at automatic deploys.
 See [the steps to deploy to Heroku](#deploy-to-heroku)
@@ -130,7 +133,6 @@ If we have time, we will take a look at the details of `<BrowserRouter>`.
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/05)
 * [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/05)
 
-</details>
 
 ### Lecture 5: Quality code
 
