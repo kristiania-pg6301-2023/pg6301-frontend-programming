@@ -8,7 +8,7 @@ function TaskListEntry({task}) {
         await fetch("/api/tasks", {
             method: "PUT",
             body: JSON.stringify({
-                title: "new title"
+                title: "new title from client"
             }),
             headers: {
                 "content-type": "application/json"

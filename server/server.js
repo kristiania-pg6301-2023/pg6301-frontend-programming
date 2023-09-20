@@ -1,6 +1,8 @@
 import express from "express";
+import bodyParser from "body-parser";
 
 const app = express();
+app.use(bodyParser.json());
 
 const TASKS = [
     {
@@ -21,8 +23,10 @@ app.get("/api/tasks", (req, res) => {
     res.json(TASKS)
 })
 app.put("/api/tasks", (req, res) => {
+    const {title} = req.body;
+
     for (const task of TASKS) {
-        task.title = "Updated";
+        task.title = title;
     }
     res.end();
 })
