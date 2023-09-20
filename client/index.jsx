@@ -4,12 +4,11 @@ import ReactDOM from "react-dom/client";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function TaskListEntry({task}) {
+    const [title, setTitle] = useState(task.title);
     async function handleUpdate() {
         await fetch("/api/tasks", {
             method: "PUT",
-            body: JSON.stringify({
-                title: "new title from client"
-            }),
+            body: JSON.stringify({ title }),
             headers: {
                 "content-type": "application/json"
             }
@@ -18,7 +17,7 @@ function TaskListEntry({task}) {
     }
 
     return <p>
-        <input value={task.title} />
+        <input value={title} onChange={e => setTitle(e.target.value)} />
         <br/>
         <button onClick={handleUpdate}>Update</button>
     </p>;
