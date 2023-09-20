@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "parcel watch index.html"
+    "dev": "parcel watch index.html",
+    "build": "parcel build index.html"
   },
   "keywords": [],
   "author": "",
