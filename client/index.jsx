@@ -6,7 +6,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 function TaskListEntry({task}) {
     const [title, setTitle] = useState(task.title);
     async function handleUpdate() {
-        await fetch("/api/tasks", {
+        await fetch(`/api/tasks/${task.id}`, {
             method: "PUT",
             body: JSON.stringify({ title }),
             headers: {
