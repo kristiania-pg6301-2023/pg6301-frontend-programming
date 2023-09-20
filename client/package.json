@@ -2,9 +2,8 @@
   "name": "client",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "dev": "parcel serve index.html"
+    "dev": "parcel watch index.html"
   },
   "keywords": [],
   "author": "",
