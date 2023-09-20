@@ -19,5 +19,7 @@ app.get("/api/tasks", (req, res) => {
     ])
 })
 
+app.use(express.static("../client/dist"));
+
 
 app.listen(3000);
