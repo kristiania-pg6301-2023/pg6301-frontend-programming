@@ -15,7 +15,26 @@ export function ListMovies({
   return (
     <>
       <h2>All movies</h2>
-      <pre>{JSON.stringify(parameters, null, "  ")}</pre>
+      <div className={"query-filter"}>
+        <div>
+          <label>
+            Country: <br />
+            <select>
+              <option></option>
+              {parameters?.countries?.map((c) => <option>{c}</option>)}
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>
+            Year: <br />
+            <select>
+              <option></option>
+              {parameters?.years?.map((y) => <option>{y}</option>)}
+            </select>
+          </label>
+        </div>
+      </div>
       {movies.map((m) => (
         <div key={m.title}>
           <h3>{m.title}</h3>
@@ -27,9 +46,11 @@ export function ListMovies({
 
 function AddMovie({ onCreate }: { onCreate(movie: Movie): void }) {
   const [title, setTitle] = useState("");
+
   async function handleSubmit() {
     await onCreate({ title });
   }
+
   return (
     <form method="dialog" onSubmit={handleSubmit}>
       <h2>Movies</h2>
@@ -46,7 +67,9 @@ function AddMovie({ onCreate }: { onCreate(movie: Movie): void }) {
 
 export interface MoviesRoutesProps {
   fetchMovies(): Promise<Movie[]>;
+
   fetchParameters(): Promise<any>;
+
   insertMovie(movie: Movie): Promise<void>;
 }
 

@@ -57,3 +57,12 @@ main {
   border-radius: 1em;
   overflow-y: auto;
 }
+
+.query-filter {
+  display: flex;
+  gap: 1em;
+}
+
+.query-filter label {
+  font-weight: bold;
+}
