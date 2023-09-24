@@ -5,6 +5,7 @@ interface Movie {
   _id: string;
   title: string;
   plot: string;
+  year: number;
 }
 
 interface MovieParameters {
@@ -74,10 +75,11 @@ export function ListMovies({
 
 function AddMovie({ onCreate }: { onCreate(movie: Omit<Movie, "_id">): void }) {
   const [title, setTitle] = useState("");
+  const [year, setYear] = useState("");
   const [plot, setPlot] = useState("");
 
   async function handleSubmit() {
-    await onCreate({ title, plot });
+    await onCreate({ title, plot, year: parseInt(year) });
   }
 
   return (
@@ -86,6 +88,10 @@ function AddMovie({ onCreate }: { onCreate(movie: Omit<Movie, "_id">): void }) {
       <div>
         Title: <br />
         <input value={title} onChange={(e) => setTitle(e.target.value)} />
+      </div>
+      <div>
+        Year: <br />
+        <input value={year} onChange={(e) => setYear(e.target.value)} />
       </div>
       <div>
         Plot: <br />
