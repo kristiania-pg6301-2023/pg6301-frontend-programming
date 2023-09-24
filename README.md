@@ -81,13 +81,14 @@ See [Creating the frontend project](#creating-the-frontend-project) for a summar
 
 </details>
 
-
 ### Lecture 3: Implementing a React backend on Express
 
 <details>
 
-We will create an Express server which serves a React application that uses an API implemented in Express to implement functionality.
-See [Convert to serve from Express](#converting-react-to-serve-from-express) on the steps to take the code from the previous lecture
+We will create an Express server which serves a React application that uses an API implemented in Express to implement
+functionality.
+See [Convert to serve from Express](#converting-react-to-serve-from-express) on the steps to take the code from the
+previous lecture
 to be served from Express.
 
 We will look at routing in Express and user interaction and error handling in React.
@@ -113,6 +114,7 @@ We will look at routing in Express and user interaction and error handling in Re
 
 ### Lecture 4: Publishing your application on Heroku
 
+<details>
 
 In this lecture, we will upload a simple web application to a cloud service and look at automatic deploys.
 See [the steps to deploy to Heroku](#deploy-to-heroku)
@@ -133,13 +135,40 @@ If we have time, we will take a look at the details of `<BrowserRouter>`.
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/05)
 * [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/05)
 
+</details>
 
 ### Lecture 5: Quality code
 
-<details>
-
 In this lecture, we will look at ways to make sure our code is good, from formatting, to linting, to testing.
-We will look at the tools prettier, jest, and eslint and using GitHub to run our quality checks automatically.
+We will look at the tools prettier, jest, eslint and Typescript. We will also be using GitHub to run our quality
+checks automatically.
+
+* Creating a `npm run check` task to check code
+    * `npm run check` in the root should run `check:prettier`, `check:client` and `check:server`
+* `check:prettier`:
+    * `npm install --save-dev prettier`
+    * `npm pkg set scripts.check:prettier="prettier check .""`
+* `check:client` and `check:server` should run `npm test`, `npm run check:typescript` and `npm run check:eslint` in
+  the `client` and `server` directories, respectively
+* `npm test` for client:
+    * `npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer`
+    * [Add a babel section to package.json to configure](https://jestjs.io/docs/tutorial-react) @babel/preset-env and
+      @babel/preset-react
+    * The easiest way to get some decent tests
+      is [Jest snapshot testing](https://jestjs.io/docs/tutorial-react#snapshot-testing)
+* `npm test` for server
+    * `npm install --save-dev jest babel-jest @babel/preset-env supertest`
+    * Add a babel section to package-json to configure `@babel/preset-env`
+    * The easiest way to test express is with [Supertest](https://github.com/ladjs/supertest#readme)
+* `npm check:typescript`
+    * `npm install typescript`
+    * `npx tsc --init`
+    * `npm pkg set scripts.check:typescript="tsc --noEmit"`
+    * `npm install --save-dev ts-jest`
+    * `npx ts-jest config:init`
+* `npm check:eslint`
+    * `npm install --save-dev eslint`
+    * `npm init @eslint/config`
 
 Installing Jest can be tricky and is [described in the course notes](#testing)
 
@@ -154,12 +183,15 @@ Installing Jest can be tricky and is [described in the course notes](#testing)
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/03)
 * [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/03)
 
-</details>
-
-
 ### Lecture 6: Storing data MongoDB
 
 <details>
+
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/06)
+* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/06)
+* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/blob/exercise/06/start/README.md)
+* For the exercise solution,
+  use [the lecture reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/06)
 
 #### Material from 2022
 
@@ -300,19 +332,18 @@ After all the steps, you will have a resulting structure that looks something li
   package.json       # Scripts to run both client and server in combination
 ```
 
-
 ### Creating the frontend project
 
 1. Create a new directory. In IntelliJ, you can use File > New > Project. I recommend creating an Empty project
 2. When creating a project, make sure you add `node_modules`, `.parcel-cache` and `dist` to `.gitignore`
 3. Create a subdirectory for the client (`mkdir client`)
 4. In the client directory, create the `package.json` file and add dependencies with the following commands
-   1. `cd client`
-   2. `npm init -y`
-   3. `npm install --save-dev parcel`
-   4. `npm install --save react react-dom react-router-dom`
+    1. `cd client`
+    2. `npm init -y`
+    3. `npm install --save-dev parcel`
+    4. `npm install --save react react-dom react-router-dom`
 5. Set up the "dev" command to run parcel
-   * `npm pkg set scripts.dev="parcel serve index.html"`
+    * `npm pkg set scripts.dev="parcel serve index.html"`
 6. You can now run `npm run dev`, although this will fail until you create an index.html-file (next step)
 
 ### Creating the initial React application files
@@ -339,37 +370,40 @@ You can now start working with React. Start by replacing `<h1>Hello React</h1>` 
 
 ```jsx
 // ... continued from above
-root.render(<Application />);
+root.render(<Application/>);
 
 function Application() {
     const [counter, setCounter] = useState(0);
     return <>
-       <h2>Welcome to my application</h2>
-       <div><button onClick={() => setCounter(oldValue => oldValue+1)}>Click me</button></div>
-       <div>You have clicked {counter} times</div>
+        <h2>Welcome to my application</h2>
+        <div>
+            <button onClick={() => setCounter(oldValue => oldValue + 1)}>Click me</button>
+        </div>
+        <div>You have clicked {counter} times</div>
     </>;
 }
  ```
 
-### Converting react to serve from express 
+### Converting react to serve from express
 
 1. Create a subdirectory on the top level (next to the `client` directory): `mkdir server`
 2. In the server directory, create the `package.json` file and add dependencies with the following commands:
-   1. `cd server`
-   2. `npm init -y`
-   3. `npm install --save-dev nodemon`
-   4. `npm install --save express body-parser`
+    1. `cd server`
+    2. `npm init -y`
+    3. `npm install --save-dev nodemon`
+    4. `npm install --save express body-parser`
 3. Set up the "dev" command to run express
-   * `npm pkg set scripts.dev="nodemon server.js"`
+    * `npm pkg set scripts.dev="nodemon server.js"`
 4. Set the property `type` to `module` in `package.json`
-   * `npm pkg set type="module"`
-5. You can now run `npm run dev` in the server directory, although this will fail until you create a server.js-file 
+    * `npm pkg set type="module"`
+5. You can now run `npm run dev` in the server directory, although this will fail until you create a server.js-file
    (next step)
 6. You should update the client project. Instead of `parcel` running the server ("parcel serve"), it should just
    "watch" for changes and output the contents of the `dist` directory
-   * `cd ../client`
-   * `npm pkg set scripts.dev="parcel watch index.html"`
-   * The `package.json` file generated with `npm init` will contain the line `"main": "index.js"`, which parcel doesn't like. You should delete this line
+    * `cd ../client`
+    * `npm pkg set scripts.dev="parcel watch index.html"`
+    * The `package.json` file generated with `npm init` will contain the line `"main": "index.js"`, which parcel doesn't
+      like. You should delete this line
 
 #### Create a minimal `server.js`
 
@@ -387,7 +421,7 @@ app.listen(3000);
 When you can get this to work, you will need to master the following:
 
 * Serve the frontend code from Express. In `server.js`:
-   * `app.use(express.static(path.resolve(__dir, "..", "..", "dist")));`
+    * `app.use(express.static(path.resolve(__dir, "..", "..", "dist")));`
 * Make Express respond to API calls
 * Make React call API calls on the backend (using `fetch`)
 
@@ -404,56 +438,55 @@ You can set up the top level directory above `client` and `server` to run both c
     4. `npm pkg set scripts.dev:client="cd client && npm run dev"`
     5. `npm pkg set scripts.dev:server="cd server && npm run dev"`
 
-
 ### Deploy to Heroku
 
 <details>
 
 Heroku is a cloud based Platform-as-a-Service (PaaS) that is extremely easy to use to host Node applications, like our
-Express server. They require paying for deployments, but with [GitHub Student Developer Pack](https://education.github.com/pack)
+Express server. They require paying for deployments, but
+with [GitHub Student Developer Pack](https://education.github.com/pack)
 you [get credits to use Heroku for free](https://www.heroku.com/github-students)
 
-
 1. In the root project make sure `npm install` is run at `postinstall`
-   * `npm pkg set scripts.postinstall="npm run install:client && npm run install:server"`
-   * `npm pkg set scripts.install:client="cd client && npm install --include=dev"`
-   * `npm pkg set scripts.install:server="cd server && npm install --include=dev"`
+    * `npm pkg set scripts.postinstall="npm run install:client && npm run install:server"`
+    * `npm pkg set scripts.install:client="cd client && npm install --include=dev"`
+    * `npm pkg set scripts.install:server="cd server && npm install --include=dev"`
 2. In the root project, define `npm run build` and `npm start`
-   * `npm pkg set scripts.build="npm run build:client"`
-   * `npm pkg set scripts.build:client="cd client && npm run build"`
-   * `npm pkg set scripts.start "cd server && npm start"`
+    * `npm pkg set scripts.build="npm run build:client"`
+    * `npm pkg set scripts.build:client="cd client && npm run build"`
+    * `npm pkg set scripts.start "cd server && npm start"`
 3. In the client project, define `npm run build`
-   * `cd client`
-   * `npm pkg set scripts.build="parcel build index.html"`
-   * `cd ..`
+    * `cd client`
+    * `npm pkg set scripts.build="parcel build index.html"`
+    * `cd ..`
 4. In the server project, define `npm start`
-   * `cd server`
-   * `npm pkg set scripts.start="node server.js"`
-   * `cd ..`
+    * `cd server`
+    * `npm pkg set scripts.start="node server.js"`
+    * `cd ..`
 5. In the server project, update `server.js` to let Heroku inject the server port as an environment variable:
    ```js
    app.listen(process.env.PORT || 3000);
    ```
-6. Create an application and deploy to heroku 
-   1. Sign up at the [Heroku Dashboard](https://dashboard.heroku.com/apps/)
-   2. [Create a new Heroku app](https://dashboard.heroku.com/new-app)
-   3. Under Deployment for your new app, select GitHub as the deployment method and select your repository
-   4. Select the branch you wish to deploy
-   5. Under Manual Deploy, select your branch and press Deploy for the first time deployment
-   6. Watch the build log to see errors and try to correct them
-   7. Press "Open app" to see your app running
-   8. Enable Automatic deploys to make sure every change get deployed
+6. Create an application and deploy to heroku
+    1. Sign up at the [Heroku Dashboard](https://dashboard.heroku.com/apps/)
+    2. [Create a new Heroku app](https://dashboard.heroku.com/new-app)
+    3. Under Deployment for your new app, select GitHub as the deployment method and select your repository
+    4. Select the branch you wish to deploy
+    5. Under Manual Deploy, select your branch and press Deploy for the first time deployment
+    6. Watch the build log to see errors and try to correct them
+    7. Press "Open app" to see your app running
+    8. Enable Automatic deploys to make sure every change get deployed
 7. You can see the deployment log under Activity in the Heroku Dashboard for your app
 
 Common problems:
 
-* "sh: 1: parcel: not found": This means that you ran `npm install` instead of `npm install --include=dev` on the `client` project
-* Strange error message during `npm run build`: It's possible that parcel or some library that parcel uses had a short-lived bug. Search the web for the error message
+* "sh: 1: parcel: not found": This means that you ran `npm install` instead of `npm install --include=dev` on
+  the `client` project
+* Strange error message during `npm run build`: It's possible that parcel or some library that parcel uses had a
+  short-lived bug. Search the web for the error message
   and see if you should `override` some dependency. Alternatively, use an older version of `parcel`
 
-
 </details>
-
 
 ### Crucial tasks
 
@@ -488,6 +521,7 @@ function FrontPage() {
     </div>;
 }
 ```
+
 </details>
 
 #### Express middleware for dealing with BrowserRouter
@@ -508,6 +542,7 @@ app.use((req, res, next) => {
     }
 });
 ```
+
 </details>
 
 ### Fetching data from server
@@ -539,9 +574,8 @@ export function useLoading(loadingFunction, deps = []) {
     return {loading, data, error};
 }
 ```
+
 </details>
-
-
 
 ### Testing
 
@@ -583,16 +617,17 @@ you can fix this problem.
 import renderer, {act} from "react-test-renderer";
 
 describe("quiz application", () => {
-  it("knows the answer to the question... (failing)", () => {
-    expect(6 * 9).toEqual(42);
-  });
-  
-  it("renders React", () => {
-     const component = renderer.create(<h1>Hello world</h1>);
-     expect(component).toMatchSnapshot();      
-  });
+    it("knows the answer to the question... (failing)", () => {
+        expect(6 * 9).toEqual(42);
+    });
+
+    it("renders React", () => {
+        const component = renderer.create(<h1>Hello world</h1>);
+        expect(component).toMatchSnapshot();
+    });
 });
 ```
+
 </details>
 
 #### Snapshot testing - check that a view is rendered correctly
@@ -603,18 +638,19 @@ describe("quiz application", () => {
   it("matches snapshot", async () => {
     let component;
     await act(async () => {
-      component = renderer.create(
-              <MemoryRouter initialEntries={["/"]}>
-                 <MoviesRoutes fetchMovies={() => movies} />,
-              </MemoryRouter>,
-      );
+        component = renderer.create(
+            <MemoryRouter initialEntries={["/"]}>
+                <MoviesRoutes fetchMovies={() => movies}/>,
+            </MemoryRouter>,
+        );
     });
     expect(component).toMatchSnapshot();
     expect(
-           component.root.findAllByType("h3").map((c) => c.children.join(" ")),
+        component.root.findAllByType("h3").map((c) => c.children.join(" ")),
     ).toEqual(["Barbie", "Oppenheimer"]);
-  });
+});
 ```
+
 </details>
 
 #### Simulate events
@@ -623,14 +659,15 @@ describe("quiz application", () => {
 
 ```javascript
   it("handles event", () => {
-      const handleClick = jest.fn();
-      const component = renderer.create(
-              <button onClick={() => handleClick(123)}>Click me</button>,
-      );
-      component.root.findAllByType("button")[0].props.onClick();
-      expect(handleClick).toBeCalledWith(123);
-   });
+    const handleClick = jest.fn();
+    const component = renderer.create(
+        <button onClick={() => handleClick(123)}>Click me</button>,
+    );
+    component.root.findAllByType("button")[0].props.onClick();
+    expect(handleClick).toBeCalledWith(123);
+});
 ```
+
 </details>
 
 #### Using supertest to check server side behavior
@@ -649,7 +686,6 @@ describe("quiz application", () => {
    }
    ```
 
-
 To test a bookApi defined in `server/booksApi.js` like this:
 
 ```javascript
@@ -667,7 +703,7 @@ you can use a test in `server/__tests__/booksApi.test.js` like this:
 import request from "supertest";
 import express from "express";
 import bodyParser from "body-parser";
-import { booksApi } from "../booksApi";
+import {booksApi} from "../booksApi";
 
 const app = express();
 app.use(bodyParser.json());
@@ -714,6 +750,7 @@ ws.onmessage = (msg) => {
 // send a new message
 ws.send(JSON.stringify({username: "Myself", message: "Hello"}));
 ```
+
 </details>
 
 ### Server side
@@ -758,6 +795,7 @@ const server = app.listen(3000, () => {
     });
 });
 ```
+
 </details>
 
 ## OpenID Connect - Log on with Google
