@@ -29,7 +29,15 @@ client
     moviesApi.get("", async (req, res) => {
       const movies = await database
         .collection("movies")
-        .find({ year: 2013 })
+        .find({ year: 2013, countries: { $in: ["Norway", "Sweden"] } })
+        .sort({ metacritic: -1 })
+        .project({
+          title: 1,
+          plot: 2,
+          year: 3,
+          cast: 4,
+          countries: 5,
+        })
         .limit(200)
         .toArray();
       res.json(movies);
