@@ -55,4 +55,5 @@ main {
   margin: 0 auto;
   min-width: 90%;
   border-radius: 1em;
+  overflow-y: auto;
 }

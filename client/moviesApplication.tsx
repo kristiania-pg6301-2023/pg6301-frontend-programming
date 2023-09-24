@@ -5,10 +5,17 @@ interface Movie {
   title: string;
 }
 
-export function ListMovies({ movies }: { movies: Movie[] }) {
+export function ListMovies({
+  movies,
+  parameters,
+}: {
+  movies: Movie[];
+  parameters: any;
+}) {
   return (
     <>
       <h2>All movies</h2>
+      <pre>{JSON.stringify(parameters, null, "  ")}</pre>
       {movies.map((m) => (
         <div key={m.title}>
           <h3>{m.title}</h3>
@@ -39,16 +46,22 @@ function AddMovie({ onCreate }: { onCreate(movie: Movie): void }) {
 
 export interface MoviesRoutesProps {
   fetchMovies(): Promise<Movie[]>;
+  fetchParameters(): Promise<any>;
   insertMovie(movie: Movie): Promise<void>;
 }
 
-export function MoviesRoutes({ fetchMovies, insertMovie }: MoviesRoutesProps) {
+export function MoviesRoutes({
+  fetchMovies,
+  fetchParameters,
+  insertMovie,
+}: MoviesRoutesProps) {
   const navigate = useNavigate();
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [parameters, setParameters] = useState();
 
   async function loadMovies() {
-    const movies = await fetchMovies();
-    setMovies(movies);
+    setMovies(await fetchMovies());
+    setParameters(await fetchParameters());
   }
 
   useEffect(() => {
@@ -63,7 +76,10 @@ export function MoviesRoutes({ fetchMovies, insertMovie }: MoviesRoutesProps) {
 
   return (
     <Routes>
-      <Route path={"/"} element={<ListMovies movies={movies} />} />
+      <Route
+        path={"/"}
+        element={<ListMovies movies={movies} parameters={parameters} />}
+      />
       <Route
         path={"/movies/new"}
         element={<AddMovie onCreate={handleCreate} />}
