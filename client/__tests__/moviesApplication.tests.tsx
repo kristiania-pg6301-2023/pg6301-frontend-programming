@@ -4,8 +4,13 @@ import { MoviesRoutes, MoviesRoutesProps } from "../moviesApplication";
 import { MemoryRouter } from "react-router-dom";
 
 const movies = [
-  { title: "Barbie", year: "2023", plot: "Adventures in Pink" },
-  { title: "Oppenheimer", year: "2023", plot: "The Manhattan project" },
+  { _id: "1", title: "Barbie", year: "2023", plot: "Adventures in Pink" },
+  {
+    _id: "2",
+    title: "Oppenheimer",
+    year: "2023",
+    plot: "The Manhattan project",
+  },
 ];
 
 async function createMovieApp(
@@ -20,6 +25,7 @@ async function createMovieApp(
         <MoviesRoutes
           fetchMovies={fetchMovies || (async () => [])}
           insertMovie={insertMovie || jest.fn()}
+          fetchParameters={async () => ({ years: [], countries: [] })}
         />
         ,
       </MemoryRouter>,
@@ -66,7 +72,7 @@ describe("movies database view", () => {
       component.root.findByType("form").props.onSubmit();
     });
 
-    expect(insertMovie).toHaveBeenCalledWith({ title });
+    expect(insertMovie).toHaveBeenCalledWith({ title, plot: "" });
     expect(fetchMovies).toHaveBeenCalled();
   });
 });

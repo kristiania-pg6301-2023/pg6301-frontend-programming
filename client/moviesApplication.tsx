@@ -20,7 +20,6 @@ export interface MovieQuery {
 export function ListMovies({
   movies,
   parameters,
-  query,
   setQuery,
 }: {
   movies: Movie[];
@@ -31,7 +30,6 @@ export function ListMovies({
   return (
     <>
       <h2>All movies</h2>
-      <pre>{JSON.stringify(query)}</pre>
       <div className={"query-filter"}>
         <div>
           <label>
@@ -88,6 +86,10 @@ function AddMovie({ onCreate }: { onCreate(movie: Omit<Movie, "_id">): void }) {
       <div>
         Title: <br />
         <input value={title} onChange={(e) => setTitle(e.target.value)} />
+      </div>
+      <div>
+        Plot: <br />
+        <textarea value={plot} onChange={(e) => setPlot(e.target.value)} />
       </div>
       <div>
         <button>Submit</button>

@@ -5,15 +5,47 @@ exports[`movies database view matches snapshot 1`] = `
   <h2>
     All movies
   </h2>,
+  <div
+    className="query-filter"
+  >
+    <div>
+      <label>
+        Country: 
+        <br />
+        <select
+          onChange={[Function]}
+        >
+          <option />
+        </select>
+      </label>
+    </div>
+    <div>
+      <label>
+        Year: 
+        <br />
+        <select
+          onChange={[Function]}
+        >
+          <option />
+        </select>
+      </label>
+    </div>
+  </div>,
   <div>
     <h3>
       Barbie
     </h3>
+    <p>
+      Adventures in Pink
+    </p>
   </div>,
   <div>
     <h3>
       Oppenheimer
     </h3>
+    <p>
+      The Manhattan project
+    </p>
   </div>,
   ",",
 ]
@@ -32,6 +64,14 @@ exports[`movies database view shows new movies form 1`] = `
       Title: 
       <br />
       <input
+        onChange={[Function]}
+        value=""
+      />
+    </div>
+    <div>
+      Plot: 
+      <br />
+      <textarea
         onChange={[Function]}
         value=""
       />
