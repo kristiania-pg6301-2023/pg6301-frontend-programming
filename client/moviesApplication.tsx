@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { rootLogger } from "ts-jest";
 
 interface Movie {
   _id: string;
@@ -12,24 +13,40 @@ interface MovieParameters {
   years: number[];
 }
 
+interface MovieQuery {
+  countries?: string;
+  year?: number;
+}
+
 export function ListMovies({
   movies,
   parameters,
+  query,
+  setQuery,
 }: {
   movies: Movie[];
   parameters: MovieParameters;
+  query: MovieQuery;
+  setQuery: Dispatch<SetStateAction<MovieQuery>>;
 }) {
   return (
     <>
       <h2>All movies</h2>
+      <pre>{JSON.stringify(query)}</pre>
       <div className={"query-filter"}>
         <div>
           <label>
             Country: <br />
-            <select>
+            <select
+              onChange={(e) =>
+                setQuery((old) => ({ ...old, countries: e.target.value }))
+              }
+            >
               <option></option>
               {parameters.countries.map((c) => (
-                <option key={c}>{c}</option>
+                <option onChange={(e) => console.log("onChange", c)} key={c}>
+                  {c}
+                </option>
               ))}
             </select>
           </label>
@@ -37,7 +54,11 @@ export function ListMovies({
         <div>
           <label>
             Year: <br />
-            <select>
+            <select
+              onChange={(e) =>
+                setQuery((old) => ({ ...old, year: parseInt(e.target.value) }))
+              }
+            >
               <option></option>
               {parameters.years.map((y) => (
                 <option key={y}>{y}</option>
@@ -93,6 +114,7 @@ export function MoviesRoutes({
 }: MoviesRoutesProps) {
   const navigate = useNavigate();
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [query, setQuery] = useState<MovieQuery>({});
   const [parameters, setParameters] = useState<MovieParameters>({
     countries: [],
     years: [],
@@ -117,7 +139,14 @@ export function MoviesRoutes({
     <Routes>
       <Route
         path={"/"}
-        element={<ListMovies movies={movies} parameters={parameters} />}
+        element={
+          <ListMovies
+            movies={movies}
+            parameters={parameters}
+            query={query}
+            setQuery={setQuery}
+          />
+        }
       />
       <Route
         path={"/movies/new"}
