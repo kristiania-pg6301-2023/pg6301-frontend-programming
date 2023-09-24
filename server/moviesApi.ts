@@ -44,7 +44,9 @@ client
     });
 
     moviesApi.get("/parameters", async (req, res) => {
-      const years = await database.collection("movies").distinct("year");
+      const years = (
+        await database.collection("movies").distinct("year")
+      ).filter((year) => typeof year == "number");
       res.json({ years });
     });
   })
