@@ -3,7 +3,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import { createMoviesApi, Movie } from "../moviesApi";
 import dotenv from "dotenv";
-import { Db, MongoClient } from "mongodb";
+import { MongoClient } from "mongodb";
 
 dotenv.config();
 

@@ -3,7 +3,7 @@ import { Db } from "mongodb";
 
 export interface Movie {
   title: string;
-  year?: string;
+  year?: number;
   plot?: string;
 }
 
@@ -11,19 +11,25 @@ export function createMoviesApi(database: Db) {
   const moviesApi = express.Router();
 
   moviesApi.post("/", async (req, res) => {
-    const { title, plot, year } = req.body as Movie;
-    await database.collection("movies").insertOne({ title, plot, year });
+    const { title, plot } = req.body;
+    const year = parseInt(req.body.year);
+    await database
+      .collection("movies")
+      .insertOne({ title, plot, year } as Movie);
     res.send();
   });
 
   moviesApi.get("/", async (req, res) => {
-    const { countries } = req.query;
-    const year = req.query.year
-      ? parseInt(req.query.year as string)
-      : undefined;
+    const query = {} as Record<string, unknown>;
+    if (req.query.countries?.length) {
+      query["countries"] = req.query.countries;
+    }
+    if (req.query.year?.length) {
+      query["year"] = parseInt(req.query.year as string);
+    }
     const movies = await database
       .collection("movies")
-      .find({ year, countries })
+      .find(query)
       .sort({ metacritic: -1 })
       .project({
         title: 1,
