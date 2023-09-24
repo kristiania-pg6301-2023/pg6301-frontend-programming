@@ -1,6 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { rootLogger } from "ts-jest";
 
 interface Movie {
   _id: string;
@@ -44,9 +43,7 @@ export function ListMovies({
             >
               <option></option>
               {parameters.countries.map((c) => (
-                <option onChange={(e) => console.log("onChange", c)} key={c}>
-                  {c}
-                </option>
+                <option key={c}>{c}</option>
               ))}
             </select>
           </label>
