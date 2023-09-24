@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 interface Movie {
+  _id: string;
   title: string;
+  plot: string;
 }
 
 interface MovieParameters {
@@ -45,19 +47,21 @@ export function ListMovies({
         </div>
       </div>
       {movies.map((m) => (
-        <div key={m.title}>
+        <div key={m._id}>
           <h3>{m.title}</h3>
+          <p>{m.plot}</p>
         </div>
       ))}
     </>
   );
 }
 
-function AddMovie({ onCreate }: { onCreate(movie: Movie): void }) {
+function AddMovie({ onCreate }: { onCreate(movie: Omit<Movie, "_id">): void }) {
   const [title, setTitle] = useState("");
+  const [plot, setPlot] = useState("");
 
   async function handleSubmit() {
-    await onCreate({ title });
+    await onCreate({ title, plot });
   }
 
   return (
