@@ -5,12 +5,17 @@ interface Movie {
   title: string;
 }
 
+interface MovieParameters {
+  countries: string[];
+  years: number[];
+}
+
 export function ListMovies({
   movies,
   parameters,
 }: {
   movies: Movie[];
-  parameters: any;
+  parameters: MovieParameters;
 }) {
   return (
     <>
@@ -21,7 +26,9 @@ export function ListMovies({
             Country: <br />
             <select>
               <option></option>
-              {parameters?.countries?.map((c) => <option>{c}</option>)}
+              {parameters.countries.map((c) => (
+                <option key={c}>{c}</option>
+              ))}
             </select>
           </label>
         </div>
@@ -30,7 +37,9 @@ export function ListMovies({
             Year: <br />
             <select>
               <option></option>
-              {parameters?.years?.map((y) => <option>{y}</option>)}
+              {parameters.years.map((y) => (
+                <option key={y}>{y}</option>
+              ))}
             </select>
           </label>
         </div>
@@ -68,7 +77,7 @@ function AddMovie({ onCreate }: { onCreate(movie: Movie): void }) {
 export interface MoviesRoutesProps {
   fetchMovies(): Promise<Movie[]>;
 
-  fetchParameters(): Promise<any>;
+  fetchParameters(): Promise<MovieParameters>;
 
   insertMovie(movie: Movie): Promise<void>;
 }
@@ -80,7 +89,10 @@ export function MoviesRoutes({
 }: MoviesRoutesProps) {
   const navigate = useNavigate();
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [parameters, setParameters] = useState();
+  const [parameters, setParameters] = useState<MovieParameters>({
+    countries: [],
+    years: [],
+  });
 
   async function loadMovies() {
     setMovies(await fetchMovies());
