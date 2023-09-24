@@ -1,5 +1,8 @@
 import express from "express";
 import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const moviesApi = express.Router();
 
