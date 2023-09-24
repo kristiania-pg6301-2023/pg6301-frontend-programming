@@ -1,20 +1,18 @@
 import express from "express";
 import { Db } from "mongodb";
 
-interface Movie {
+export interface Movie {
   title: string;
   year?: string;
   plot?: string;
 }
 
-const movies: Movie[] = [];
-
 export function createMoviesApi(database: Db) {
   const moviesApi = express.Router();
 
-  moviesApi.post("/", (req, res) => {
-    const { title } = req.body as Movie;
-    movies.push({ title });
+  moviesApi.post("/", async (req, res) => {
+    const { title, plot, year } = req.body as Movie;
+    await database.collection("movies").insertOne({ title, plot, year });
     res.send();
   });
 
