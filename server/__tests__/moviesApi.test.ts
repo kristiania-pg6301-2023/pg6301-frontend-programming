@@ -1,11 +1,19 @@
 import request from "supertest";
 import express from "express";
 import bodyParser from "body-parser";
-import { moviesApi } from "../moviesApi";
+import { createMoviesApi } from "../moviesApi";
+import dotenv from "dotenv";
+import { MongoClient } from "mongodb";
+
+dotenv.config();
 
 const app = express();
 app.use(bodyParser.json());
-app.use("/api/movies", moviesApi);
+
+beforeEach(async () => {
+  const db = await new MongoClient(process.env.ATLAS_URL!).connect();
+  app.use("/api/movies", createMoviesApi(db.db("test")));
+});
 
 describe("movies api", function () {
   it("can add a movie to the database", async () => {

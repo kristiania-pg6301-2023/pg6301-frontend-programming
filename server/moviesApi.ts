@@ -1,10 +1,5 @@
 import express from "express";
-import { MongoClient } from "mongodb";
-import dotenv from "dotenv";
-
-dotenv.config();
-
-export const moviesApi = express.Router();
+import { Db } from "mongodb";
 
 interface Movie {
   title: string;
@@ -14,49 +9,43 @@ interface Movie {
 
 const movies: Movie[] = [];
 
-const client = new MongoClient(process.env.ATLAS_URL!);
-client
-  .connect()
-  .then((connection) => {
-    const database = connection.db("sample_mflix");
+export function createMoviesApi(database: Db) {
+  const moviesApi = express.Router();
 
-    moviesApi.post("/", (req, res) => {
-      const { title } = req.body as Movie;
-      movies.push({ title });
-      res.send();
-    });
-
-    moviesApi.get("/", async (req, res) => {
-      const { countries } = req.query;
-      const year = req.query.year
-        ? parseInt(req.query.year as string)
-        : undefined;
-      const movies = await database
-        .collection("movies")
-        .find({ year, countries })
-        .sort({ metacritic: -1 })
-        .project({
-          title: 1,
-          plot: 2,
-          year: 3,
-          cast: 4,
-          countries: 5,
-        })
-        .limit(200)
-        .toArray();
-      res.json(movies);
-    });
-
-    moviesApi.get("/parameters", async (req, res) => {
-      const years = (
-        await database.collection("movies").distinct("year")
-      ).filter((year) => typeof year == "number");
-      const countries = await database
-        .collection("movies")
-        .distinct("countries");
-      res.json({ countries, years });
-    });
-  })
-  .catch((error) => {
-    console.error("while connecting to MongoDB", error);
+  moviesApi.post("/", (req, res) => {
+    const { title } = req.body as Movie;
+    movies.push({ title });
+    res.send();
   });
+
+  moviesApi.get("/", async (req, res) => {
+    const { countries } = req.query;
+    const year = req.query.year
+      ? parseInt(req.query.year as string)
+      : undefined;
+    const movies = await database
+      .collection("movies")
+      .find({ year, countries })
+      .sort({ metacritic: -1 })
+      .project({
+        title: 1,
+        plot: 2,
+        year: 3,
+        cast: 4,
+        countries: 5,
+      })
+      .limit(200)
+      .toArray();
+    res.json(movies);
+  });
+
+  moviesApi.get("/parameters", async (req, res) => {
+    const years = (await database.collection("movies").distinct("year")).filter(
+      (year) => typeof year == "number",
+    );
+    const countries = await database.collection("movies").distinct("countries");
+    res.json({ countries, years });
+  });
+
+  return moviesApi;
+}
