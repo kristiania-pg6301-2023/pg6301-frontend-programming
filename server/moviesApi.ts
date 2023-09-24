@@ -27,9 +27,13 @@ client
     });
 
     moviesApi.get("/", async (req, res) => {
+      const { countries } = req.query;
+      const year = req.query.year
+        ? parseInt(req.query.year as string)
+        : undefined;
       const movies = await database
         .collection("movies")
-        .find({ year: 2013, countries: { $in: ["Norway", "Sweden"] } })
+        .find({ year, countries })
         .sort({ metacritic: -1 })
         .project({
           title: 1,
