@@ -47,7 +47,10 @@ client
       const years = (
         await database.collection("movies").distinct("year")
       ).filter((year) => typeof year == "number");
-      res.json({ years });
+      const countries = await database
+        .collection("movies")
+        .distinct("countries");
+      res.json({ countries, years });
     });
   })
   .catch((error) => {
