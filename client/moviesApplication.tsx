@@ -13,7 +13,7 @@ interface MovieParameters {
   years: number[];
 }
 
-interface MovieQuery {
+export interface MovieQuery {
   countries?: string;
   year?: number;
 }
@@ -100,7 +100,7 @@ function AddMovie({ onCreate }: { onCreate(movie: Omit<Movie, "_id">): void }) {
 }
 
 export interface MoviesRoutesProps {
-  fetchMovies(): Promise<Movie[]>;
+  fetchMovies(query: MovieQuery): Promise<Movie[]>;
 
   fetchParameters(): Promise<MovieParameters>;
 
@@ -121,13 +121,13 @@ export function MoviesRoutes({
   });
 
   async function loadMovies() {
-    setMovies(await fetchMovies());
+    setMovies(await fetchMovies(query));
     setParameters(await fetchParameters());
   }
 
   useEffect(() => {
     loadMovies();
-  }, []);
+  }, [query]);
 
   async function handleCreate(movie: Movie) {
     await insertMovie(movie);

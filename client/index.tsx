@@ -3,12 +3,16 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, NavLink } from "react-router-dom";
 
 import "./application.css";
-import { MoviesRoutes } from "./moviesApplication";
+import { MovieQuery, MoviesRoutes } from "./moviesApplication";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 
-async function fetchMovies() {
-  const res = await fetch("/api/movies");
+async function fetchMovies(query: MovieQuery) {
+  const searchParams = new URLSearchParams();
+  query.countries && searchParams.set("countries", query.countries);
+  query.year && searchParams.set("year", query.year.toString());
+
+  const res = await fetch("/api/movies?" + searchParams);
   return await res.json();
 }
 
