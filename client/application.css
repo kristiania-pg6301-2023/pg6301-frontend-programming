@@ -1,0 +1,27 @@
+body {
+    background-color: rebeccapurple;
+    margin: 0;
+}
+
+#app {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+}
+
+main {
+    background-color: aliceblue;
+    min-width: 80%;
+    margin-inline: auto;
+    margin-block: 1em;
+    border-radius: 1em;
+}
+
+header, nav, footer {
+    color: aliceblue;
+}
+
+nav a {
+    color: aliceblue;
+}
+
