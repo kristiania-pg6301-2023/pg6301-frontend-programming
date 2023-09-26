@@ -3,11 +3,16 @@ import ReactDOM from "react-dom/client";
 import { MoviesApplication } from "./moviesApplication";
 
 import "./application.css";
-import { BrowserRouter, HashRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
+
+async function fetchMovies() {
+  const res = await fetch("/api/movies");
+  return await res.json();
+}
 
 const root = ReactDOM.createRoot(document.getElementById("app"));
 root.render(
   <HashRouter>
-    <MoviesApplication />
+    <MoviesApplication fetchMovies={fetchMovies} />
   </HashRouter>,
 );

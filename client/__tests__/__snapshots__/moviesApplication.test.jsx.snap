@@ -19,6 +19,12 @@ exports[`movie application lists movies 1`] = `
     <h2>
       Listing of all movies
     </h2>
+    <div>
+      Oppenheimer
+    </div>
+    <div>
+      Barbie
+    </div>
   </main>,
   <footer>
     By Johannes Brodwall with 💚
