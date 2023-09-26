@@ -139,6 +139,8 @@ If we have time, we will take a look at the details of `<BrowserRouter>`.
 
 ### Lecture 5: Quality code
 
+<details>
+
 In this lecture, we will look at ways to make sure our code is good, from formatting, to linting, to testing.
 We will look at the tools prettier, jest, eslint and Typescript. We will also be using GitHub to run our quality
 checks automatically.
@@ -183,12 +185,26 @@ Installing Jest can be tricky and is [described in the course notes](#testing)
 * [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/03)
 * [Exercise answer](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/03)
 
+</details>
+
 ### Lecture 6: Storing data MongoDB
 
-<details>
+We continue on the code from lecture 5, making sure we have some tests and that Typescript is running before we continue.
+
+* Using supertest to test post as well as get calls
+    * `await request(app).post("").send({ title: "My New Movie" }).expect(200)`
+    * `const res = await request(app).get("")`
+* Introduce typescript for the client code
+    * `npm install typescript`
+    * `npx tsc --init`
+    * `npm pkg set scripts.check:typescript="tsc --noEmit"`
+    * `npm install --save-dev ts-jest`
+    * `npx ts-jest config:init`
+* Test drive <AddMovieForm />
 
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/06)
 * [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/06)
+   * This deviates from the lecture as more of lecture 5 was moved to lecture 6
 * [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/blob/exercise/06/start/README.md)
 * For the exercise solution,
   use [the lecture reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/06)
@@ -229,9 +245,10 @@ services that also implement OpenID Connect, such as ID-porten and Active Direct
 
 ### Lecture 8: Robust interaction between the client and the server
 
-<details>
+Loading spinner and error handling, as well as using React context to centralize interaction between client and server.
+We will also revisit <BrowserRouter /> and why fix how it was broken with Express.
 
-(May be merged with lecture 3 this year)
+<details>
 
 * [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/06)
 * [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/06)
@@ -536,7 +553,7 @@ The following defaults unknown requests to return `index.html`.
 app.use((req, res, next) => {
     if (req.method === "GET") {
         // TODO: We probably should return 404 instead of index.html for api-calls as well
-        res.sendFile(path.resolve(__dirname, "..", "..", "dist", "index.html"));
+        res.sendFile(path.resolve("../client/dist/index.html"));
     } else {
         next();
     }
