@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`movie application looks okay 1`] = `<MoviesApplication />`;

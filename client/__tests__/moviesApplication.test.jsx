@@ -1,5 +1,7 @@
-describe("a test suite", () => {
-  it("should run tests", () => {
-    expect(6 * 7).toBe(42);
+import { MoviesApplication } from "../moviesApplication";
+
+describe("movie application", () => {
+  it("looks okay", () => {
+    expect(<MoviesApplication />).toMatchSnapshot();
   });
 });
