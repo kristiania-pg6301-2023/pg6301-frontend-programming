@@ -3,7 +3,7 @@ import React from "react";
 
 export function MoviesApplication() {
   return (
-    <BrowserRouter>
+    <>
       <header>
         <h1>Kristiania movies</h1>
       </header>
@@ -21,6 +21,6 @@ export function MoviesApplication() {
         </ul>
       </main>
       <footer>By Johannes Brodwall with 💚</footer>
-    </BrowserRouter>
+    </>
   );
 }

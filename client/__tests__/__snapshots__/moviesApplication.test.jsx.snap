@@ -1,3 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`movie application looks okay 1`] = `<MoviesApplication />`;
+exports[`movie application looks okay 1`] = `
+[
+  <header>
+    <h1>
+      Kristiania movies
+    </h1>
+  </header>,
+  <nav>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      Front page
+    </a>
+  </nav>,
+  <main>
+    <ul>
+      <li>
+        <a
+          href="/movies"
+          onClick={[Function]}
+        >
+          List movies
+        </a>
+      </li>
+      <li>
+        <a
+          href="/movies/new"
+          onClick={[Function]}
+        >
+          Add a movie
+        </a>
+      </li>
+    </ul>
+  </main>,
+  <footer>
+    By Johannes Brodwall with 💚
+  </footer>,
+]
+`;
