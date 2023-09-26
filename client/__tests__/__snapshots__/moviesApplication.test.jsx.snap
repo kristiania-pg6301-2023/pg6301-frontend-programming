@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`movie application lists movies 1`] = `
+[
+  <header>
+    <h1>
+      Kristiania movies
+    </h1>
+  </header>,
+  <nav>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      Front page
+    </a>
+  </nav>,
+  <main>
+    <h2>
+      Listing of all movies
+    </h2>
+  </main>,
+  <footer>
+    By Johannes Brodwall with 💚
+  </footer>,
+]
+`;
+
 exports[`movie application looks okay 1`] = `
 [
   <header>

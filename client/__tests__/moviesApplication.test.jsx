@@ -11,4 +11,16 @@ describe("movie application", () => {
     );
     expect(component).toMatchSnapshot();
   });
+
+  it("lists movies", () => {
+    const component = renderer.create(
+      <MemoryRouter initialEntries={["/movies"]}>
+        <MoviesApplication />
+      </MemoryRouter>,
+    );
+    expect(component).toMatchSnapshot();
+    expect(component.root.findByType("h2").children.join(" ")).toBe(
+      "Listing of all movies",
+    );
+  });
 });
