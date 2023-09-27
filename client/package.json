@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "parcel watch index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "keywords": [],

@@ -3,7 +3,7 @@ import renderer, { act } from "react-test-renderer";
 import { MemoryRouter } from "react-router-dom";
 
 describe("movie application", () => {
-  it("looks okay", () => {
+  it("renders front page", () => {
     const component = renderer.create(
       <MemoryRouter>
         <MoviesApplication />
