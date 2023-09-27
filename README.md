@@ -137,7 +137,7 @@ If we have time, we will take a look at the details of `<BrowserRouter>`.
 
 </details>
 
-### Lecture 5: Quality code
+### Lecture 5: Quality code, Prettier and Jest
 
 <details>
 
@@ -187,27 +187,48 @@ Installing Jest can be tricky and is [described in the course notes](#testing)
 
 </details>
 
-### Lecture 6: Storing data MongoDB
+### Lecture 6: Jest, Typescript and test driven development
 
-We continue on the code from lecture 5, making sure we have some tests and that Typescript is running before we continue.
+<details>
+
+We continue on the code from lecture 5, making sure we have some tests and that Typescript is running before we
+continue.
 
 * Using supertest to test post as well as get calls
     * `await request(app).post("").send({ title: "My New Movie" }).expect(200)`
     * `const res = await request(app).get("")`
 * Introduce typescript for the client code
-    * `npm install typescript`
+    * `npm install --save-dev typescript`
     * `npx tsc --init`
     * `npm pkg set scripts.check:typescript="tsc --noEmit"`
     * `npm install --save-dev ts-jest`
     * `npx ts-jest config:init`
+    * If you installed `babel-jest`, you can now uninstall this, along with `@babel/preset-*` and
+      removing `babel.config.js`
 * Test drive <AddMovieForm />
 
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/06)
-* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/06)
-   * This deviates from the lecture as more of lecture 5 was moved to lecture 6
-* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/blob/exercise/06/start/README.md)
+* Exercise text
+  is [the same as lecture 6](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/03)
+
+#### Material from 2022
+
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/10)
+* [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/10)
+
+</details>
+
+### Lecture 7: Storing data MongoDB (with Typescript)
+
+<details>
+
+Bonus content: The secret of <BrowserRouter />, Express middleware and the bodyParser trap
+
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/07)
+* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/07)
+* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/blob/exercise/07/start/README.md)
 * For the exercise solution,
-  use [the lecture reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/06)
+  use [the lecture reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/07)
 
 #### Material from 2022
 
@@ -218,12 +239,31 @@ We continue on the code from lecture 5, making sure we have some tests and that 
 #### Useful links
 
 * [MongoDB Skills](https://www.youtube.com/watch?v=0vPt7GI-2kc) - very useful and brief
-* [MongoDB University: JavaScript](https://university.mongodb.com/courses/M220JS/about)
 * [MongoDB in 100 seconds (Fireship.io)](https://www.youtube.com/watch?v=-bt_y4Loofg)
+* [MongoDB University: JavaScript](https://university.mongodb.com/courses/M220JS/about)
 
 </details>
 
-### Lecture 7: Who's your user? OpenID Connect
+### Lecture 8: Async/await, Promises and interaction between client and server
+
+<details>
+
+Loading spinner and error handling, as well as using React context to centralize interaction between client and server.
+We will also revisit <BrowserRouter /> and why fix how it was broken with Express.
+
+#### Material from 2022
+
+* [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/06)
+* [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/06)
+* [Exercise answer 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/06)
+
+#### Useful links:
+
+* [Fireship.io video on Async/await and promises](https://www.youtube.com/watch?v=vn3tm0quoqE)
+
+</details>
+
+### Lecture 9: Who's your user? OpenID Connect
 
 <details>
 
@@ -243,20 +283,7 @@ services that also implement OpenID Connect, such as ID-porten and Active Direct
 
 </details>
 
-### Lecture 8: Robust interaction between the client and the server
-
-Loading spinner and error handling, as well as using React context to centralize interaction between client and server.
-We will also revisit <BrowserRouter /> and why fix how it was broken with Express.
-
-<details>
-
-* [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/06)
-* [Reference implementation 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/06)
-* [Exercise answer 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/exercise/answer/06)
-
-</details>
-
-### Lecture 9: Web Sockets
+### Lecture 10: Web Sockets
 
 <details>
 
@@ -277,23 +304,6 @@ other.
 #### Useful links
 
 * [Fireship.io video on Websockets](https://www.youtube.com/watch?v=1BfCnjr_Vjg)
-
-</details>
-
-### Lecture 10: Jest testing
-
-<details>
-
-In this lecture, we continue from lecture 7 (MongoDB) and add tests for frontend and for MongoDB
-
-#### Material from 2022
-
-* [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/10)
-* [Reference implementation](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/reference/10)
-
-#### Useful links
-
-* [Fireship.io video on Async/await and promises](https://www.youtube.com/watch?v=vn3tm0quoqE)
 
 </details>
 
@@ -356,9 +366,8 @@ After all the steps, you will have a resulting structure that looks something li
 3. Create a subdirectory for the client (`mkdir client`)
 4. In the client directory, create the `package.json` file and add dependencies with the following commands
     1. `cd client`
-    2. `npm init -y`
-    3. `npm install --save-dev parcel`
-    4. `npm install --save react react-dom react-router-dom`
+    2. `npm install --save-dev parcel`
+    3. `npm install react react-dom react-router-dom`
 5. Set up the "dev" command to run parcel
     * `npm pkg set scripts.dev="parcel serve index.html"`
 6. You can now run `npm run dev`, although this will fail until you create an index.html-file (next step)
@@ -386,18 +395,18 @@ After all the steps, you will have a resulting structure that looks something li
 You can now start working with React. Start by replacing `<h1>Hello React</h1>` with your own component. For example:
 
 ```jsx
-// ... continued from above
-root.render(<Application/>);
+// ... continued from above - replace the `root.render(...)` line
+root.render(<Application />);
 
 function Application() {
-    const [counter, setCounter] = useState(0);
-    return <>
-        <h2>Welcome to my application</h2>
-        <div>
-            <button onClick={() => setCounter(oldValue => oldValue + 1)}>Click me</button>
-        </div>
-        <div>You have clicked {counter} times</div>
-    </>;
+  const [counter, setCounter] = useState(0);
+  return <>
+    <h2>Welcome to my application</h2>
+    <div>
+      <button onClick={() => setCounter(oldValue => oldValue + 1)}>Click me</button>
+    </div>
+    <div>You have clicked {counter} times</div>
+  </>;
 }
  ```
 
@@ -406,9 +415,8 @@ function Application() {
 1. Create a subdirectory on the top level (next to the `client` directory): `mkdir server`
 2. In the server directory, create the `package.json` file and add dependencies with the following commands:
     1. `cd server`
-    2. `npm init -y`
-    3. `npm install --save-dev nodemon`
-    4. `npm install --save express body-parser`
+    2. `npm install --save-dev nodemon`
+    3. `npm install express`
 3. Set up the "dev" command to run express
     * `npm pkg set scripts.dev="nodemon server.js"`
 4. Set the property `type` to `module` in `package.json`
@@ -419,8 +427,9 @@ function Application() {
    "watch" for changes and output the contents of the `dist` directory
     * `cd ../client`
     * `npm pkg set scripts.dev="parcel watch index.html"`
-    * The `package.json` file generated with `npm init` will contain the line `"main": "index.js"`, which parcel doesn't
-      like. You should delete this line
+    * (The `package.json` file generated with `npm init` will contain the line `"main": "index.js"`, which parcel
+      doesn't
+      like. You should delete this line)
 
 #### Create a minimal `server.js`
 
@@ -437,8 +446,6 @@ app.listen(3000);
 
 When you can get this to work, you will need to master the following:
 
-* Serve the frontend code from Express. In `server.js`:
-    * `app.use(express.static(path.resolve(__dir, "..", "..", "dist")));`
 * Make Express respond to API calls
 * Make React call API calls on the backend (using `fetch`)
 
@@ -449,11 +456,10 @@ You can set up the top level directory above `client` and `server` to run both c
 
 1. Execute the following in the top level directory (above `client` and `server`)
 2. Make `npm run dev` at top level run the same command in both subdirectories concurrently
-    1. `npm init -y`
-    2. `npm install --save-dev concurrently`
-    3. `npm pkg set scripts.dev="concurrently npm:dev:client npm:dev:server"`
-    4. `npm pkg set scripts.dev:client="cd client && npm run dev"`
-    5. `npm pkg set scripts.dev:server="cd server && npm run dev"`
+    1. `npm install --save-dev concurrently`
+    2. `npm pkg set scripts.dev="concurrently npm:dev:client npm:dev:server"`
+    3. `npm pkg set scripts.dev:client="cd client && npm run dev"`
+    4. `npm pkg set scripts.dev:server="cd server && npm run dev"`
 
 ### Deploy to Heroku
 
@@ -507,35 +513,135 @@ Common problems:
 
 ### Crucial tasks
 
+#### Consume an API from React
+
+<details>
+
+Expose an API from Express (in `server/`):
+
+```js
+export const moviesApi = new express.Router();
+moviesApi.get("/api/movies", (req, res) => {
+  res.send([
+    { title: "Oppenheimer" },
+    { title: "Barbie" },
+  ])
+});
+
+app.use(moviesApi);
+```
+
+Read an API from React:
+
+```jsx
+function ListMovies() {
+  const [movies, setMovies] = useState([]);
+
+  async function loadMovies() {
+    const res = await fetch("/api/movies");
+    setMovies(await res.json());
+  }
+
+  useEffect(() => {
+    loadMovies();
+  }, []);
+
+  return (
+    <>
+      <h1>Movies</h1>
+      {movies.map((m) => (
+        <div>{m.title}</div>
+      ))}
+    </>
+  );
+}
+```
+
+</details>
+
+#### Posting data to server
+
+<details>
+
+Expose an API from Express (in `server/`):
+
+```js
+const MOVIES = [];
+export const moviesApi = new express.Router();
+moviesApi.post("/api/movies", (req, res) => {
+  const { title } = req.body;
+  MOVIES.push({ title, id: MOVIES.length });
+  res.sendStatus(204);
+});
+
+app.use(express.json());
+app.use(moviesApi);
+```
+
+Post JSON from React:
+
+```jsx
+function AddMovieForm() {
+  const [title, setTitle] = useState("");
+
+  async function saveMovie(e) {
+    e.preventDefault();
+    await fetch("/api/movies", {
+      method: "POST",
+      body: JSON.stringify({ title }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
+  return (
+    <form onSubmit={saveMovie}>
+      <h1>Add Movie</h1>
+      <div>
+        Title:
+        <br />
+        <input value={title} onChange={(e) => setTitle(e.target.value)} />
+      </div>
+      <div>
+        <button>Submit</button>
+      </div>
+    </form>
+  );
+}
+```
+
+</details>
+
 #### React Router
 
 <details>
 
 ```jsx
 export function MoviesApplication() {
-    return <BrowserRouter>
-        <Routes>
-            <Route path={"/"} element={<FrontPage/>}/>
-            <Route path={"/movies/*"} element={<Movies/>}/>
-        </Routes>
-    </BrowserRouter>;
+  return <BrowserRouter>
+    <Routes>
+      <Route path={"/"} element={<FrontPage />} />
+      <Route path={"/movies/*"} element={<Movies />} />
+    </Routes>
+  </BrowserRouter>;
 }
 
 function Movies() {
-    return <Routes>
-        <Route path={""} element={<ListMovies movies={movies}/>}/>
-        <Route path={"new"} element={<NewMovie onAddMovie={handleAddMovie}/>}/>
-    </Routes>
+  return <Routes>
+    <Route path={""} element={<ListMovies movies={movies} />} />
+    <Route path={"new"} element={<NewMovie onAddMovie={handleAddMovie} />} />
+  </Routes>
 }
 
 function FrontPage() {
-    return <div>
-        <h1>Front Page</h1>
-        <ul>
-            <li><Link to={"/movies"}>List existing movies</Link></li>
-            <li><Link to={"/movies/new"}>Add new movie</Link></li>
-        </ul>
-    </div>;
+  return <div>
+    <h1>Front Page</h1>
+    <ul>
+      <li><Link to={"/movies"}>List existing movies</Link></li>
+      <li><Link to={"/movies/new"}>Add new movie</Link></li>
+    </ul>
+  </div>;
 }
 ```
 
@@ -551,12 +657,12 @@ The following defaults unknown requests to return `index.html`.
 
 ```javascript
 app.use((req, res, next) => {
-    if (req.method === "GET") {
-        // TODO: We probably should return 404 instead of index.html for api-calls as well
-        res.sendFile(path.resolve("../client/dist/index.html"));
-    } else {
-        next();
-    }
+  if (req.method === "GET") {
+    // TODO: We probably should return 404 instead of index.html for api-calls as well
+    res.sendFile(path.resolve("../client/dist/index.html"));
+  } else {
+    next();
+  }
 });
 ```
 
@@ -570,26 +676,60 @@ app.use((req, res, next) => {
 
 ```javascript
 export function useLoading(loadingFunction, deps = []) {
-    const [loading, setLoading] = useState(true);
-    const [data, setData] = useState();
-    const [error, setError] = useState();
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState();
+  const [error, setError] = useState();
 
-    async function load() {
-        setLoading(true);
-        setData(undefined);
-        setError(undefined);
-        try {
-            setData(await loadingFunction());
-        } catch (error) {
-            setError(error);
-        } finally {
-            setLoading(false);
-        }
+  async function load() {
+    setLoading(true);
+    setData(undefined);
+    setError(undefined);
+    try {
+      setData(await loadingFunction());
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
     }
+  }
 
-    useEffect(load, deps);
-    return {loading, data, error};
+  useEffect(load, deps);
+  return { loading, data, error };
 }
+```
+
+</details>
+
+#### Reading data from MongoDb
+
+<details>
+
+```js
+import dotenv from "dotenv";
+
+dotenv.config();
+
+new MongoClient(process.env.MONGODB_URL)
+  .connect()
+  .then((connection) => {
+    const database = connection.db("sample_mflix");
+    const moviesApi = express.Router();
+    movies.get("", (req, res) => {
+      moviesApi.get("/", async (req, res) => {
+        const movies = await database
+          .collection("movies")
+          .find({ year: 2016, countries: "Norway" })
+          .sort({ metacritic: -1 })
+          .limit(200)
+          .toArray();
+        res.json(movies);
+      });
+    });
+    app.use("/api/movies", moviesApi);
+  })
+  .catch((error) => {
+    console.error("while connecting to MongoDB", error);
+  });
 ```
 
 </details>
@@ -631,17 +771,17 @@ you can fix this problem.
 <details>
 
 ```javascript
-import renderer, {act} from "react-test-renderer";
+import renderer, { act } from "react-test-renderer";
 
 describe("quiz application", () => {
-    it("knows the answer to the question... (failing)", () => {
-        expect(6 * 9).toEqual(42);
-    });
+  it("knows the answer to the question... (failing)", () => {
+    expect(6 * 9).toEqual(42);
+  });
 
-    it("renders React", () => {
-        const component = renderer.create(<h1>Hello world</h1>);
-        expect(component).toMatchSnapshot();
-    });
+  it("renders React", () => {
+    const component = renderer.create(<h1>Hello world</h1>);
+    expect(component).toMatchSnapshot();
+  });
 });
 ```
 
@@ -652,19 +792,19 @@ describe("quiz application", () => {
 <details>
 
 ```javascript
-  it("matches snapshot", async () => {
-    let component;
-    await act(async () => {
-        component = renderer.create(
-            <MemoryRouter initialEntries={["/"]}>
-                <MoviesRoutes fetchMovies={() => movies}/>,
-            </MemoryRouter>,
-        );
-    });
-    expect(component).toMatchSnapshot();
-    expect(
-        component.root.findAllByType("h3").map((c) => c.children.join(" ")),
-    ).toEqual(["Barbie", "Oppenheimer"]);
+it("matches snapshot", async () => {
+  let component;
+  await act(async () => {
+    component = renderer.create(
+      <MemoryRouter initialEntries={["/"]}>
+        <MoviesRoutes fetchMovies={() => movies}/>,
+      </MemoryRouter>,
+    );
+  });
+  expect(component).toMatchSnapshot();
+  expect(
+    component.root.findAllByType("h3").map((c) => c.children.join(" ")),
+  ).toEqual(["Barbie", "Oppenheimer"]);
 });
 ```
 
@@ -676,12 +816,12 @@ describe("quiz application", () => {
 
 ```javascript
   it("handles event", () => {
-    const handleClick = jest.fn();
-    const component = renderer.create(
-        <button onClick={() => handleClick(123)}>Click me</button>,
-    );
-    component.root.findAllByType("button")[0].props.onClick();
-    expect(handleClick).toBeCalledWith(123);
+  const handleClick = jest.fn();
+  const component = renderer.create(
+    <button onClick={() => handleClick(123)}>Click me</button>,
+  );
+  component.root.findAllByType("button")[0].props.onClick();
+  expect(handleClick).toBeCalledWith(123);
 });
 ```
 
@@ -710,7 +850,7 @@ import express from "express";
 
 export const booksApi = new express.Router();
 booksApi.get(":id", (req, res) => {
-    // ...
+  // ...
 });
 ```
 
@@ -720,7 +860,7 @@ you can use a test in `server/__tests__/booksApi.test.js` like this:
 import request from "supertest";
 import express from "express";
 import bodyParser from "body-parser";
-import {booksApi} from "../booksApi";
+import { booksApi } from "../booksApi";
 
 const app = express();
 app.use(bodyParser.json());
@@ -728,22 +868,22 @@ app.use(booksApi);
 
 describe("...", () => {
 
-    it("can update existing books", async () => {
-        const book = (await request(app).get("/2")).body;
-        const updated = {
-            ...book,
-            author: "Egner",
-        };
-        await request(app).put("/2").send(updated).expect(200);
-        await request(app)
-            .get("/2")
-            .then((response) => {
-                expect(response.body).toMatchObject({
-                    id: 2,
-                    author: "Egner",
-                });
-            });
-    });
+  it("can update existing books", async () => {
+    const book = (await request(app).get("/2")).body;
+    const updated = {
+      ...book,
+      author: "Egner",
+    };
+    await request(app).put("/2").send(updated).expect(200);
+    await request(app)
+      .get("/2")
+      .then((response) => {
+        expect(response.body).toMatchObject({
+          id: 2,
+          author: "Egner",
+        });
+      });
+  });
 
 });
 ```
@@ -761,11 +901,11 @@ describe("...", () => {
 const ws = new WebSocket(window.location.origin.replace(/^http/, "ws"));
 // log out the message and destructor the contents when we receive it
 ws.onmessage = (msg) => {
-    console.log(msg);
-    const {username, message, id} = JSON.parse(msg.data);
+  console.log(msg);
+  const { username, message, id } = JSON.parse(msg.data);
 };
 // send a new message
-ws.send(JSON.stringify({username: "Myself", message: "Hello"}));
+ws.send(JSON.stringify({ username: "Myself", message: "Hello" }));
 ```
 
 </details>
@@ -776,40 +916,40 @@ ws.send(JSON.stringify({username: "Myself", message: "Hello"}));
 
 ```javascript
 
-import {WebSocketServer} from "ws";
+import { WebSocketServer } from "ws";
 
 // Create a websocket server (noServer means that express
 // will provide the listen port)
-const wsServer = new WebSocketServer({noServer: true});
+const wsServer = new WebSocketServer({ noServer: true });
 
 // Keep a list of all incomings connections
 const sockets = [];
 let messageIndex = 0;
 wsServer.on("connection", (socket) => {
-    // Add this connection to the list of connections
-    sockets.push(socket);
-    // Set up the handling of messages from this sockets
-    socket.on("message", (msg) => {
-        // Destructor the incoming message
-        const {username, message} = JSON.parse(msg);
-        // Add fields from server side
-        const id = messageIndex++;
-        // broadcast a new message to all recipients
-        for (const recipient of sockets) {
-            recipient.send(JSON.stringify({id, username, message}));
-        }
-    });
+  // Add this connection to the list of connections
+  sockets.push(socket);
+  // Set up the handling of messages from this sockets
+  socket.on("message", (msg) => {
+    // Destructor the incoming message
+    const { username, message } = JSON.parse(msg);
+    // Add fields from server side
+    const id = messageIndex++;
+    // broadcast a new message to all recipients
+    for (const recipient of sockets) {
+      recipient.send(JSON.stringify({ id, username, message }));
+    }
+  });
 });
 
 // Start express app
 const server = app.listen(3000, () => {
-    // Handle incoming clients
-    server.on("upgrade", (req, socket, head) => {
-        wsServer.handleUpgrade(req, socket, head, (socket) => {
-            // This will pass control to `wsServer.on("connection")`
-            wsServer.emit("connection", socket, req);
-        });
+  // Handle incoming clients
+  server.on("upgrade", (req, socket, head) => {
+    wsServer.handleUpgrade(req, socket, head, (socket) => {
+      // This will pass control to `wsServer.on("connection")`
+      wsServer.emit("connection", socket, req);
     });
+  });
 });
 ```
 
@@ -840,31 +980,32 @@ protects against some security risks.
 
 ```javascript
 export function Login() {
-    async function handleStartLogin() {
-        // Get the location of endpoints from Google
-        const {authorization_endpoint} = await fetchJson(
-            "https://accounts.google.com/.well-known/openid-configuration"
-        );
-        // Tell Google how to authentication
-        const query = new URLSearchParams({
-            response_type: "token",
-            scope: "openid profile email",
-            client_id:
-                "<get this from Google Cloud Console>",
-            // Tell user to come back to http://localhost:3000/callback when logged in
-            redirect_uri: window.location.origin + "/callback",
-        });
-        // Redirect the browser to log in
-        window.location.href = authorization_endpoint + "?" + query;
-    }
+  async function handleStartLogin() {
+    // Get the location of endpoints from Google
+    const { authorization_endpoint } = await fetchJson(
+      "https://accounts.google.com/.well-known/openid-configuration"
+    );
+    // Tell Google how to authentication
+    const query = new URLSearchParams({
+      response_type: "token",
+      scope: "openid profile email",
+      client_id:
+        "<get this from Google Cloud Console>",
+      // Tell user to come back to http://localhost:3000/callback when logged in
+      redirect_uri: window.location.origin + "/callback",
+    });
+    // Redirect the browser to log in
+    window.location.href = authorization_endpoint + "?" + query;
+  }
 
-    return <button onClick={handleStartLogin}>Log in</button>;
+  return <button onClick={handleStartLogin}>Log in</button>;
 }
 ```
 
 In the case of Active Directory, you also need
 parameters `response_type: "code"`, `response_mode: "fragment"`, `code_challenge_method` and `code_challenge` (the
 latest two are needed for PKCE).
+
 </details>
 
 #### Handle the authentication callback
@@ -874,29 +1015,29 @@ latest two are needed for PKCE).
 ```javascript
 
 // Router should take user here on /callback
-export function CompleteLoginPage({onComplete}) {
-    // Given an URL like http://localhost:3000/callback#access_token=sdlgnsoln&foo=bar,
-    //  window.location.hash will give the part starting with "#"
-    //  ...substring(1) will remove the "#"
-    //  and Object.fromEntries(new URLSearchParams(...)) will parse it into an object
-    // In this case, hash = { access_token: "sdlgnsoln", foo: "bar" }
-    const hash = Object.fromEntries(
-        new URLSearchParams(window.location.hash.substr(1))
-    );
-    // Get the values returned from the login provider. For Active Directory,
-    // this will be more complex
-    const {access_token, error} = hash;
-    useEffect(() => {
-        // Send the access token back to the outside application. This should
-        //  be saved to localStorage and then redirect the user
-        onComplete({access_token});
-    }, [access_token]);
+export function CompleteLoginPage({ onComplete }) {
+  // Given an URL like http://localhost:3000/callback#access_token=sdlgnsoln&foo=bar,
+  //  window.location.hash will give the part starting with "#"
+  //  ...substring(1) will remove the "#"
+  //  and Object.fromEntries(new URLSearchParams(...)) will parse it into an object
+  // In this case, hash = { access_token: "sdlgnsoln", foo: "bar" }
+  const hash = Object.fromEntries(
+    new URLSearchParams(window.location.hash.substr(1))
+  );
+  // Get the values returned from the login provider. For Active Directory,
+  // this will be more complex
+  const { access_token, error } = hash;
+  useEffect(() => {
+    // Send the access token back to the outside application. This should
+    //  be saved to localStorage and then redirect the user
+    onComplete({ access_token });
+  }, [access_token]);
 
-    if (error) {
-        // deal with the user failing to log in or to give consent with Google
-    }
+  if (error) {
+    // deal with the user failing to log in or to give consent with Google
+  }
 
-    return <div>Completing loging...</div>;
+  return <div>Completing loging...</div>;
 }
 ```
 
@@ -912,22 +1053,22 @@ value from PKCE. This call will return the `access_token`.
 ```javascript
 
 app.use(async (req, res, next) => {
-    const authorization = req.header("Authorization");
-    if (authorization) {
-        const {userinfo_endpoint} = await fetchJSON(
-            "https://accounts.google.com/.well-known/openid-configuration"
-        );
-        req.userinfo = await fetchJSON(userinfo_endpoint, {
-            headers: {authorization},
-        });
-    }
-    next();
+  const authorization = req.header("Authorization");
+  if (authorization) {
+    const { userinfo_endpoint } = await fetchJSON(
+      "https://accounts.google.com/.well-known/openid-configuration"
+    );
+    req.userinfo = await fetchJSON(userinfo_endpoint, {
+      headers: { authorization },
+    });
+  }
+  next();
 });
 
 app.get("/profile", (req, res) => {
-    if (!req.userinfo) {
-        return res.send(200);
-    }
+  if (!req.userinfo) {
+    return res.send(200);
+  }
 });
 ```
 
