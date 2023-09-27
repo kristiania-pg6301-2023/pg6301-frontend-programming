@@ -613,6 +613,36 @@ function AddMovieForm() {
 
 </details>
 
+#### The useLoading hook
+
+<details>
+
+```javascript
+export function useLoading(loadingFunction, deps = []) {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState();
+  const [error, setError] = useState();
+
+  async function load() {
+    setLoading(true);
+    setData(undefined);
+    setError(undefined);
+    try {
+      setData(await loadingFunction());
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(load, deps);
+  return { loading, data, error };
+}
+```
+
+</details>
+
 #### React Router
 
 <details>
@@ -664,38 +694,6 @@ app.use((req, res, next) => {
     next();
   }
 });
-```
-
-</details>
-
-### Fetching data from server
-
-#### The useLoading hook
-
-<details>
-
-```javascript
-export function useLoading(loadingFunction, deps = []) {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState();
-  const [error, setError] = useState();
-
-  async function load() {
-    setLoading(true);
-    setData(undefined);
-    setError(undefined);
-    try {
-      setData(await loadingFunction());
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  useEffect(load, deps);
-  return { loading, data, error };
-}
 ```
 
 </details>
