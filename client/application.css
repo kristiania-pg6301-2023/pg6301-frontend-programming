@@ -1,6 +1,9 @@
+* {
+  margin: 0;
+}
+
 body {
   background-color: rebeccapurple;
-  margin: 0;
 }
 
 #app {
@@ -21,8 +24,13 @@ header,
 nav,
 footer {
   color: aliceblue;
+  padding-inline: 1em;
 }
 
 nav a {
   color: aliceblue;
+}
+
+main {
+  padding: 1em;
 }
