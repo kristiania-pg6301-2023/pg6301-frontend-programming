@@ -1,3 +1,4 @@
+import React from "react";
 import { MoviesApplication } from "../moviesApplication";
 import renderer, { act } from "react-test-renderer";
 import { MemoryRouter } from "react-router-dom";
@@ -6,7 +7,7 @@ describe("movie application", () => {
   it("renders front page", () => {
     const component = renderer.create(
       <MemoryRouter>
-        <MoviesApplication />
+        <MoviesApplication fetchMovies={jest.fn()} />
       </MemoryRouter>,
     );
     expect(component).toMatchSnapshot();
@@ -18,7 +19,7 @@ describe("movie application", () => {
       component = renderer.create(
         <MemoryRouter initialEntries={["/movies"]}>
           <MoviesApplication
-            fetchMovies={() => [
+            fetchMovies={async () => [
               { id: 1, title: "Oppenheimer" },
               { id: 2, title: "Barbie" },
             ]}
@@ -27,7 +28,7 @@ describe("movie application", () => {
       );
     });
     expect(component).toMatchSnapshot();
-    expect(component.root.findByType("h2").children.join(" ")).toBe(
+    expect(component!.root.findByType("h2").children.join(" ")).toBe(
       "Listing of all movies",
     );
   });
