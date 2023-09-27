@@ -10,7 +10,7 @@ async function fetchMovies() {
   return await res.json();
 }
 
-const root = ReactDOM.createRoot(document.getElementById("app"));
+const root = ReactDOM.createRoot(document.getElementById("app")!);
 root.render(
   <HashRouter>
     <MoviesApplication fetchMovies={fetchMovies} />
