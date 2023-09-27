@@ -1,4 +1,4 @@
-Excecise 6: Storing data in MongoDB with Atlas
+Excecise 7: Storing data in MongoDB with Atlas
 ==============================================
 
 In this exercise, you should build a React client and Express server on top of MongoDB's example Movies database. This
