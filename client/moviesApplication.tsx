@@ -14,8 +14,17 @@ function FrontPage() {
   );
 }
 
-function Movies({ fetchMovies }) {
-  const [movies, setMovies] = useState([]);
+interface Movie {
+  title: string;
+  id: number;
+}
+
+interface MoviesProps {
+  fetchMovies(): Promise<Array<Movie>>;
+}
+
+function Movies({ fetchMovies }: MoviesProps) {
+  const [movies, setMovies] = useState<Movie[]>([]);
 
   async function loadMovies() {
     setMovies(await fetchMovies());
@@ -34,7 +43,7 @@ function Movies({ fetchMovies }) {
   );
 }
 
-function MoviesRoutes({ fetchMovies }) {
+function MoviesRoutes({ fetchMovies }: MoviesProps) {
   return (
     <Routes>
       <Route path={"/"} element={<FrontPage />} />
@@ -45,7 +54,7 @@ function MoviesRoutes({ fetchMovies }) {
   );
 }
 
-export function MoviesApplication({ fetchMovies }) {
+export function MoviesApplication({ fetchMovies }: MoviesProps) {
   return (
     <>
       <header>
