@@ -32,6 +32,51 @@ exports[`movie application lists movies 1`] = `
 ]
 `;
 
+exports[`movie application renders add movies page 1`] = `
+[
+  <header>
+    <h1>
+      Kristiania movies
+    </h1>
+  </header>,
+  <nav>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      Front page
+    </a>
+  </nav>,
+  <main>
+    <form
+      onSubmit={[Function]}
+    >
+      <h2>
+        Add movie
+      </h2>
+      <div>
+        <label>
+          Title 
+          <br />
+          <input
+            autoFocus={true}
+            name="title"
+            onChange={[Function]}
+            value=""
+          />
+        </label>
+      </div>
+      <button>
+        Submit
+      </button>
+    </form>
+  </main>,
+  <footer>
+    By Johannes Brodwall with 💚
+  </footer>,
+]
+`;
+
 exports[`movie application renders front page 1`] = `
 [
   <header>

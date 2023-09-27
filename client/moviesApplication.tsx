@@ -1,5 +1,9 @@
 import { Link, Route, Routes } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+
+export const MoviesContext = React.createContext({
+  postNewMovie: (movie: Omit<Movie, "id">) => {},
+});
 
 function FrontPage() {
   return (
@@ -43,12 +47,37 @@ function Movies({ fetchMovies }: MoviesProps) {
   );
 }
 
+function AddMovieForm() {
+  const { postNewMovie } = useContext(MoviesContext);
+  function handleSubmit() {
+    postNewMovie({ title });
+  }
+  const [title, setTitle] = useState("");
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>Add movie</h2>
+      <div>
+        <label>
+          Title <br />
+          <input
+            autoFocus={true}
+            name={"title"}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </label>
+      </div>
+      <button>Submit</button>
+    </form>
+  );
+}
+
 function MoviesRoutes({ fetchMovies }: MoviesProps) {
   return (
     <Routes>
       <Route path={"/"} element={<FrontPage />} />
       <Route path={"/movies"} element={<Movies fetchMovies={fetchMovies} />} />
-      <Route path={"/movies/new"} element={<h1>Add movie</h1>} />
+      <Route path={"/movies/new"} element={<AddMovieForm />} />
       <Route path={"*"} element={<h1>Not Found</h1>} />
     </Routes>
   );
