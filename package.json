@@ -9,9 +9,11 @@
     "dev:server": "cd server && npm run dev",
     "build": "npm run check && npm run build:client",
     "build:client": "cd client && npm run build",
-    "check": "npm run check:prettier && npm test",
+    "check": "npm run check:prettier && npm run check:typescript && npm test",
     "check:prettier": "prettier --check .",
     "prettier": "prettier --write .",
+    "check:typescript": "npm run check:typescript:client",
+    "check:typescript:client": "cd client && npm run check:typescript",
     "test": "npm run test:client && npm run test:server",
     "test:client": "cd client && npm test",
     "test:server": "cd server && npm test"
