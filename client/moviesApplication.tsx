@@ -1,5 +1,5 @@
 import { Link, Route, Routes } from "react-router-dom";
-import React, { useContext, useEffect, useState } from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
 
 export const MoviesContext = React.createContext({
   postNewMovie: (movie: Omit<Movie, "id">) => {},
@@ -49,7 +49,8 @@ function Movies({ fetchMovies }: MoviesProps) {
 
 function AddMovieForm() {
   const { postNewMovie } = useContext(MoviesContext);
-  function handleSubmit() {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     postNewMovie({ title });
   }
   const [title, setTitle] = useState("");

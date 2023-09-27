@@ -64,7 +64,9 @@ describe("movie application", () => {
       });
     });
     await act(async () => {
-      component.root.findByType("form").props.onSubmit();
+      component.root.findByType("form").props.onSubmit({
+        preventDefault: () => {},
+      });
     });
 
     expect(postNewMovie).toHaveBeenCalledWith({
