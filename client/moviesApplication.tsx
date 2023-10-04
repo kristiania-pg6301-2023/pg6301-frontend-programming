@@ -32,12 +32,12 @@ interface MoviesProps {
 
 function MovieEntry({ movie }: { movie: Movie }) {
   return (
-    <>
+    <div className={"movie"}>
       <h3>
         {movie.title} ({movie.year} meta critic score: {movie.metacritic})
       </h3>
       <p>{movie.plot}</p>
-    </>
+    </div>
   );
 }
 

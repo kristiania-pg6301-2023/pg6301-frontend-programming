@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { MoviesApplication, MoviesContext } from "./moviesApplication";
 
 import "./application.css";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 async function fetchMovies() {
   const res = await fetch("/api/movies");
@@ -22,9 +22,9 @@ async function postNewMovie(newMovie: unknown) {
 
 const root = ReactDOM.createRoot(document.getElementById("app")!);
 root.render(
-  <HashRouter>
+  <BrowserRouter>
     <MoviesContext.Provider value={{ postNewMovie }}>
       <MoviesApplication fetchMovies={fetchMovies} />
     </MoviesContext.Provider>
-  </HashRouter>,
+  </BrowserRouter>,
 );

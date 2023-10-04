@@ -3,8 +3,40 @@
 }
 
 body {
+  color: aliceblue;
   background-color: rebeccapurple;
 }
+
+nav a {
+  color: aliceblue;
+}
+
+main {
+  background-color: aliceblue;
+  color: rebeccapurple;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: aliceblue;
+    background-color: rebeccapurple;
+  }
+
+  nav a {
+    color: aliceblue;
+  }
+
+  main {
+    background-color: rebeccapurple;
+    color: aliceblue;
+    border: 1px solid aliceblue;
+  }
+
+  main a {
+    color: aliceblue;
+  }
+}
+
 
 #app {
   height: 100vh;
@@ -13,8 +45,8 @@ body {
 }
 
 main {
-  background-color: aliceblue;
   min-width: 80%;
+  max-width: 400px;
   margin-inline: auto;
   margin-block: 1em;
   border-radius: 1em;
@@ -23,14 +55,13 @@ main {
 header,
 nav,
 footer {
-  color: aliceblue;
   padding-inline: 1em;
-}
-
-nav a {
-  color: aliceblue;
 }
 
 main {
   padding: 1em;
+}
+
+.movie {
+  margin-block: 1em;
 }
