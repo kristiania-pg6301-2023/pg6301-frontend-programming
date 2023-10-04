@@ -2,6 +2,9 @@ import express from "express";
 import { createMoviesRouter, moviesApi } from "./moviesApi.js";
 import bodyParser from "body-parser";
 import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
