@@ -26,3 +26,4 @@ using TypeScript.
 - `application.css` layout
 - npm install prettier; setup prettier, check and dev scripts
 - `npm run prettier`
+- `cd client && npm i -D typescript && npx tsc --init`
