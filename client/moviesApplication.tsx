@@ -27,7 +27,7 @@ interface MoviesProps {
   fetchMovies(): Promise<Array<Movie>>;
 }
 
-function Movies({ fetchMovies }: MoviesProps) {
+function MoviesList({ fetchMovies }: MoviesProps) {
   const [movies, setMovies] = useState<Movie[]>([]);
 
   async function loadMovies() {
@@ -77,7 +77,10 @@ function MoviesRoutes({ fetchMovies }: MoviesProps) {
   return (
     <Routes>
       <Route path={"/"} element={<FrontPage />} />
-      <Route path={"/movies"} element={<Movies fetchMovies={fetchMovies} />} />
+      <Route
+        path={"/movies"}
+        element={<MoviesList fetchMovies={fetchMovies} />}
+      />
       <Route path={"/movies/new"} element={<AddMovieForm />} />
       <Route path={"*"} element={<h1>Not Found</h1>} />
     </Routes>

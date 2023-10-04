@@ -1,4 +1,5 @@
 import express from "express";
+import { MongoClient } from "mongodb";
 
 export const moviesApi = express.Router();
 const MOVIES = [
@@ -12,8 +13,21 @@ const MOVIES = [
   },
 ];
 
-moviesApi.get("", (req, res) => {
-  res.json(MOVIES);
+const url =
+  "mongodb+srv://jhannes:YmS88Z0pGuoJx1v2@cluster0.nocfyxh.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(url);
+
+client.connect().then((connection) => {
+  moviesApi.get("", async (req, res) => {
+    const movies = await connection
+      .db("sample_mflix")
+      .collection("movies")
+      .find()
+      .filter({ countries: "Norway", year: 2012 })
+      .limit(20)
+      .toArray();
+    res.json(movies);
+  });
 });
 
 moviesApi.post("", (req, res) => {

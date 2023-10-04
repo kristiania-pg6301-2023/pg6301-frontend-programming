@@ -16,7 +16,10 @@
     "check:typescript:client": "cd client && npm run check:typescript",
     "test": "npm run test:client && npm run test:server",
     "test:client": "cd client && npm test",
-    "test:server": "cd server && npm test"
+    "test:server": "cd server && npm test",
+    "postinstall": "npm run install:client && npm run install:server",
+    "install:client": "cd client && npm install --include=dev",
+    "install:server": "cd server && npm install"
   },
   "keywords": [],
   "author": "",
