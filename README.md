@@ -251,7 +251,7 @@ Bonus content: The secret of <BrowserRouter />, Express middleware and the bodyP
 <details>
 
 Loading spinner and error handling, as well as using React context to centralize interaction between client and server.
-We will also revisit <BrowserRouter /> and why fix how it was broken with Express.
+We will also revisit BrowserRouter and why fix how it was broken with Express.
 
 #### Material from 2022
 
