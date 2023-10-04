@@ -1,5 +1,8 @@
 import express from "express";
 import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const moviesApi = express.Router();
 const MOVIES = [
@@ -13,7 +16,7 @@ const MOVIES = [
   },
 ];
 
-const url = "mongodb+srv://whoaa must fix/?retryWrites=true&w=majority";
+const url = process.env.MONGODB_URL;
 const client = new MongoClient(url);
 
 client.connect().then((connection) => {
