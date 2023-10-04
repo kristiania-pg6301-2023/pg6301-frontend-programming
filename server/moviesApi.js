@@ -13,8 +13,7 @@ const MOVIES = [
   },
 ];
 
-const url =
-  "mongodb+srv://jhannes:YmS88Z0pGuoJx1v2@cluster0.nocfyxh.mongodb.net/?retryWrites=true&w=majority";
+const url = "mongodb+srv://whoaa must fix/?retryWrites=true&w=majority";
 const client = new MongoClient(url);
 
 client.connect().then((connection) => {
