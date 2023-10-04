@@ -6,4 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 import "./application.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<BrowserRouter><TaskApplication /></BrowserRouter>);
+root.render(
+  <BrowserRouter>
+    <TaskApplication />
+  </BrowserRouter>,
+);

@@ -1,32 +1,32 @@
 * {
-    margin: 0;
+  margin: 0;
 }
 
 body {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
 main {
-    background-color: white;
+  background-color: white;
 }
 
 #root {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
 }
 
 main {
-    margin-inline: auto;
-    min-width: 80%;
-    max-width: 350px;
-    padding: 1em;
-    border-radius: 0.5em;
+  margin-inline: auto;
+  min-width: 80%;
+  max-width: 350px;
+  padding: 1em;
+  border-radius: 0.5em;
 }
 
 header,
 nav,
 footer {
-    padding-inline: 1em;
-    padding-block: 0.25em;
+  padding-inline: 1em;
+  padding-block: 0.25em;
 }
