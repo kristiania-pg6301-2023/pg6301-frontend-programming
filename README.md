@@ -33,3 +33,4 @@ using TypeScript. The server connects to MongoDB but doesn't use it
 - `npm i -D jest @types/jest ts-jest react-test-renderer @types/react-test-renderer`
 - Implement test for TasksList
 - Implement test for AddTaskForm
+- `mkdir server && cd server && npm i express && npm i -D nodemon`
