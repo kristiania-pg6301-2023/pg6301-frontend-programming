@@ -2,7 +2,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import React, { FormEvent, useContext, useEffect, useState } from "react";
 
 export const MoviesContext = React.createContext({
-  postNewMovie: (movie: Omit<Movie, "id">) => {},
+  postNewMovie: (movie: Omit<Movie, "_id">) => {},
 });
 
 function FrontPage() {
@@ -19,12 +19,26 @@ function FrontPage() {
 }
 
 interface Movie {
+  _id: number;
   title: string;
-  id: number;
+  year?: number;
+  plot?: string;
+  metacritic?: number;
 }
 
 interface MoviesProps {
   fetchMovies(): Promise<Array<Movie>>;
+}
+
+function MovieEntry({ movie }: { movie: Movie }) {
+  return (
+    <>
+      <h3>
+        {movie.title} ({movie.year} meta critic score: {movie.metacritic})
+      </h3>
+      <p>{movie.plot}</p>
+    </>
+  );
 }
 
 function MoviesList({ fetchMovies }: MoviesProps) {
@@ -41,7 +55,7 @@ function MoviesList({ fetchMovies }: MoviesProps) {
     <>
       <h2>Listing of all movies</h2>
       {movies.map((m) => (
-        <div key={m.id}>{m.title}</div>
+        <MovieEntry key={m._id} movie={m} />
       ))}
     </>
   );
