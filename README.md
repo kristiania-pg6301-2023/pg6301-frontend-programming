@@ -241,6 +241,8 @@ Bonus content: The secret of <BrowserRouter />, Express middleware and the bodyP
 * [MongoDB Skills](https://www.youtube.com/watch?v=0vPt7GI-2kc) - very useful and brief
 * [MongoDB in 100 seconds (Fireship.io)](https://www.youtube.com/watch?v=-bt_y4Loofg)
 * [MongoDB University: JavaScript](https://university.mongodb.com/courses/M220JS/about)
+* [MongoDB documentation: How to query collections](https://www.mongodb.com/docs/manual/reference/operator/query/)
+* [MongoDB documentation: How to insert a document](https://www.mongodb.com/docs/drivers/node/current/usage-examples/insertOne/)
 
 </details>
 
