@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import React, { FormEvent, useEffect, useState } from "react";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 
-interface TodoTask {
+export interface TodoTask {
   _id: string;
   title: string;
 }
@@ -39,26 +39,66 @@ function TasksList({ fetchTasks }: { fetchTasks(): TodoTask[] }) {
   );
 }
 
-function AddTaskForm() {
+function AddTaskForm({
+  onAddTask,
+}: {
+  onAddTask(task: Omit<TodoTask, "_id">): void;
+}) {
+  const navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    onAddTask({ title });
+    navigate("/");
+  }
+
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <h2>Add tasks</h2>
-    </>
+      <div>
+        <input value={title} onChange={(e) => setTitle(e.target.value)} />
+      </div>
+      <div>
+        <button>Submit</button>
+      </div>
+    </form>
   );
 }
 
-function TaskRoutes({ fetchTasks }: { fetchTasks(): TodoTask[] }) {
+function TaskRoutes({
+  fetchTasks,
+  onAddTask,
+}: {
+  fetchTasks(): TodoTask[];
+  onAddTask(task: TodoTask): void;
+}) {
   return (
     <Routes>
       <Route path={"/"} element={<FrontPage />} />
       <Route path={"/tasks"} element={<TasksList fetchTasks={fetchTasks} />} />
-      <Route path={"/tasks/new"} element={<AddTaskForm />} />
+      <Route
+        path={"/tasks/new"}
+        element={<AddTaskForm onAddTask={onAddTask} />}
+      />
       <Route path={"*"} element={<h2>Not found</h2>} />
     </Routes>
   );
 }
 
-export function TaskApplication({ fetchTasks }: { fetchTasks(): TodoTask[] }) {
+export function TaskApplication() {
+  const [tasks, setTasks] = useState([
+    { _id: "1", title: "Prepare lecture" },
+    { _id: "2", title: "Give lecture" },
+  ]);
+
+  function fetchTasks() {
+    return tasks;
+  }
+
+  function handleAddTask(task: Omit<TodoTask, "_id">) {
+    setTasks((old) => [...old, { ...task, _id: (old.length + 1).toString() }]);
+  }
+
   return (
     <>
       <header>
@@ -68,7 +108,7 @@ export function TaskApplication({ fetchTasks }: { fetchTasks(): TodoTask[] }) {
         <Link to={"/"}>Front page</Link>
       </nav>
       <main>
-        <TaskRoutes fetchTasks={fetchTasks} />
+        <TaskRoutes fetchTasks={fetchTasks} onAddTask={handleAddTask} />
       </main>
       <footer>Made with 💚 by Johannes Brodwall</footer>
     </>
