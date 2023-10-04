@@ -25,3 +25,4 @@ using TypeScript.
 * create `index.jsx` and `taskApplication.jsx`
 * create structure and routes for TaskApplication with FrontPage, TasksLists and AddTaskForm
 * `application.css` layout
+* npm install prettier; setup prettier, check and dev scripts
