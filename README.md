@@ -28,4 +28,4 @@ using TypeScript.
 - `npm run prettier`
 - `cd client && npm i -D typescript && npx tsc --init`
 - `npm pkg set scripts.check="npm run check:prettier && npm run check:typescript" && npm pkg set scripts.check:typescript="npm run check:typescript:client" && npm pkg set scripts.check:typescript:client="cd client && npm run check:typescript" && cd client && npm pkg set scripts.check:typescript="tsc --noEmit"`
-- rename *.jsx to *.tsx
+- rename _.jsx to _.tsx
