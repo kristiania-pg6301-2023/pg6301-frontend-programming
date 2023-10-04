@@ -34,3 +34,5 @@ using TypeScript. The server connects to MongoDB but doesn't use it
 - Implement test for TasksList
 - Implement test for AddTaskForm
 - `mkdir server && cd server && npm i express && npm i -D nodemon`
+- `npm run dev` in root should run `server/server.js` which runs `express`
+- `npm i mongodb dotenv` and make MongoDB perform a query at start
