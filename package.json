@@ -10,8 +10,9 @@
     "prettier": "prettier --write .",
     "check": "npm run check:prettier && npm run check:typescript && npm test",
     "check:prettier": "prettier --check .",
-    "check:typescript": "npm run check:typescript:client",
+    "check:typescript": "npm run check:typescript:client && npm run check:typescript:server",
     "check:typescript:client": "cd client && npm run check:typescript",
+    "check:typescript:server": "cd server && npm run check:typescript",
     "test": "npm run test:client",
     "test:client": "cd client && npm test"
   }

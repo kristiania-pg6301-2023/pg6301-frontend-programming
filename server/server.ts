@@ -7,7 +7,7 @@ const app = express();
 app.use(express.static("../client/dist"));
 app.listen(3000);
 
-const client = new MongoClient(process.env.MONGODB_URL);
+const client = new MongoClient(process.env.MONGODB_URL!);
 client.connect().then(async (connection) => {
   const db = connection.db("sample_mflix");
   const movies = await db
