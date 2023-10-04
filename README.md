@@ -17,3 +17,7 @@ using TypeScript.
   * [ ] Making our own router
   * [ ] Making a router constructor
   * [ ] The express.json-mystery bug
+
+## Log:
+
+* `mkdir client && cd client && npm i -D parcel && npm install react react-dom react-router-dom`
