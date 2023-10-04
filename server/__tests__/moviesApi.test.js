@@ -1,11 +1,19 @@
 import request from "supertest";
 import express from "express";
-import { moviesApi } from "../moviesApi.js";
+import { createMoviesRouter, moviesApi } from "../moviesApi.js";
 import bodyParser from "body-parser";
+import { MongoClient } from "mongodb";
 
 const app = express();
 app.use(bodyParser.json());
-app.use(moviesApi);
+
+beforeAll(async () => {
+  app.use(moviesApi);
+  const url = process.env.MONGODB_URL;
+  const client = new MongoClient(url);
+  const db = (await client.connect()).db("sample_mflix");
+  createMoviesRouter(db);
+});
 
 describe("movies api", () => {
   it("lets the user add a new movie", async () => {

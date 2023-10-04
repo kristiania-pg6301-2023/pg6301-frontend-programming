@@ -5,22 +5,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const moviesApi = express.Router();
-const MOVIES = [
-  {
-    id: 1,
-    title: "Oppenheimer from route",
-  },
-  {
-    id: 2,
-    title: "Barbie from route",
-  },
-];
+const MOVIES = [];
 
-const url = process.env.MONGODB_URL;
-const client = new MongoClient(url);
-
-client.connect().then((connection) => {
-  const db = connection.db("sample_mflix");
+export function createMoviesRouter(db) {
   moviesApi.get("", async (req, res) => {
     const movies = await db
       .collection("movies")
@@ -37,10 +24,18 @@ client.connect().then((connection) => {
       .toArray();
     res.json(movies);
   });
-});
 
-moviesApi.post("", (req, res) => {
-  const { title } = req.body;
-  MOVIES.push({ id: MOVIES.length + 1, title });
-  res.sendStatus(204);
+  moviesApi.post("", (req, res) => {
+    const { title } = req.body;
+    MOVIES.push({ id: MOVIES.length + 1, title });
+    res.sendStatus(204);
+  });
+}
+
+const url = process.env.MONGODB_URL;
+const client = new MongoClient(url);
+
+client.connect().then((connection) => {
+  const db = connection.db("sample_mflix");
+  createMoviesRouter(db);
 });
