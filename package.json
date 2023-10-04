@@ -3,12 +3,14 @@
     "prettier": "^3.0.3"
   },
   "scripts": {
-    "prettier": "prettier --write .",
-    "check:prettier": "prettier --check .",
-    "check": "npm run check:prettier && npm run check:typescript",
     "dev": "npm run dev:client",
     "dev:client": "cd client && npm run dev",
+    "prettier": "prettier --write .",
+    "check": "npm run check:prettier && npm run check:typescript && npm test",
+    "check:prettier": "prettier --check .",
     "check:typescript": "npm run check:typescript:client",
-    "check:typescript:client": "cd client && npm run check:typescript"
+    "check:typescript:client": "cd client && npm run check:typescript",
+    "test": "npm run test:client",
+    "test:client": "cd client && npm test"
   }
 }

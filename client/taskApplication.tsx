@@ -65,7 +65,7 @@ function AddTaskForm({
   );
 }
 
-function TaskRoutes({
+export function TaskRoutes({
   fetchTasks,
   onAddTask,
 }: {
