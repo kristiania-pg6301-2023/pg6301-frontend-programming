@@ -17,7 +17,7 @@
     "react-router-dom": "^6.16.0"
   },
   "scripts": {
-    "dev": "parcel serve index.html",
+    "dev": "parcel watch index.html",
     "check:typescript": "tsc --noEmit",
     "test": "jest"
   }
