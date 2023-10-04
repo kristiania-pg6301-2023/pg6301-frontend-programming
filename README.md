@@ -2,7 +2,7 @@
 
 Starting point: Everything is working, but just on the client.
 We have a simple test for the client and the server and we're
-using TypeScript.
+using TypeScript. The server connects to MongoDB but doesn't use it
 
 - [ ] Getting Express to handle `<BrowserRouter />`
   - [ ] Middleware and the Express pipeline model
@@ -29,3 +29,7 @@ using TypeScript.
 - `cd client && npm i -D typescript && npx tsc --init`
 - `npm pkg set scripts.check="npm run check:prettier && npm run check:typescript" && npm pkg set scripts.check:typescript="npm run check:typescript:client" && npm pkg set scripts.check:typescript:client="cd client && npm run check:typescript" && cd client && npm pkg set scripts.check:typescript="tsc --noEmit"`
 - rename _.jsx to _.tsx
+- Install test script in package.json
+- `npm i -D jest @types/jest ts-jest react-test-renderer @types/react-test-renderer`
+- Implement test for TasksList
+- Implement test for AddTaskForm
