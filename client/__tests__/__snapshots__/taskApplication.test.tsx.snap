@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`task application displays task list 1`] = `
+[
+  <h2>
+    List tasks
+  </h2>,
+  ",",
+]
+`;
