@@ -21,10 +21,11 @@ using TypeScript.
 
 - `mkdir client && cd client && npm i -D parcel && npm install react react-dom react-router-dom`
 - `npm pkg set scripts.dev="parcel serve index.html"`; create "index.html"
-- create `index.jsx` and `taskApplication.jsx`
+- create `index.tsx` and `taskApplication.tsx`
 - create structure and routes for TaskApplication with FrontPage, TasksLists and AddTaskForm
 - `application.css` layout
 - npm install prettier; setup prettier, check and dev scripts
 - `npm run prettier`
 - `cd client && npm i -D typescript && npx tsc --init`
 - `npm pkg set scripts.check="npm run check:prettier && npm run check:typescript" && npm pkg set scripts.check:typescript="npm run check:typescript:client" && npm pkg set scripts.check:typescript:client="cd client && npm run check:typescript" && cd client && npm pkg set scripts.check:typescript="tsc --noEmit"`
+- rename *.jsx to *.tsx
