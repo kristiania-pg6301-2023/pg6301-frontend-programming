@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const moviesApi = express.Router();
-const MOVIES = [];
 
 export function createMoviesRouter(db) {
   moviesApi.get("", async (req, res) => {
@@ -18,16 +17,18 @@ export function createMoviesRouter(db) {
           $exists: true,
         },
       })
-      .sort({ metacritic: 1 })
+      .sort({ metacritic: -1 })
       .project({ title: 1, plot: 2, year: 3, metacritic: 4 })
       .limit(20)
       .toArray();
     res.json(movies);
   });
 
-  moviesApi.post("", (req, res) => {
-    const { title } = req.body;
-    MOVIES.push({ id: MOVIES.length + 1, title });
+  moviesApi.post("", async (req, res) => {
+    const { title, plot, year, metacritic, countries } = req.body;
+    await db
+      .collection("movies")
+      .insertOne({ title, plot, year, metacritic, countries });
     res.sendStatus(204);
   });
 }
