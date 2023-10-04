@@ -21,3 +21,4 @@ using TypeScript.
 ## Log:
 
 * `mkdir client && cd client && npm i -D parcel && npm install react react-dom react-router-dom`
+* `npm pkg set scripts.dev="parcel serve index.html"`; create "index.html"
