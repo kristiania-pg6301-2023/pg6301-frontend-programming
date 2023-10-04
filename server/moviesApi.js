@@ -1,5 +1,4 @@
 import express from "express";
-import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -32,11 +31,3 @@ export function createMoviesRouter(db) {
     res.sendStatus(204);
   });
 }
-
-const url = process.env.MONGODB_URL;
-const client = new MongoClient(url);
-
-client.connect().then((connection) => {
-  const db = connection.db("sample_mflix");
-  createMoviesRouter(db);
-});

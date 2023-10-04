@@ -11,7 +11,7 @@ beforeAll(async () => {
   app.use(moviesApi);
   const url = process.env.MONGODB_URL;
   const client = new MongoClient(url);
-  const db = (await client.connect()).db("sample_mflix");
+  const db = (await client.connect()).db("unit_tests");
   createMoviesRouter(db);
 });
 
