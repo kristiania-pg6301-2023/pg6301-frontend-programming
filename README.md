@@ -24,3 +24,4 @@ using TypeScript.
 * `npm pkg set scripts.dev="parcel serve index.html"`; create "index.html"
 * create `index.jsx` and `taskApplication.jsx`
 * create structure and routes for TaskApplication with FrontPage, TasksLists and AddTaskForm
+* `application.css` layout
