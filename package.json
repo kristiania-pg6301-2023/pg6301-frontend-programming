@@ -5,8 +5,10 @@
   "scripts": {
     "prettier": "prettier --write .",
     "check:prettier": "prettier --check .",
-    "check": "npm run check:prettier",
+    "check": "npm run check:prettier && npm run check:typescript",
     "dev": "npm run dev:client",
-    "dev:client": "cd client && npm run dev"
+    "dev:client": "cd client && npm run dev",
+    "check:typescript": "npm run check:typescript:client",
+    "check:typescript:client": "cd client && npm run check:typescript"
   }
 }
