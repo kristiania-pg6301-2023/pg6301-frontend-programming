@@ -20,5 +20,9 @@
     "dev": "parcel watch index.html",
     "check:typescript": "tsc --noEmit",
     "test": "jest"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
   }
 }

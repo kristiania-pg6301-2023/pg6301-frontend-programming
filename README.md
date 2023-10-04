@@ -4,8 +4,9 @@ Starting point: Everything is working, but just on the client.
 We have a simple test for the client and the server and we're
 using TypeScript. The server connects to MongoDB but doesn't use it
 
+- [ ] `@media (prefers-color-scheme: dark)`
 - [ ] Getting Express to handle `<BrowserRouter />`
-  - [ ] Middleware and the Express pipeline model
+  - [ ] Middleware and the Express pipeline model using `supertest`
   - [ ] Fallback middleware
 - [ ] Move logic to server
 - [ ] Handle slow loading on client
@@ -16,6 +17,7 @@ using TypeScript. The server connects to MongoDB but doesn't use it
   - [ ] Making our own router
   - [ ] Making a router constructor
   - [ ] The express.json-mystery bug
+- [ ] Topic: React context
 
 ## Log:
 
