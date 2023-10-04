@@ -37,3 +37,4 @@ using TypeScript. The server connects to MongoDB but doesn't use it
 - `npm run dev` in root should run `server/server.ts` which runs `express`
 - `npm i mongodb dotenv` and make MongoDB perform a query at start
 - `npm check:typescript` should check server with typescript
+- `npm test` should run a server test with supertest

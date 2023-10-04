@@ -13,7 +13,8 @@
     "check:typescript": "npm run check:typescript:client && npm run check:typescript:server",
     "check:typescript:client": "cd client && npm run check:typescript",
     "check:typescript:server": "cd server && npm run check:typescript",
-    "test": "npm run test:client",
-    "test:client": "cd client && npm test"
+    "test": "npm run test:client && npm run test:server",
+    "test:client": "cd client && npm test",
+    "test:server": "cd server && npm test"
   }
 }
