@@ -1,7 +1,8 @@
 {
   "devDependencies": {
     "concurrently": "^8.2.1",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.5"
   },
   "scripts": {
     "dev": "concurrently npm:dev:client npm:dev:server",
@@ -15,6 +16,11 @@
     "check:typescript:server": "cd server && npm run check:typescript",
     "test": "npm run test:client && npm run test:server",
     "test:client": "cd client && npm test",
-    "test:server": "cd server && npm test"
+    "test:server": "cd server && npm test",
+    "clean": "rimraf client/.parcel-cache client/dist",
+    "clean:hard": "npm run clean && rimraf node_modules client/node_modules server/node_modules",
+    "postinstall": "npm run install:client && npm run install:server",
+    "install:client": "cd client && npm install --include=dev",
+    "install:server": "cd server && npm install"
   }
 }

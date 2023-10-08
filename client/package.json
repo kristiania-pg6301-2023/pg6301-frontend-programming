@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "dev": "parcel watch index.html",
+    "check:typescript": "tsc --noEmit",
+    "test": "jest"
+  },
   "devDependencies": {
     "@types/jest": "^29.5.5",
     "@types/react": "^18.2.25",
@@ -15,11 +20,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0"
-  },
-  "scripts": {
-    "dev": "parcel watch index.html",
-    "check:typescript": "tsc --noEmit",
-    "test": "jest"
   },
   "jest": {
     "preset": "ts-jest",
