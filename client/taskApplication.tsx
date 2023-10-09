@@ -29,7 +29,7 @@ function FrontPage() {
   );
 }
 
-function TasksList(_: { fetchTasks(): Promise<TodoTask[]> }) {
+function TasksList() {
   const { fetchTasks } = useContext(ApplicationContext);
   const [tasks, setTasks] = useState<TodoTask[]>([]);
   const [loading, setLoading] = useState(true);
@@ -67,11 +67,7 @@ function TasksList(_: { fetchTasks(): Promise<TodoTask[]> }) {
   );
 }
 
-function AddTaskForm({
-  onAddTask,
-}: {
-  onAddTask(task: Omit<TodoTask, "_id">): Promise<undefined>;
-}) {
+function AddTaskForm() {
   const { addTask } = useContext(ApplicationContext);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -112,21 +108,12 @@ function AddTaskForm({
   );
 }
 
-export function TaskRoutes({
-  fetchTasks,
-  onAddTask,
-}: {
-  fetchTasks(): Promise<TodoTask[]>;
-  onAddTask(task: TodoTask): Promise<undefined>;
-}) {
+export function TaskRoutes() {
   return (
     <Routes>
       <Route path={"/"} element={<FrontPage />} />
-      <Route path={"/tasks"} element={<TasksList fetchTasks={fetchTasks} />} />
-      <Route
-        path={"/tasks/new"}
-        element={<AddTaskForm onAddTask={onAddTask} />}
-      />
+      <Route path={"/tasks"} element={<TasksList />} />
+      <Route path={"/tasks/new"} element={<AddTaskForm />} />
       <Route path={"*"} element={<h2>Not found</h2>} />
     </Routes>
   );
@@ -163,7 +150,7 @@ export function TaskApplication() {
         <Link to={"/"}>Front page</Link>
       </nav>
       <main>
-        <TaskRoutes fetchTasks={fetchTasks} onAddTask={addTask} />
+        <TaskRoutes />
       </main>
       <footer>Made with 💚 by Johannes Brodwall</footer>
     </ApplicationContext.Provider>
