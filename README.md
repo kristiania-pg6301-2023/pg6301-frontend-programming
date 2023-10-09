@@ -8,8 +8,8 @@ using TypeScript. The server connects to MongoDB but doesn't use it
 - [x] Getting Express to handle `<BrowserRouter />`
   - [x] Middleware and the Express pipeline model using `supertest`
   - [x] Fallback middleware
-- [ ] Move logic to server
-- [ ] Handle slow loading on client
+- [x] Move logic to server
+- [x] Handle slow loading on client
   - [ ] callbacks, Promises, async/await
 - [ ] Handle errors from server on GET
 - [ ] Handle errors from server on POST

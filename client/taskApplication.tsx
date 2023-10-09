@@ -50,10 +50,11 @@ function AddTaskForm({
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     onAddTask({ title })
-      .then(() => navigate("/"))
+      //.then(() => navigate("/"))
       .catch((err) => {
         setError(err);
       });
+    navigate("/tasks");
   }
 
   return (

@@ -10,7 +10,7 @@ export const tasksRouter = express.Router();
 tasksRouter.get("/api/tasks", (req, res) => {
   setTimeout(() => {
     return res.send(TASKS);
-  }, 500);
+  }, 100);
 });
 
 tasksRouter.post("/api/tasks", (req, res) => {
