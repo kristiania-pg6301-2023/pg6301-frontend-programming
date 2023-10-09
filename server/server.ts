@@ -12,7 +12,7 @@ app.use(express.json());
 const client = new MongoClient(process.env.MONGODB_URL!);
 client.connect().then(async (connection) => {
   const db = connection.db("sample_mflix");
-  app.use(createMoviesRouter);
+  app.use(createMoviesRouter(db));
   app.use(tasksRouter);
   app.use(express.static("../client/dist"));
   app.use((req, res, next) => {
@@ -38,7 +38,7 @@ function createMoviesRouter(db: Db) {
       }
       res.sendStatus(404);
     } else {
-      //next();
+      next();
     }
   };
   return router;
