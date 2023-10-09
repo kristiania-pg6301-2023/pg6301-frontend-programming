@@ -1,6 +1,14 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 
+const ApplicationContext = React.createContext<{
+  fetchTasks: () => Promise<TodoTask[]>;
+  addTask: (task: Omit<TodoTask, "id">) => Promise<void>;
+}>({
+  fetchTasks: async () => [],
+  addTask: async () => {},
+});
+
 export interface TodoTask {
   _id: string;
   title: string;
@@ -25,6 +33,7 @@ function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
   const [tasks, setTasks] = useState<TodoTask[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error>();
+
   async function loadTasks() {
     setLoading(true);
     setError(undefined);
@@ -36,6 +45,7 @@ function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
       setLoading(false);
     }
   }
+
   useEffect(() => {
     loadTasks();
   }, []);
@@ -65,6 +75,7 @@ function AddTaskForm({
   const [title, setTitle] = useState("");
   const [error, setError] = useState<string>();
   const [submitting, setSubmitting] = useState(false);
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
@@ -128,7 +139,7 @@ export function TaskApplication() {
     return await res.json();
   }
 
-  async function handleAddTask(task: Omit<TodoTask, "_id">) {
+  async function addTask(task: Omit<TodoTask, "_id">) {
     const res = await fetch("/api/tasks", {
       method: "POST",
       body: JSON.stringify(task),
@@ -142,7 +153,7 @@ export function TaskApplication() {
   }
 
   return (
-    <>
+    <ApplicationContext.Provider value={{ fetchTasks, addTask }}>
       <header>
         <h1>My Task Application</h1>
       </header>
@@ -150,9 +161,9 @@ export function TaskApplication() {
         <Link to={"/"}>Front page</Link>
       </nav>
       <main>
-        <TaskRoutes fetchTasks={fetchTasks} onAddTask={handleAddTask} />
+        <TaskRoutes fetchTasks={fetchTasks} onAddTask={addTask} />
       </main>
       <footer>Made with 💚 by Johannes Brodwall</footer>
-    </>
+    </ApplicationContext.Provider>
   );
 }
