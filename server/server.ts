@@ -27,19 +27,12 @@ client.connect().then(async (connection) => {
 app.listen(3000);
 
 function createMoviesRouter(db: Db) {
-  console.log({ db });
-  const router = async (req: Request, res: Response, next: NextFunction) => {
-    if (req.path.startsWith("/api/movies")) {
-      if (req.path === "/api/movies/parameters") {
-        const years = await db
-          .collection("movies")
-          .distinct("year", { countries: "Norway" });
-        return res.send({ years });
-      }
-      res.sendStatus(404);
-    } else {
-      next();
-    }
-  };
+  const router = express.Router();
+  router.get("/api/movies/parameters", async (req, res) => {
+    const collection = db.collection("movies");
+    const years = await collection.distinct("year", { countries: "Norway" });
+    const countries = await collection.distinct("countries");
+    return res.send({ years, countries });
+  });
   return router;
 }

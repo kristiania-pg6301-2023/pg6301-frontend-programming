@@ -11,12 +11,12 @@ using TypeScript. The server connects to MongoDB but doesn't use it
 - [x] Move logic to server
 - [x] Handle slow loading on client
   - [x] callbacks, Promises, async/await
-- [ ] Handle errors from server on GET
+- [x] Handle errors from server on GET
 - [x] Handle errors from server on POST
-- [ ] More on Express middleware and routers
-  - [ ] Making our own router
-  - [ ] Making a router constructor
-  - [ ] The express.json-mystery bug
+- [x] More on Express middleware and routers
+  - [x] Making our own router
+  - [x] Making a router constructor
+  - [x] The express.json-mystery bug
 - [ ] Topic: React context
 
 ## Log:
