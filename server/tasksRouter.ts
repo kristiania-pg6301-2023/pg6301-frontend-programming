@@ -7,16 +7,20 @@ export const TASKS = [
 
 export const tasksRouter = express.Router();
 
-tasksRouter.get("/api/tasks", (req, res) => {
-  setTimeout(() => {
-    return res.send(TASKS);
-  }, 100);
+function delay(millis: number) {
+  return new Promise<undefined>((resolve, reject) => {
+    setTimeout(() => resolve(undefined), millis);
+  });
+}
+
+tasksRouter.get("/api/tasks", async (req, res) => {
+  await delay(400);
+  return res.send(TASKS);
 });
 
-tasksRouter.post("/api/tasks", (req, res) => {
+tasksRouter.post("/api/tasks", async (req, res) => {
   const { title } = req.body;
-  setTimeout(() => {
-    TASKS.push({ _id: TASKS.length + 1, title });
-    res.sendStatus(201);
-  }, 500);
+  await delay(300);
+  TASKS.push({ _id: TASKS.length + 1, title });
+  res.sendStatus(201);
 });
