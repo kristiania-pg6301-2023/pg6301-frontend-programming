@@ -24,13 +24,17 @@ function FrontPage() {
 function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
   const [tasks, setTasks] = useState<TodoTask[]>([]);
   const [loading, setLoading] = useState(true);
-
+  const [error, setError] = useState<Error>();
   async function loadTasks() {
     setLoading(true);
-    setTasks(await fetchTasks());
-    setLoading(false);
+    try {
+      setTasks(await fetchTasks());
+    } catch (error) {
+      setError(error as Error);
+    } finally {
+      setLoading(false);
+    }
   }
-
   useEffect(() => {
     loadTasks();
   }, []);
@@ -38,6 +42,12 @@ function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
     <>
       <h2>List tasks</h2>
       {loading && <div>Loading....</div>}
+      {error && (
+        <div>
+          Error! {error.message}
+          <button onClick={loadTasks}>Retry</button>
+        </div>
+      )}
       {tasks.map((t) => (
         <div key={t._id}>{t.title}</div>
       ))}
@@ -54,7 +64,6 @@ function AddTaskForm({
   const [title, setTitle] = useState("");
   const [error, setError] = useState<string>();
   const [submitting, setSubmitting] = useState(false);
-
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
@@ -112,6 +121,9 @@ export function TaskRoutes({
 export function TaskApplication() {
   async function fetchTasks(): Promise<TodoTask[]> {
     const res = await fetch("/api/tasks");
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    }
     return await res.json();
   }
 

@@ -13,7 +13,7 @@ function delay(millis: number) {
   });
 }
 
-tasksRouter.get("/api/tasks", async (req, res) => {
+tasksRouter.get("/api/asks", async (req, res) => {
   await delay(400);
   return res.send(TASKS);
 });
