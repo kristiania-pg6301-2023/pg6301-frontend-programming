@@ -23,8 +23,8 @@ function FrontPage() {
 
 function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
   const [tasks, setTasks] = useState<TodoTask[]>([]);
-  function loadTasks() {
-    fetchTasks().then((tasks) => setTasks(tasks));
+  async function loadTasks() {
+    setTasks(await fetchTasks());
   }
   useEffect(() => {
     loadTasks();
@@ -46,14 +46,15 @@ function AddTaskForm({
 }) {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
-  const [error, setError] = useState();
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  const [error, setError] = useState<string>();
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    onAddTask({ title })
-      .then(() => navigate("/tasks"))
-      .catch((err) => {
-        setError(err);
-      });
+    try {
+      await onAddTask({ title });
+      navigate("/tasks");
+    } catch (e) {
+      setError(e as string);
+    }
   }
 
   return (
@@ -91,27 +92,22 @@ export function TaskRoutes({
 }
 
 export function TaskApplication() {
-  const [tasks, setTasks] = useState([
-    { _id: "1", title: "Prepare lecture" },
-    { _id: "2", title: "Give lecture" },
-  ]);
-
-  function fetchTasks(): Promise<TodoTask[]> {
-    return fetch("/api/tasks").then((res) => res.json());
+  async function fetchTasks(): Promise<TodoTask[]> {
+    const res = await fetch("/api/tasks");
+    return await res.json();
   }
 
-  function handleAddTask(task: Omit<TodoTask, "_id">) {
-    return fetch("/api/tasks", {
+  async function handleAddTask(task: Omit<TodoTask, "_id">) {
+    const res = await fetch("/api/tasks", {
       method: "POST",
       body: JSON.stringify(task),
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((res) => {
-      if (!res.ok) {
-        return Promise.reject("Failed! " + res.statusText);
-      }
     });
+    if (!res.ok) {
+      return Promise.reject("Failed! " + res.statusText);
+    }
   }
 
   return (
