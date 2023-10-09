@@ -27,6 +27,7 @@ function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
   const [error, setError] = useState<Error>();
   async function loadTasks() {
     setLoading(true);
+    setError(undefined);
     try {
       setTasks(await fetchTasks());
     } catch (error) {
