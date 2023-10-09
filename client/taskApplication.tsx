@@ -1,9 +1,9 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 
 const ApplicationContext = React.createContext<{
   fetchTasks: () => Promise<TodoTask[]>;
-  addTask: (task: Omit<TodoTask, "id">) => Promise<void>;
+  addTask: (task: Omit<TodoTask, "_id">) => Promise<void>;
 }>({
   fetchTasks: async () => [],
   addTask: async () => {},
@@ -29,7 +29,8 @@ function FrontPage() {
   );
 }
 
-function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
+function TasksList(_: { fetchTasks(): Promise<TodoTask[]> }) {
+  const { fetchTasks } = useContext(ApplicationContext);
   const [tasks, setTasks] = useState<TodoTask[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error>();
@@ -71,6 +72,7 @@ function AddTaskForm({
 }: {
   onAddTask(task: Omit<TodoTask, "_id">): Promise<undefined>;
 }) {
+  const { addTask } = useContext(ApplicationContext);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [error, setError] = useState<string>();
@@ -80,7 +82,7 @@ function AddTaskForm({
     event.preventDefault();
     try {
       setSubmitting(true);
-      await onAddTask({ title });
+      await addTask({ title });
       navigate("/tasks");
     } catch (e) {
       setError(e as string);
