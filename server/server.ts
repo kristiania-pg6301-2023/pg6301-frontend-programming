@@ -9,12 +9,15 @@ const app = express();
 
 app.use((req, res, next) => {
   if (req.path === "/api/tasks" && req.method === "GET") {
-    return res.send([
-      { id: 1, title: "task one" },
-      { id: 2, title: "task two" },
-    ]);
+    setTimeout(() => {
+      return res.send([
+        { _id: 1, title: "task one from the server" },
+        { _id: 2, title: "task two from the server" },
+      ]);
+    }, 500);
+  } else {
+    next();
   }
-  next();
 });
 app.use(express.static("../client/dist"));
 app.use((req, res, next) => {

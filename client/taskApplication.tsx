@@ -21,10 +21,10 @@ function FrontPage() {
   );
 }
 
-function TasksList({ fetchTasks }: { fetchTasks(): TodoTask[] }) {
+function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
   const [tasks, setTasks] = useState<TodoTask[]>([]);
   function loadTasks() {
-    setTasks(fetchTasks());
+    fetchTasks().then((tasks) => setTasks(tasks));
   }
   useEffect(() => {
     loadTasks();
@@ -69,7 +69,7 @@ export function TaskRoutes({
   fetchTasks,
   onAddTask,
 }: {
-  fetchTasks(): TodoTask[];
+  fetchTasks(): Promise<TodoTask[]>;
   onAddTask(task: TodoTask): void;
 }) {
   return (
@@ -91,8 +91,8 @@ export function TaskApplication() {
     { _id: "2", title: "Give lecture" },
   ]);
 
-  function fetchTasks() {
-    return tasks;
+  function fetchTasks(): Promise<TodoTask[]> {
+    return fetch("/api/tasks").then((res) => res.json());
   }
 
   function handleAddTask(task: Omit<TodoTask, "_id">) {
