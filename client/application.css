@@ -31,6 +31,12 @@ footer {
   padding-block: 0.25em;
 }
 
+.errorMessage {
+  display: inline-block;
+  border: 2px solid red;
+  padding: 0.25em;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #101010;
@@ -46,6 +52,16 @@ footer {
     border-color: darkgray;
     border-width: 1px;
     border-style: solid;
+  }
+
+  input {
+    background-color: #202020;
+    color: lightgray;
+  }
+
+  button {
+    background-color: #202020;
+    color: lightgray;
   }
 
 }

@@ -42,14 +42,18 @@ function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
 function AddTaskForm({
   onAddTask,
 }: {
-  onAddTask(task: Omit<TodoTask, "_id">): void;
+  onAddTask(task: Omit<TodoTask, "_id">): Promise<undefined>;
 }) {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
+  const [error, setError] = useState();
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    onAddTask({ title });
-    navigate("/");
+    onAddTask({ title })
+      .then(() => navigate("/"))
+      .catch((err) => {
+        setError(err);
+      });
   }
 
   return (
@@ -61,6 +65,7 @@ function AddTaskForm({
       <div>
         <button>Submit</button>
       </div>
+      {error && <div className={"errorMessage"}>{error}</div>}
     </form>
   );
 }
@@ -70,7 +75,7 @@ export function TaskRoutes({
   onAddTask,
 }: {
   fetchTasks(): Promise<TodoTask[]>;
-  onAddTask(task: TodoTask): void;
+  onAddTask(task: TodoTask): Promise<undefined>;
 }) {
   return (
     <Routes>
@@ -96,7 +101,17 @@ export function TaskApplication() {
   }
 
   function handleAddTask(task: Omit<TodoTask, "_id">) {
-    setTasks((old) => [...old, { ...task, _id: (old.length + 1).toString() }]);
+    return fetch("/api/tasks", {
+      method: "POST",
+      body: JSON.stringify(task),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      if (!res.ok) {
+        return Promise.reject("Failed! " + res.statusText);
+      }
+    });
   }
 
   return (
