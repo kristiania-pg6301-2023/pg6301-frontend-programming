@@ -17,7 +17,7 @@ using TypeScript. The server connects to MongoDB but doesn't use it
   - [x] Making our own router
   - [x] Making a router constructor
   - [x] The express.json-mystery bug
-- [ ] Topic: React context
+- [x] Topic: React context
 
 ## Log:
 
