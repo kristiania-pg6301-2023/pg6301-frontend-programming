@@ -1,7 +1,7 @@
 import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 
-const ApplicationContext = React.createContext<{
+export const ApplicationContext = React.createContext<{
   fetchTasks: () => Promise<TodoTask[]>;
   addTask: (task: Omit<TodoTask, "_id">) => Promise<void>;
 }>({

@@ -1,22 +1,33 @@
-import { TaskRoutes } from "../taskApplication";
+import { ApplicationContext, TaskRoutes } from "../taskApplication";
 import React from "react";
-import renderer, { act } from "react-test-renderer";
+import renderer, { act, ReactTestRenderer } from "react-test-renderer";
 import { MemoryRouter } from "react-router-dom";
 
 describe("task application", () => {
-  it("displays task list", () => {
-    const component = renderer.create(
-      <MemoryRouter initialEntries={["/tasks"]}>
-        <TaskRoutes fetchTasks={() => []} onAddTask={() => {}} />,
-      </MemoryRouter>,
-    );
-    expect(component).toMatchSnapshot();
+  it("displays task list", async () => {
+    let component: ReactTestRenderer;
+    await act(async () => {
+      component = renderer.create(
+        <MemoryRouter initialEntries={["/tasks"]}>
+          <ApplicationContext.Provider
+            value={{ fetchTasks: async () => [], addTask: jest.fn() }}
+          >
+            <TaskRoutes />,
+          </ApplicationContext.Provider>
+        </MemoryRouter>,
+      );
+    });
+    expect(component!).toMatchSnapshot();
   });
-  it("submits a new task", () => {
-    const onAddTask = jest.fn();
+  it("submits a new task", async () => {
+    const addTask = jest.fn();
     const component = renderer.create(
       <MemoryRouter initialEntries={["/tasks/new"]}>
-        <TaskRoutes fetchTasks={() => []} onAddTask={onAddTask} />,
+        <ApplicationContext.Provider
+          value={{ fetchTasks: async () => [], addTask }}
+        >
+          <TaskRoutes />,
+        </ApplicationContext.Provider>
       </MemoryRouter>,
     );
     const title = "Expected Task Title";
@@ -25,11 +36,11 @@ describe("task application", () => {
         .findByType("input")
         .props.onChange({ target: { value: title } });
     });
-    act(() => {
+    await act(async () => {
       component!.root.findByType("form").props.onSubmit({
         preventDefault: () => {},
       });
     });
-    expect(onAddTask).toHaveBeenCalledWith({ title });
+    expect(addTask).toHaveBeenCalledWith({ title });
   });
 });
