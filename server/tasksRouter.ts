@@ -20,7 +20,7 @@ tasksRouter.get("/api/tasks", async (req, res) => {
 
 tasksRouter.post("/api/tasks", async (req, res) => {
   const { title } = req.body;
-  await delay(300);
+  await delay(1000);
   TASKS.push({ _id: TASKS.length + 1, title });
   res.sendStatus(201);
 });

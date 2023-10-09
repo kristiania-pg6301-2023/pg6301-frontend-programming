@@ -23,15 +23,21 @@ function FrontPage() {
 
 function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
   const [tasks, setTasks] = useState<TodoTask[]>([]);
+  const [loading, setLoading] = useState(true);
+
   async function loadTasks() {
+    setLoading(true);
     setTasks(await fetchTasks());
+    setLoading(false);
   }
+
   useEffect(() => {
     loadTasks();
   }, []);
   return (
     <>
       <h2>List tasks</h2>
+      {loading && <div>Loading....</div>}
       {tasks.map((t) => (
         <div key={t._id}>{t.title}</div>
       ))}
@@ -47,26 +53,38 @@ function AddTaskForm({
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [error, setError] = useState<string>();
+  const [submitting, setSubmitting] = useState(false);
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
+      setSubmitting(true);
       await onAddTask({ title });
       navigate("/tasks");
     } catch (e) {
       setError(e as string);
+    } finally {
+      setSubmitting(false);
     }
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Add tasks</h2>
-      <div>
-        <input value={title} onChange={(e) => setTitle(e.target.value)} />
-      </div>
-      <div>
-        <button>Submit</button>
-      </div>
-      {error && <div className={"errorMessage"}>{error}</div>}
+      <fieldset disabled={submitting}>
+        <h2>Add tasks</h2>
+        <div>
+          <input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            autoFocus={true}
+          />
+        </div>
+        <div>
+          <button>Submit</button>
+        </div>
+        {submitting && <div>Please wait...</div>}
+        {error && <div className={"errorMessage"}>{error}</div>}
+      </fieldset>
     </form>
   );
 }

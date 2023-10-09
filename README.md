@@ -10,9 +10,9 @@ using TypeScript. The server connects to MongoDB but doesn't use it
   - [x] Fallback middleware
 - [x] Move logic to server
 - [x] Handle slow loading on client
-  - [ ] callbacks, Promises, async/await
+  - [x] callbacks, Promises, async/await
 - [ ] Handle errors from server on GET
-- [ ] Handle errors from server on POST
+- [x] Handle errors from server on POST
 - [ ] More on Express middleware and routers
   - [ ] Making our own router
   - [ ] Making a router constructor
