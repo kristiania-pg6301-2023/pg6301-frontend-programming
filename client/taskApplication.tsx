@@ -126,8 +126,14 @@ export function TaskApplication() {
     }
   }
 
-  function handleAddTask(task: Omit<TodoTask, "_id">) {
-    setTasks((old) => [...old, { ...task, _id: (old.length + 1).toString() }]);
+  async function handleAddTask(task: Omit<TodoTask, "_id">) {
+    await fetch("/api/tasks", {
+      method: "POST",
+      body: JSON.stringify(task),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 
   return (
