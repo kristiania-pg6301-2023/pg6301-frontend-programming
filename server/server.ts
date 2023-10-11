@@ -9,6 +9,17 @@ app.use(express.static("../client/dist"));
 app.listen(3000);
 
 app.use((req, res, next) => {
+  if (req.path === "/api/tasks") {
+    res.send([
+      { _id: "1", title: "Task one from server" },
+      { _id: "2", title: "Task two from server" },
+    ]);
+  } else {
+    next();
+  }
+});
+
+app.use((req, res, next) => {
   res.sendFile(path.resolve("../client/dist/index.html"));
 });
 
