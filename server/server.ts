@@ -10,6 +10,7 @@ app.listen(3000);
 
 app.use((req, res, next) => {
   if (req.path === "/api/tasks") {
+    throw new Error("Something went wrong");
     setTimeout(() => {
       res.send([
         { _id: "1", title: "Task one from server" },
