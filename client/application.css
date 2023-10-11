@@ -30,3 +30,20 @@ footer {
   padding-inline: 1em;
   padding-block: 0.25em;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #101010;
+    color: lightgrey;
+  }
+
+  a {
+    color: lightgrey;
+  }
+
+  main {
+    background-color: #202020;
+    border: 1px solid darkgray;
+  }
+
+}
