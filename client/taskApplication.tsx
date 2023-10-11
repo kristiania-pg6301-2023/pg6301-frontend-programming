@@ -22,9 +22,14 @@ function FrontPage() {
 }
 
 function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
+  const [loading, setLoading] = useState(false);
   const [tasks, setTasks] = useState<TodoTask[]>([]);
   function loadTasks() {
-    fetchTasks().then((tasks) => setTasks(tasks));
+    setLoading(true);
+    setTasks([]);
+    fetchTasks()
+      .then((tasks) => setTasks(tasks))
+      .then(() => setLoading(false));
   }
   useEffect(() => {
     loadTasks();
@@ -32,6 +37,8 @@ function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
   return (
     <>
       <h2>List tasks</h2>
+      {loading && <div>Loading...</div>}
+
       {tasks.map((t) => (
         <div key={t._id}>{t.title}</div>
       ))}
