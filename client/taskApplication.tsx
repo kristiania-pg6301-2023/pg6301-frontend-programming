@@ -25,17 +25,17 @@ function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
   const [loading, setLoading] = useState(false);
   const [tasks, setTasks] = useState<TodoTask[]>([]);
   const [error, setError] = useState<Error>();
-  function loadTasks() {
+  async function loadTasks() {
     setLoading(true);
     setTasks([]);
     setError(undefined);
-    fetchTasks()
-      .then((tasks) => setTasks(tasks))
-      .catch((err) => {
-        console.log("Error", err);
-        setError(err);
-      })
-      .then(() => setLoading(false));
+    try {
+      setTasks(await fetchTasks());
+    } catch (err) {
+      setError(err as Error);
+    } finally {
+      setLoading(false);
+    }
   }
   useEffect(() => {
     loadTasks();
