@@ -28,6 +28,7 @@ function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
   function loadTasks() {
     setLoading(true);
     setTasks([]);
+    setError(undefined);
     fetchTasks()
       .then((tasks) => setTasks(tasks))
       .catch((err) => {
@@ -39,11 +40,23 @@ function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
   useEffect(() => {
     loadTasks();
   }, []);
+
+  function handleRetry() {
+    loadTasks();
+  }
+
   return (
     <>
       <h2>List tasks</h2>
       {loading && <div>Loading...</div>}
-      {error && <div className={"errorMessage"}>{error.toString()}</div>}
+      {error && (
+        <div className={"errorMessage"}>
+          {error.toString()}
+          <div>
+            <button onClick={handleRetry}>Retry</button>
+          </div>
+        </div>
+      )}
 
       {tasks.map((t) => (
         <div key={t._id}>{t.title}</div>
