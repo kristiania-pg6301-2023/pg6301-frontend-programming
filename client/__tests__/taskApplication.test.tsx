@@ -1,4 +1,4 @@
-import { TaskRoutes, TodoTask } from "../taskApplication";
+import { TaskRoutes } from "../taskApplication";
 import React from "react";
 import renderer, { act, ReactTestRenderer } from "react-test-renderer";
 import { MemoryRouter } from "react-router-dom";
@@ -9,13 +9,7 @@ describe("task application", () => {
     await act(async () => {
       component = renderer.create(
         <MemoryRouter initialEntries={["/tasks"]}>
-          <TaskRoutes
-            fetchTasks={() => {
-              return new Promise<TodoTask[]>(() => {});
-            }}
-            onAddTask={() => {}}
-          />
-          ,
+          <TaskRoutes fetchTasks={async () => []} onAddTask={() => {}} />,
         </MemoryRouter>,
       );
     });
