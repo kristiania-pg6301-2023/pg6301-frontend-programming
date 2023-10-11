@@ -1,22 +1,35 @@
-import { TaskRoutes } from "../taskApplication";
+import { TaskRoutes, TodoTask } from "../taskApplication";
 import React from "react";
-import renderer, { act } from "react-test-renderer";
+import renderer, { act, ReactTestRenderer } from "react-test-renderer";
 import { MemoryRouter } from "react-router-dom";
 
 describe("task application", () => {
-  it("displays task list", () => {
-    const component = renderer.create(
-      <MemoryRouter initialEntries={["/tasks"]}>
-        <TaskRoutes fetchTasks={() => []} onAddTask={() => {}} />,
-      </MemoryRouter>,
-    );
-    expect(component).toMatchSnapshot();
+  it("displays task list", async () => {
+    let component: ReactTestRenderer;
+    await act(async () => {
+      component = renderer.create(
+        <MemoryRouter initialEntries={["/tasks"]}>
+          <TaskRoutes
+            fetchTasks={() => {
+              return new Promise<TodoTask[]>(() => {});
+            }}
+            onAddTask={() => {}}
+          />
+          ,
+        </MemoryRouter>,
+      );
+    });
+    expect(component!).toMatchSnapshot();
   });
   it("submits a new task", () => {
     const onAddTask = jest.fn();
     const component = renderer.create(
       <MemoryRouter initialEntries={["/tasks/new"]}>
-        <TaskRoutes fetchTasks={() => []} onAddTask={onAddTask} />,
+        <TaskRoutes
+          fetchTasks={() => Promise.resolve([])}
+          onAddTask={onAddTask}
+        />
+        ,
       </MemoryRouter>,
     );
     const title = "Expected Task Title";
