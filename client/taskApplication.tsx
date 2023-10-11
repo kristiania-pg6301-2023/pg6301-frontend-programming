@@ -24,11 +24,16 @@ function FrontPage() {
 function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
   const [loading, setLoading] = useState(false);
   const [tasks, setTasks] = useState<TodoTask[]>([]);
+  const [error, setError] = useState<Error>();
   function loadTasks() {
     setLoading(true);
     setTasks([]);
     fetchTasks()
       .then((tasks) => setTasks(tasks))
+      .catch((err) => {
+        console.log("Error", err);
+        setError(err);
+      })
       .then(() => setLoading(false));
   }
   useEffect(() => {
@@ -38,6 +43,7 @@ function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
     <>
       <h2>List tasks</h2>
       {loading && <div>Loading...</div>}
+      {error && <div className={"errorMessage"}>{error.toString()}</div>}
 
       {tasks.map((t) => (
         <div key={t._id}>{t.title}</div>
@@ -98,8 +104,13 @@ export function TaskApplication() {
     { _id: "2", title: "Give lecture" },
   ]);
 
-  function fetchTasks() {
-    return fetch("/api/tasks").then((res) => res.json() as Promise<TodoTask[]>);
+  async function fetchTasks() {
+    const res = await fetch("/api/tasks");
+    if (res.ok) {
+      return (await res.json()) as Promise<TodoTask[]>;
+    } else {
+      throw new Error(res.statusText);
+    }
   }
 
   function handleAddTask(task: Omit<TodoTask, "_id">) {

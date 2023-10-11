@@ -31,6 +31,13 @@ footer {
   padding-block: 0.25em;
 }
 
+.errorMessage {
+  display: inline-block;
+  padding: 0.25em;
+  border: 3px solid red;
+}
+
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #101010;
