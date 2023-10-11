@@ -21,10 +21,10 @@ function FrontPage() {
   );
 }
 
-function TasksList({ fetchTasks }: { fetchTasks(): TodoTask[] }) {
+function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
   const [tasks, setTasks] = useState<TodoTask[]>([]);
   function loadTasks() {
-    setTasks(fetchTasks());
+    fetchTasks().then((tasks) => setTasks(tasks));
   }
   useEffect(() => {
     loadTasks();
@@ -69,7 +69,7 @@ export function TaskRoutes({
   fetchTasks,
   onAddTask,
 }: {
-  fetchTasks(): TodoTask[];
+  fetchTasks(): Promise<TodoTask[]>;
   onAddTask(task: TodoTask): void;
 }) {
   return (
@@ -92,7 +92,7 @@ export function TaskApplication() {
   ]);
 
   function fetchTasks() {
-    return tasks;
+    return fetch("/api/tasks").then((res) => res.json() as Promise<TodoTask[]>);
   }
 
   function handleAddTask(task: Omit<TodoTask, "_id">) {
