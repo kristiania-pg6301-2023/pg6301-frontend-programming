@@ -10,10 +10,12 @@ app.listen(3000);
 
 app.use((req, res, next) => {
   if (req.path === "/api/tasks") {
-    res.send([
-      { _id: "1", title: "Task one from server" },
-      { _id: "2", title: "Task two from server" },
-    ]);
+    setTimeout(() => {
+      res.send([
+        { _id: "1", title: "Task one from server" },
+        { _id: "2", title: "Task two from server" },
+      ]);
+    }, 2000);
   } else {
     next();
   }
