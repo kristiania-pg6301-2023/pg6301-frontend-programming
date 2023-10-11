@@ -8,14 +8,25 @@ const app = express();
 app.use(express.static("../client/dist"));
 app.listen(3000);
 
-app.use((req, res, next) => {
-  if (req.path === "/api/tasks") {
+function delay(millis: number, errorMessage?: string): Promise<void> {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
-      res.send([
-        { _id: "1", title: "Task one from server" },
-        { _id: "2", title: "Task two from server" },
-      ]);
-    }, 2000);
+      if (errorMessage) {
+        reject(errorMessage);
+      } else {
+        resolve();
+      }
+    }, millis);
+  });
+}
+
+app.use(async (req, res, next) => {
+  if (req.path === "/api/tasks") {
+    await delay(2000);
+    res.send([
+      { _id: "1", title: "Task one from server" },
+      { _id: "2", title: "Task two from server" },
+    ]);
   } else {
     next();
   }
