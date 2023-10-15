@@ -26,6 +26,14 @@ export function ApplicationRoutes() {
     setMovies(MOVIES);
   }
 
+  async function handleMovieAdded(movie) {
+    const newMovie = {
+      ...movie,
+      _id: (movies.length + 1).toString(),
+    };
+    setMovies((currentMovies) => [...currentMovies, newMovie]);
+  }
+
   useEffect(() => {
     loadMovies();
   }, []);
@@ -34,7 +42,10 @@ export function ApplicationRoutes() {
     <Routes>
       <Route path={"/"} element={<FrontPage />} />
       <Route path={"/movies"} element={<MoviesList movies={movies} />} />
-      <Route path={"/movies/new"} element={<AddMovieForm />} />
+      <Route
+        path={"/movies/new"}
+        element={<AddMovieForm onMovieAdded={handleMovieAdded} />}
+      />
       <Route path={"*"} element={<h2>Not Found</h2>} />
     </Routes>
   );
