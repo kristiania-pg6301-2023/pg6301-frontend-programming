@@ -253,6 +253,10 @@ Bonus content: The secret of <BrowserRouter />, Express middleware and the bodyP
 Loading spinner and error handling, as well as using React context to centralize interaction between client and server.
 We will also revisit BrowserRouter and why fix how it was broken with Express.
 
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/08)
+* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/08)
+* **Useful exercise**: [Move logic from client to server](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/blob/exercise/08/start)
+
 #### Material from 2022
 
 * [Commit log from live coding 2022](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/06)
@@ -271,6 +275,10 @@ We will also revisit BrowserRouter and why fix how it was broken with Express.
 
 In this lecture we will implement "log in with Google"-functionality. We will also explore other identity
 services that also implement OpenID Connect, such as ID-porten and Active Directory.
+
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/09)
+* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/09)
+* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/blob/exercise/09/start/README.md)
 
 #### Material from 2022
 
@@ -705,6 +713,7 @@ app.use((req, res, next) => {
 <details>
 
 ```js
+import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -979,26 +988,34 @@ protects against some security risks.
 <details>
 
 ```javascript
-export function Login() {
-  async function handleStartLogin() {
+function LoginButton() {
+  const [authorizationUrl, setAuthorizationUrl] = useState();
+  async function generateAuthorizationUrl() {
     // Get the location of endpoints from Google
     const { authorization_endpoint } = await fetchJson(
       "https://accounts.google.com/.well-known/openid-configuration"
     );
     // Tell Google how to authentication
-    const query = new URLSearchParams({
+    const parameters = {
       response_type: "token",
-      scope: "openid profile email",
       client_id:
         "<get this from Google Cloud Console>",
       // Tell user to come back to http://localhost:3000/callback when logged in
-      redirect_uri: window.location.origin + "/callback",
-    });
-    // Redirect the browser to log in
-    window.location.href = authorization_endpoint + "?" + query;
+      redirect_uri: window.location.origin + "/login/callback",
+      scope: "profile email",
+    };
+    setAuthorizationUrl(
+      discoveryDoc.authorization_endpoint +
+      "?" +
+      new URLSearchParams(parameters),
+    );
   }
 
-  return <button onClick={handleStartLogin}>Log in</button>;
+  useEffect(() => {
+    generateAuthorizationUrl();
+  }, []);
+
+  return <a href={authorizationUrl}>Log in with Google</a>;
 }
 ```
 
@@ -1013,31 +1030,37 @@ latest two are needed for PKCE).
 <details>
 
 ```javascript
-
 // Router should take user here on /callback
-export function CompleteLoginPage({ onComplete }) {
+export function LoginCallback() {
+  const navigate = useNavigate();
   // Given an URL like http://localhost:3000/callback#access_token=sdlgnsoln&foo=bar,
   //  window.location.hash will give the part starting with "#"
   //  ...substring(1) will remove the "#"
   //  and Object.fromEntries(new URLSearchParams(...)) will parse it into an object
   // In this case, hash = { access_token: "sdlgnsoln", foo: "bar" }
-  const hash = Object.fromEntries(
-    new URLSearchParams(window.location.hash.substr(1))
+  const callbackParameters = Object.fromEntries(
+    new URLSearchParams(window.location.hash.substring(1)),
   );
-  // Get the values returned from the login provider. For Active Directory,
-  // this will be more complex
-  const { access_token, error } = hash;
-  useEffect(() => {
-    // Send the access token back to the outside application. This should
-    //  be saved to localStorage and then redirect the user
-    onComplete({ access_token });
-  }, [access_token]);
 
-  if (error) {
-    // deal with the user failing to log in or to give consent with Google
+  async function handleCallback() {
+    // Get the values returned from the login provider. For Active Directory,
+    // this will be more complex
+    const { access_token } = callbackParameters;
+    await fetch("/api/login/accessToken", {
+      method: "POST",
+      body: JSON.stringify({ access_token }),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    navigate("/");
   }
 
-  return <div>Completing loging...</div>;
+  useEffect(() => {
+    handleCallback();
+  }, []);
+
+  return <div>Please wait...</div>;
 }
 ```
 
@@ -1063,6 +1086,12 @@ app.use(async (req, res, next) => {
     });
   }
   next();
+});
+
+app.post("/api/login", (req, res) => {
+  const { access_token } = req.body;
+  res.cookie("access_token", access_token, { signed: true });
+  res.sendStatus(204);
 });
 
 app.get("/profile", (req, res) => {
