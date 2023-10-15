@@ -4,4 +4,3 @@ import { Application } from "./components/application/application";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Application />);
-
