@@ -7,6 +7,10 @@ const app = express();
 app.use("/api/login", loginRouter);
 app.use(express.static("../client/dist"));
 app.use((req, res, next) => {
-  res.sendFile(path.resolve("../client/dist/index.html"));
+  if (req.method === "GET" && !req.path.startsWith("/api")) {
+    res.sendFile(path.resolve("../client/dist/index.html"));
+  } else {
+    next();
+  }
 });
 app.listen(3000);
