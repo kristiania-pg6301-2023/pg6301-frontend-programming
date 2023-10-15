@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./application.css";
@@ -7,8 +7,15 @@ import { LoginButton, UserContext } from "./components/login/loginButton";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function Application() {
+  const [username, setUsername] = useState();
+  useEffect(() => {
+    fetch("/api/login")
+      .then((res) => res.json())
+      .then((user) => setUsername(user.username));
+  }, []);
+
   return (
-    <UserContext.Provider value={{ username: "Johannes" }}>
+    <UserContext.Provider value={{ username }}>
       <header>
         <h1>User database</h1>
       </header>
