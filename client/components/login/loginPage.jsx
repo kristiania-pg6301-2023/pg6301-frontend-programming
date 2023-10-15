@@ -20,7 +20,11 @@ export function LoginPage() {
       <h2>Login page</h2>
       <div>
         Username <br />
-        <input value={username} onChange={(e) => setUsername(e.target.value)} />
+        <input
+          autoFocus={true}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
       </div>
       <div>
         Password <br />

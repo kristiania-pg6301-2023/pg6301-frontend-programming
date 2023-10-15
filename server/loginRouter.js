@@ -3,7 +3,7 @@ import express from "express";
 export const loginRouter = express.Router();
 
 loginRouter.get("", (req, res) => {
-  const username = req.cookies["username"];
+  const username = req.signedCookies["username"];
   if (username) {
     res.send({ username });
   } else {
@@ -13,6 +13,6 @@ loginRouter.get("", (req, res) => {
 
 loginRouter.post("", (req, res) => {
   const { username, password } = req.body;
-  res.cookie("username", username);
+  res.cookie("username", username, { signed: true });
   res.sendStatus(204);
 });

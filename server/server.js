@@ -5,7 +5,7 @@ import * as path from "path";
 
 const app = express();
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser("SECRET"));
 
 app.use("/api/login", loginRouter);
 app.use(express.static("../client/dist"));
