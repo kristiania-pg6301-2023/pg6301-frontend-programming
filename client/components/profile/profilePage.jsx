@@ -3,7 +3,7 @@ import { LoginContext } from "../login/loginButton";
 import { useNavigate } from "react-router-dom";
 
 export function ProfilePage() {
-  const { reload } = useContext(LoginContext);
+  const { reload, user } = useContext(LoginContext);
   const navigate = useNavigate();
 
   async function handleLogOut(e) {
@@ -19,6 +19,7 @@ export function ProfilePage() {
       <form onSubmit={handleLogOut}>
         <button>Log out</button>
       </form>
+      <pre>{JSON.stringify(user, null, 2)}</pre>
     </>
   );
 }

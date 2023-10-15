@@ -10,15 +10,15 @@ import { LoginCallback } from "./components/login/loginCallback";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function Application() {
-  const [username, setUsername] = useState();
+  const [user, setUser] = useState();
 
   async function fetchUser() {
     const res = await fetch("/api/login");
     if (res.status === 401) {
-      setUsername(undefined);
+      setUser(undefined);
     } else {
       const user = await res.json();
-      setUsername(user.username);
+      setUser(user);
     }
   }
 
@@ -27,7 +27,9 @@ function Application() {
   }, []);
 
   return (
-    <LoginContext.Provider value={{ username, reload: fetchUser }}>
+    <LoginContext.Provider
+      value={{ username: user?.username, user, reload: fetchUser }}
+    >
       <header>
         <h1>User database</h1>
       </header>
