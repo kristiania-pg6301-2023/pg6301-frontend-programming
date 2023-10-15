@@ -1,18 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import "./application.css";
+import { LoginButton } from "./components/login/loginButton";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-import "./application.css";
-
-function LoginButton() {
-  const username = "Johannes";
-  if (username) {
-    return <Link to={"/profile"}>{username}</Link>;
-  }
-  return <Link to={"/login"}>Log in</Link>;
-}
 
 function Application() {
   return (
