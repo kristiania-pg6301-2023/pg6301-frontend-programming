@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./application.css";
 import { LoginButton, UserContext } from "./components/login/loginButton";
+import { LoginPage } from "./components/login/loginPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -40,6 +41,7 @@ function Application() {
       <main>
         <Routes>
           <Route path={"/"} element={<h2>Front page</h2>} />
+          <Route path={"/login"} element={<LoginPage />} />
           <Route path={"/profile"} element={<h2>User profile</h2>} />
           <Route path={"*"} element={<h2>Not Found</h2>} />
         </Routes>
