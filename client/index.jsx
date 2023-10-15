@@ -4,6 +4,8 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+import "./application.css";
+
 function Application() {
   return (
     <>
@@ -12,6 +14,11 @@ function Application() {
       </header>
       <nav>
         <Link to={"/"}>Front page</Link>
+        <Link to={"/"}>Another page</Link>
+        <Link to={"/"}>Yet one more page</Link>
+        <Link to={"/"}>Event more page</Link>
+        <Link to={"/"}>Event more page</Link>
+        <div className={"divider"} />
         <Link to={"/login"}>Log in</Link>
       </nav>
       <main>

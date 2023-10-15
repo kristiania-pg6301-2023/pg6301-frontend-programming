@@ -12,6 +12,8 @@ Directory or Feide to authenticate the user.
   * [ ] Set up a minimal React + Express application
     * [ ] [Set up React with Parcel](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/#creating-the-frontend-project)
     * [ ] [Set up Express](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/#converting-react-to-serve-from-express)
+    * [ ] Make it work together
+    * [ ] Create application layout
   * [ ] Setting a cookie in the browser
   * [ ] Reading the cookie
   * [ ] Signing the cookie to protect from tampering
