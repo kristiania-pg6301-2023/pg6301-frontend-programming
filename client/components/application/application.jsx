@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { ApplicationRoutes } from "./applicationRoutes";
 
+import "./application.css";
+
 export function Application() {
   return (
     <>

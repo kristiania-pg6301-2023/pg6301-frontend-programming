@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  background-color: rebeccapurple;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+header,
+nav,
+main,
+footer {
+  padding: 0.25em 1em;
+}
+
+main {
+  background-color: aliceblue;
+  color: #101010;
+  min-width: 80%;
+  margin: 0.5em auto;
+}
+
+main a {
+  color: #101010;
+}
