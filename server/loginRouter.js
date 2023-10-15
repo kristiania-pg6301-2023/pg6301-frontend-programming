@@ -7,6 +7,7 @@ loginRouter.get("", (req, res) => {
 });
 
 loginRouter.post("", (req, res) => {
-  console.log(req.body);
+  const { username, password } = req.body;
+  res.cookie("username", username);
   res.sendStatus(204);
 });
