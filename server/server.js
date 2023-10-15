@@ -1,11 +1,14 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import { loginRouter } from "./loginRouter.js";
+import dotenv from "dotenv";
 import * as path from "path";
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cookieParser("SECRET"));
+app.use(cookieParser(process.env.COOKIE_PARSER_SECRET));
 
 app.use("/api/login", loginRouter);
 app.use(express.static("../client/dist"));
