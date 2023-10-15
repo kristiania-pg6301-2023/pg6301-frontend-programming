@@ -255,7 +255,7 @@ We will also revisit BrowserRouter and why fix how it was broken with Express.
 
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/08)
 * [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/08)
-* **Useful exercise**: [Move logic from client to server](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/blob/exercise/08/start)
+* **Useful exercise**: [Move logic from client to server](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/exercise/08/start)
 
 #### Material from 2022
 
