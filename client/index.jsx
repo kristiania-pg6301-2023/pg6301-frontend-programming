@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./application.css";
-import { LoginButton, UserContext } from "./components/login/loginButton";
+import { LoginButton, LoginContext } from "./components/login/loginButton";
 import { LoginPage } from "./components/login/loginPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -25,7 +25,7 @@ function Application() {
   }, []);
 
   return (
-    <UserContext.Provider value={{ username }}>
+    <LoginContext.Provider value={{ username, reload: fetchUser }}>
       <header>
         <h1>User database</h1>
       </header>
@@ -47,7 +47,7 @@ function Application() {
         </Routes>
       </main>
       <footer>Lecture 9: Open ID Connect</footer>
-    </UserContext.Provider>
+    </LoginContext.Provider>
   );
 }
 

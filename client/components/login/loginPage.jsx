@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { LoginContext } from "./loginButton";
 
 export function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+  const { reload } = useContext(LoginContext);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -13,6 +18,8 @@ export function LoginPage() {
         "content-type": "application/json",
       },
     });
+    await reload();
+    navigate("/");
   }
 
   return (

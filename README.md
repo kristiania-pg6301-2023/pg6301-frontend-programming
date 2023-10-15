@@ -8,15 +8,16 @@ Directory or Feide to authenticate the user.
 
 ## Plan
 
-* [ ] Intro to authentication: Cookies
-  * [ ] Set up a minimal React + Express application
-    * [ ] [Set up React with Parcel](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/#creating-the-frontend-project)
-    * [ ] [Set up Express](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/#converting-react-to-serve-from-express)
-    * [ ] Make it work together
-    * [ ] Create application layout
-  * [ ] Setting a cookie in the browser
-  * [ ] Reading the cookie
-  * [ ] Signing the cookie to protect from tampering
+* [x] Intro to authentication: Cookies
+  * [x] Set up a minimal React + Express application
+    * [x] [Set up React with Parcel](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/#creating-the-frontend-project)
+    * [x] [Set up Express](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/#converting-react-to-serve-from-express)
+    * [x] Make it work together
+    * [x] Create application layout
+  * [x] Setting a cookie in the browser
+  * [x] Reading the cookie
+  * [x] Signing the cookie to protect from tampering
+  * [x] Polish
 * [ ] Registering a service with [Google as an identity provider](https://console.cloud.google.com/apis/credentials)
 * [ ] Implementing a [client side authentication flow](https://developers.google.com/identity/protocols/oauth2#clientside)
   * [ ] Finding out where to redirect the user
