@@ -6,6 +6,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 import "./application.css";
 
+function LoginButton() {
+  const username = "Johannes";
+  if (username) {
+    return <Link to={"/profile"}>{username}</Link>;
+  }
+  return <Link to={"/login"}>Log in</Link>;
+}
+
 function Application() {
   return (
     <>
@@ -19,11 +27,12 @@ function Application() {
         <Link to={"/"}>Event more page</Link>
         <Link to={"/"}>Event more page</Link>
         <div className={"divider"} />
-        <Link to={"/login"}>Log in</Link>
+        <LoginButton />
       </nav>
       <main>
         <Routes>
           <Route path={"/"} element={<h2>Front page</h2>} />
+          <Route path={"/profile"} element={<h2>User profile</h2>} />
           <Route path={"*"} element={<h2>Not Found</h2>} />
         </Routes>
       </main>
