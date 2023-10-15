@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./application.css";
-import { LoginButton } from "./components/login/loginButton";
+import { LoginButton, UserContext } from "./components/login/loginButton";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function Application() {
   return (
-    <>
+    <UserContext.Provider value={{ username: "Johannes" }}>
       <header>
         <h1>User database</h1>
       </header>
@@ -29,7 +29,7 @@ function Application() {
         </Routes>
       </main>
       <footer>Lecture 9: Open ID Connect</footer>
-    </>
+    </UserContext.Provider>
   );
 }
 
