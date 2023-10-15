@@ -1,10 +1,12 @@
 {
   "devDependencies": {
-    "concurrently": "^8.2.1"
+    "concurrently": "^8.2.1",
+    "prettier": "^3.0.3"
   },
   "scripts": {
     "dev": "concurrently npm:dev:client npm:dev:server",
     "dev:client": "cd client && npm run dev",
-    "dev:server": "cd server && npm run dev"
+    "dev:server": "cd server && npm run dev",
+    "prettier": "prettier --write ."
   }
 }
