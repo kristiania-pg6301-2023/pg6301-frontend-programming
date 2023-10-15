@@ -8,10 +8,19 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function Application() {
   const [username, setUsername] = useState();
+
+  async function fetchUser() {
+    const res = await fetch("/api/login");
+    if (res.status === 401) {
+      setUsername(undefined);
+    } else {
+      const user = await res.json();
+      setUsername(user.username);
+    }
+  }
+
   useEffect(() => {
-    fetch("/api/login")
-      .then((res) => res.json())
-      .then((user) => setUsername(user.username));
+    fetchUser();
   }, []);
 
   return (
