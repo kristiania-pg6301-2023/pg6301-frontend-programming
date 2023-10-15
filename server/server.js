@@ -1,9 +1,11 @@
 import express from "express";
+import cookieParser from "cookie-parser";
 import { loginRouter } from "./loginRouter.js";
 import * as path from "path";
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api/login", loginRouter);
 app.use(express.static("../client/dist"));
