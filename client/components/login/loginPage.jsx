@@ -19,10 +19,16 @@ function LoginWithOauthButton() {
   const [authorizationUrl, setAuthorizationUrl] = useState();
   async function generateAuthorizationUrl() {
     const discoveryDoc = await fetchJson(OPENID_DISCOVERY_URL);
-    console.log(discoveryDoc.authorization_endpoint);
-    const queryString = "";
+    const parameters = {
+      response_type: "token",
+      client_id: CLIENT_ID,
+      scope: "openid email",
+      redirect_uri: window.location.origin + "/login/callback",
+    };
     setAuthorizationUrl(
-      discoveryDoc.authorization_endpoint + "?" + queryString,
+      discoveryDoc.authorization_endpoint +
+        "?" +
+        new URLSearchParams(parameters),
     );
   }
 
