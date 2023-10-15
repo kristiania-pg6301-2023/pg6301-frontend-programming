@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { ApplicationRoutes } from "./applicationRoutes";
 
 export function Application() {
-  const [counter, setCounter] = useState(0);
   return (
     <>
-      <h2>Welcome to my application</h2>
-      <div>
-        <button onClick={() => setCounter((oldValue) => oldValue + 1)}>
-          Click me
-        </button>
-      </div>
-      <div>You have clicked {counter} times</div>
+      <header>
+        <h1>Movies Database Exercise</h1>
+      </header>
+      <nav>
+        <NavLink to={"/"}>Front page</NavLink>
+      </nav>
+      <main>
+        <ApplicationRoutes />
+      </main>
+      <footer>Created by ...</footer>
     </>
   );
 }
