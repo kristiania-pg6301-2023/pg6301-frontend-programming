@@ -22,7 +22,7 @@ function LoginWithOauthButton() {
     const parameters = {
       response_type: "token",
       client_id: CLIENT_ID,
-      scope: "openid email",
+      scope: "profile email",
       redirect_uri: window.location.origin + "/login/callback",
     };
     setAuthorizationUrl(

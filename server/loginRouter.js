@@ -26,7 +26,10 @@ loginRouter.get("", async (req, res) => {
       },
     });
     const userinfo = await userinfoRes.json();
-    res.send({ ...userinfo, username: userinfo.email });
+    res.send({
+      ...userinfo,
+      username: userinfo.given_name + " " + userinfo.family_name,
+    });
   } else {
     res.sendStatus(401);
   }

@@ -19,6 +19,7 @@ export function ProfilePage() {
       <form onSubmit={handleLogOut}>
         <button>Log out</button>
       </form>
+      <img src={user.picture} />
       <pre>{JSON.stringify(user, null, 2)}</pre>
     </>
   );
