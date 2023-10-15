@@ -37,10 +37,15 @@ app.use((req, res, next) => {
 });
 
 const client = new MongoClient(process.env.MONGODB_URL!);
-client.connect().then(async (connection) => {
-  const db = connection.db("sample_mflix");
-  const movies = await db
-    .collection("movies")
-    .distinct("year", { countries: "Norway" });
-  console.log(movies);
-});
+client
+  .connect()
+  .then(async (connection) => {
+    const db = connection.db("sample_mflix");
+    const movies = await db
+      .collection("movies")
+      .distinct("year", { countries: "Norway" });
+    console.log(movies);
+  })
+  .catch((err) => {
+    console.log("Error connecting to mongodb", err.toString());
+  });

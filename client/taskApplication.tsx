@@ -68,13 +68,13 @@ function TasksList({ fetchTasks }: { fetchTasks(): Promise<TodoTask[]> }) {
 function AddTaskForm({
   onAddTask,
 }: {
-  onAddTask(task: Omit<TodoTask, "_id">): void;
+  onAddTask(task: Omit<TodoTask, "_id">): Promise<void>;
 }) {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    onAddTask({ title });
+    await onAddTask({ title });
     navigate("/");
   }
 
@@ -96,7 +96,7 @@ export function TaskRoutes({
   onAddTask,
 }: {
   fetchTasks(): Promise<TodoTask[]>;
-  onAddTask(task: TodoTask): void;
+  onAddTask(task: TodoTask): Promise<void>;
 }) {
   return (
     <Routes>
