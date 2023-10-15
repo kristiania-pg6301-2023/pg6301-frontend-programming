@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useContext } from "react";
+
+export const UserContext = React.createContext({
+  username: undefined,
+});
 
 export function LoginButton() {
-  const username = "Johannes";
+  const { username } = useContext(UserContext);
   if (username) {
     return <Link to={"/profile"}>{username}</Link>;
   }
