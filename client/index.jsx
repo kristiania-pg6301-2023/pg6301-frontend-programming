@@ -5,6 +5,7 @@ import "./application.css";
 import { LoginButton, LoginContext } from "./components/login/loginButton";
 import { LoginPage } from "./components/login/loginPage";
 import { ProfilePage } from "./components/profile/profilePage";
+import { LoginCallback } from "./components/login/loginCallback";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -43,6 +44,7 @@ function Application() {
         <Routes>
           <Route path={"/"} element={<h2>Front page</h2>} />
           <Route path={"/login"} element={<LoginPage />} />
+          <Route path={"/login/callback"} element={<LoginCallback />} />
           <Route path={"/profile"} element={<ProfilePage />} />
           <Route path={"*"} element={<h2>Not Found</h2>} />
         </Routes>
