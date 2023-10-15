@@ -4,8 +4,19 @@ export function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await fetch("/api/login", {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2>Login page</h2>
       <div>
         Username <br />
