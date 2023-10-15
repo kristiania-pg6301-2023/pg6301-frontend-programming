@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "concurrently": "^8.2.1"
+    "concurrently": "^8.2.1",
+    "prettier": "^3.0.3"
   },
   "scripts": {
     "dev": "concurrently npm:dev:client npm:dev:server",
