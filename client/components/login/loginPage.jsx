@@ -2,6 +2,11 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "./loginButton";
 
+function LoginWithOauthButton() {
+  const authorizationUrl = "";
+  return <a href={authorizationUrl}>Log in with Google</a>;
+}
+
 export function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +29,7 @@ export function LoginPage() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <LoginWithOauthButton />
       <h2>Login page</h2>
       <div>
         Username <br />
