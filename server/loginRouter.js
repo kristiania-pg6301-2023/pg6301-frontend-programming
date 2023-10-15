@@ -16,3 +16,8 @@ loginRouter.post("", (req, res) => {
   res.cookie("username", username, { signed: true });
   res.sendStatus(204);
 });
+
+loginRouter.delete("", (req, res) => {
+  res.clearCookie("username");
+  res.sendStatus(204);
+});

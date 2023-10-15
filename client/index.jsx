@@ -4,6 +4,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./application.css";
 import { LoginButton, LoginContext } from "./components/login/loginButton";
 import { LoginPage } from "./components/login/loginPage";
+import { ProfilePage } from "./components/profile/profilePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -42,7 +43,7 @@ function Application() {
         <Routes>
           <Route path={"/"} element={<h2>Front page</h2>} />
           <Route path={"/login"} element={<LoginPage />} />
-          <Route path={"/profile"} element={<h2>User profile</h2>} />
+          <Route path={"/profile"} element={<ProfilePage />} />
           <Route path={"*"} element={<h2>Not Found</h2>} />
         </Routes>
       </main>
