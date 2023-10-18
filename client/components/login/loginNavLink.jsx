@@ -1,21 +1,9 @@
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
+import { LoginContext } from "./loginContext";
 
 export function LoginNavLink() {
-  const [username, setUsername] = useState();
-
-  async function loadUser() {
-    const res = await fetch("/api/login");
-    if (!res.ok) {
-      throw new Error("Something went wrong fetching user " + res.statusText);
-    }
-    const user = await res.json();
-    setUsername(user.username);
-  }
-
-  useEffect(() => {
-    loadUser();
-  }, []);
+  const { username } = useContext(LoginContext);
 
   if (username) {
     return <Link to={"/profile"}>{username}</Link>;
