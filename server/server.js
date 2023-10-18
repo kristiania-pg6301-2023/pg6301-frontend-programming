@@ -49,6 +49,7 @@ loginRouter.get("", (req, res) => {
 });
 loginRouter.delete("", (req, res) => {
   res.clearCookie("username");
+  res.clearCookie("access_token");
   res.sendStatus(204);
 });
 
