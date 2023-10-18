@@ -14,8 +14,9 @@ Directory or Feide to authenticate the user.
     * [x] [Set up Express](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/#converting-react-to-serve-from-express)
     * [x] Make it work together
     * [x] Create application layout
-  * [ ] Setting a cookie in the browser
-  * [ ] Reading the cookie
+  * [x] Setting a cookie in the browser
+  * [x] Reading the cookie
+    * [x] set up req.user in middleware before processing
   * [ ] Signing the cookie to protect from tampering
 * [ ] Registering a service with [Google as an identity provider](https://console.cloud.google.com/apis/credentials)
 * [ ] Implementing a [client side authentication flow](https://developers.google.com/identity/protocols/oauth2#clientside)
