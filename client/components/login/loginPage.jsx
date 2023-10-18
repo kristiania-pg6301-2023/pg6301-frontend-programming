@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { LoginContext } from "./loginContext";
 
 export function LoginPage() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { loadUser } = useContext(LoginContext);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -18,6 +20,7 @@ export function LoginPage() {
     if (!res.ok) {
       throw new Error("Something went wrong " + res.statusText);
     }
+    await loadUser();
     navigate("/");
   }
 

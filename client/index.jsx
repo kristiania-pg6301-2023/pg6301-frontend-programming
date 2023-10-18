@@ -26,7 +26,7 @@ function Application() {
   }, []);
 
   return (
-    <LoginContext.Provider value={{ username }}>
+    <LoginContext.Provider value={{ username, loadUser }}>
       <header>
         <h1>User database</h1>
       </header>
