@@ -480,6 +480,8 @@ Express server. They require paying for deployments, but
 with [GitHub Student Developer Pack](https://education.github.com/pack)
 you [get credits to use Heroku for free](https://www.heroku.com/github-students)
 
+For more information on deploying with Heroku Git (instead of GitHub), see [Deploying with Git | Heroku Dev](https://devcenter.heroku.com/articles/git).
+
 1. In the root project make sure `npm install` is run at `postinstall`
     * `npm pkg set scripts.postinstall="npm run install:client && npm run install:server"`
     * `npm pkg set scripts.install:client="cd client && npm install --include=dev"`
