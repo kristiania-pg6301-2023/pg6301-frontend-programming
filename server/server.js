@@ -1,23 +1,23 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import * as path from "path";
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
 app.use((req, res, next) => {
-  const { username } = req.cookies;
-  req.user = {
-    username: "not authenticated " + username,
-  };
+  const { username } = req.signedCookies;
+  req.user = { username };
   next();
 });
 
 const loginRouter = express.Router();
 loginRouter.post("", (req, res) => {
-  res.cookie("username", req.body.username);
+  res.cookie("username", req.body.username, { signed: true });
   res.sendStatus(204);
 });
 loginRouter.get("", (req, res) => {
