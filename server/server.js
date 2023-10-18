@@ -12,6 +12,10 @@ loginRouter.post("", (req, res) => {
   res.cookie("username", req.body.username);
   res.sendStatus(204);
 });
+loginRouter.get("", (req, res) => {
+  const { username } = req.cookies;
+  res.send({ username });
+});
 
 app.use("/api/login", loginRouter);
 
