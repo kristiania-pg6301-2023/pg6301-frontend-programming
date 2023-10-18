@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "./loginContext";
+import { LoginWithOpenidButton } from "./loginWithOpenidButton";
 
 export function LoginPage() {
   const navigate = useNavigate();
@@ -25,28 +26,31 @@ export function LoginPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login page</h2>
-      <div>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <div>
-        <button>Log in</button>
-      </div>
-      <pre>{JSON.stringify({ username, password })}</pre>
-    </form>
+    <>
+      <LoginWithOpenidButton />
+      <form onSubmit={handleSubmit}>
+        <h2>Login page</h2>
+        <div>
+          Username:
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <button>Log in</button>
+        </div>
+        <pre>{JSON.stringify({ username, password })}</pre>
+      </form>
+    </>
   );
 }

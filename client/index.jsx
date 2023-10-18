@@ -7,6 +7,9 @@ import { LoginNavLink } from "./components/login/loginNavLink";
 import { ProfilePage } from "./components/profile/profilePage";
 import { LoginContext } from "./components/login/loginContext";
 
+const GOOGLE_CLIENT_ID =
+  "34816606807-c674fr663n4s8lqjmtr5i444qnosva3b.apps.googleusercontent.com";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function Application() {
@@ -26,7 +29,9 @@ function Application() {
   }, []);
 
   return (
-    <LoginContext.Provider value={{ username, loadUser }}>
+    <LoginContext.Provider
+      value={{ username, loadUser, clientId: GOOGLE_CLIENT_ID }}
+    >
       <header>
         <h1>User database</h1>
       </header>
