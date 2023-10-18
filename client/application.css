@@ -2,16 +2,28 @@
     margin: 0;
 }
 
+@media (prefers-color-scheme: dark) {
+    #root {
+        background-color: #101010;
+        color: lightgrey;
+    }
+
+    a {
+        color: lightgrey;
+    }
+
+    main {
+        background-color: #202020;
+    }
+}
+
 #root {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #101010;
-    color: lightgrey;
 }
 
 a {
-    color: lightgrey;
     text-decoration: none;
 }
 
@@ -19,7 +31,6 @@ main {
     flex: 1;
     margin: 0.5em auto;
     min-width: 80%;
-    background-color: #202020;
     padding: 1em;
     border-radius: 1em;
     border: 1px solid darkgray;
