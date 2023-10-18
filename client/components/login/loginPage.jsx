@@ -4,15 +4,18 @@ export function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    fetch("/api/login", {
+    const res = await fetch("/api/login", {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: {
         "Content-Type": "application/json",
       },
     });
+    if (!res.ok) {
+      throw new Error("Something went wrong " + res.statusText);
+    }
   }
 
   return (
