@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,6 +18,7 @@ export function LoginPage() {
     if (!res.ok) {
       throw new Error("Something went wrong " + res.statusText);
     }
+    navigate("/");
   }
 
   return (
