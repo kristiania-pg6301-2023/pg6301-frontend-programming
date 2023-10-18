@@ -23,6 +23,10 @@ loginRouter.post("", (req, res) => {
 loginRouter.get("", (req, res) => {
   res.send(req.user);
 });
+loginRouter.delete("", (req, res) => {
+  res.clearCookie("username");
+  res.sendStatus(204);
+});
 
 app.use("/api/login", loginRouter);
 
