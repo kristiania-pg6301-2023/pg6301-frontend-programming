@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./application.css";
 import { LoginPage } from "./components/login/loginPage";
+import { LoginNavLink } from "./components/login/loginNavLink";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -19,7 +20,7 @@ function Application() {
         <Link to={"/"}>Event more page</Link>
         <Link to={"/"}>Event more page</Link>
         <div className={"divider"} />
-        <Link to={"/login"}>Log in</Link>
+        <LoginNavLink />
       </nav>
       <main>
         <Routes>
