@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export function ProfilePage() {
   const navigate = useNavigate();
-  const { username, loadUser } = useContext(LoginContext);
+  const { username, loadUser, user } = useContext(LoginContext);
 
   async function handleSubmitLogout(e) {
     e.preventDefault();
@@ -22,6 +22,10 @@ export function ProfilePage() {
     <>
       <h2>Profile page</h2>
       <div>Username: {username}</div>
+
+      <img src={user.picture} />
+
+      <pre>{JSON.stringify(user, null, 2)}</pre>
 
       <form onSubmit={handleSubmitLogout}>
         <button>Log out</button>
