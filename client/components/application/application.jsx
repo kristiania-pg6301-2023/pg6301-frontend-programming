@@ -4,6 +4,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import { LoginNavLink } from "../login/loginNavLink";
 import { LoginPage } from "../login/loginPage";
 import { ProfilePage } from "../profile/profilePage";
+import { LoginCallback } from "../login/loginCallback";
 
 const GOOGLE_CLIENT_ID =
   "34816606807-c674fr663n4s8lqjmtr5i444qnosva3b.apps.googleusercontent.com";
@@ -44,6 +45,7 @@ export function Application() {
         <Routes>
           <Route path={"/"} element={<h2>Front page</h2>} />
           <Route path={"/login"} element={<LoginPage />} />
+          <Route path={"/login/callback"} element={<LoginCallback />} />
           <Route path={"/profile"} element={<ProfilePage />} />
           <Route path={"*"} element={<h2>Not Found</h2>} />
         </Routes>
