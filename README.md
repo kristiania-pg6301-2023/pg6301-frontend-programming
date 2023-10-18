@@ -500,16 +500,16 @@ you [get credits to use Heroku for free](https://www.heroku.com/github-students)
    ```js
    app.listen(process.env.PORT || 3000);
    ```
-6. Create an application and deploy to heroku
+6. Create an application and configure to deploy to heroku
     1. Sign up at the [Heroku Dashboard](https://dashboard.heroku.com/apps/)
     2. [Create a new Heroku app](https://dashboard.heroku.com/new-app)
-    3. Under Deployment for your new app, select GitHub as the deployment method and select your repository
-    4. Select the branch you wish to deploy
-    5. Under Manual Deploy, select your branch and press Deploy for the first time deployment
-    6. Watch the build log to see errors and try to correct them
-    7. Press "Open app" to see your app running
-    8. Enable Automatic deploys to make sure every change get deployed
-7. You can see the deployment log under Activity in the Heroku Dashboard for your app
+    3. Under Deployment for your new app, select Heroku Git as Deployment Metho
+7. Download the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
+8. From the command line, push your repository to Heroku
+    1. `heroku login`
+    2. `heroku git:remote -a <app name>`
+    3. `git push heroku`
+7. You can see the deployment log under Activity in the Heroku Dashboard for your app and the runtime log under More > View logs
 
 Common problems:
 
@@ -518,6 +518,9 @@ Common problems:
 * Strange error message during `npm run build`: It's possible that parcel or some library that parcel uses had a
   short-lived bug. Search the web for the error message
   and see if you should `override` some dependency. Alternatively, use an older version of `parcel`
+* The application crashes
+  * View the log under More > View logs
+  * The log is often truncated. To see the whole log when the application runs, try More > Restart all dynos
 
 </details>
 
