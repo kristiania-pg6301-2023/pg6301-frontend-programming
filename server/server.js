@@ -63,7 +63,7 @@ server.on("upgrade", (req, socket, head) => {
         s.send(JSON.stringify({ message, username }));
       }
     });
-    socket.send("Hello " + req.user.username);
+    socket.send(JSON.stringify({ message: "Hello " + req.user.username }));
     sockets.push(socket);
   });
 });

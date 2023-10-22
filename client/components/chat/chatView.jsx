@@ -16,7 +16,7 @@ export function ChatView() {
     setWebSocket(webSocket);
     webSocket.onmessage = (event) => {
       console.log({ event });
-      setMessages((current) => [...current, event.data]);
+      setMessages((current) => [...current, JSON.parse(event.data)]);
     };
   }, []);
 
@@ -24,7 +24,9 @@ export function ChatView() {
     <>
       <main>
         {messages.map((message, index) => (
-          <div key={index}>{message}</div>
+          <div key={index}>
+            <strong>{message.username}</strong> {message.message}
+          </div>
         ))}
       </main>
       <footer>
