@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+}
+
+#root {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+header {
+  background-color: rebeccapurple;
+  color: aliceblue;
+}
+
+main > div {
+  border: 1px solid rebeccapurple;
+}
+
+main {
+  overflow-y: scroll;
+}
+
+footer form {
+  display: flex;
+}
+
+footer form input {
+  flex: 1;
+}

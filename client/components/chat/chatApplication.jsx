@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./application.css";
+
 export function ChatApplication() {
   return (
     <>
