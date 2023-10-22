@@ -17,8 +17,9 @@ export function ChatApplication() {
   useEffect(() => {
     const webSocket = new WebSocket("ws://localhost:3000");
     setWebSocket(webSocket);
-    webSocket.onmessage = (message) => {
-      setMessages((current) => [...current, message]);
+    webSocket.onmessage = (event) => {
+      console.log({ event });
+      setMessages((current) => [...current, event.data]);
     };
   }, []);
 

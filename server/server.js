@@ -1,5 +1,6 @@
 import express from "express";
 import * as path from "path";
+import { WebSocketServer } from "ws";
 
 const app = express();
 app.use(express.static("../client/dist"));
@@ -11,4 +12,11 @@ app.use((req, res, next) => {
   }
 });
 
-app.listen(process.env.PORT || 3000);
+const webSocketServer = new WebSocketServer({ noServer: true });
+
+const server = app.listen(process.env.PORT || 3000, () => {});
+server.on("upgrade", (req, res, head) => {
+  webSocketServer.handleUpgrade(req, res, head, (socket) => {
+    socket.send("Hello");
+  });
+});
