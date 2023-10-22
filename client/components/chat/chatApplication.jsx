@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./application.css";
 import { ChatView } from "./chatView";
+import { LoginView } from "../login/loginView";
 
 export function ChatApplication() {
   const [username, setUsername] = useState();
@@ -26,7 +27,7 @@ export function ChatApplication() {
         <h2>Kristiania Chat!</h2>
         <div>{username}</div>
       </header>
-      <ChatView />
+      {username ? <ChatView /> : <LoginView />}
     </>
   );
 }
