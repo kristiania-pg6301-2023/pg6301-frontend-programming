@@ -5,7 +5,8 @@
     "react-router-dom": "^6.17.0"
   },
   "devDependencies": {
-    "parcel": "^2.10.0"
+    "parcel": "^2.10.0",
+    "process": "^0.11.10"
   },
   "scripts": {
     "dev": "parcel watch index.html"
