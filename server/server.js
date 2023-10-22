@@ -1,5 +1,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
+import cookie from "cookie";
 import * as path from "path";
 import { WebSocketServer } from "ws";
 
@@ -46,6 +47,10 @@ const sockets = [];
 
 const server = app.listen(process.env.PORT || 3000, () => {});
 server.on("upgrade", (req, socket, head) => {
+  const cookies = cookie.parse(req.headers.cookie || {});
+  const signedCookies = cookieParser.signedCookies(cookies, cookieSecret);
+  const { username } = signedCookies;
+  req.user = { username };
   webSocketServer.handleUpgrade(req, socket, head, (socket) => {
     if (!req.user) {
       socket.send(JSON.stringify({ authenticated: false }));
