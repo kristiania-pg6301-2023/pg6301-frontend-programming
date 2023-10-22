@@ -9,7 +9,6 @@ export function ChatApplication() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setMessages((current) => [...current, newMessage]);
     webSocket.send(newMessage);
     setNewMessage("");
   }
