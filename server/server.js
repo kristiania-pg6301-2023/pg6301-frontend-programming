@@ -14,9 +14,18 @@ app.use((req, res, next) => {
 
 const webSocketServer = new WebSocketServer({ noServer: true });
 
+const sockets = [];
+
 const server = app.listen(process.env.PORT || 3000, () => {});
 server.on("upgrade", (req, res, head) => {
   webSocketServer.handleUpgrade(req, res, head, (socket) => {
+    socket.on("message", (message) => {
+      console.log("Received message", message.toString());
+      for (const s of sockets) {
+        s.send(message.toString());
+      }
+    });
     socket.send("Hello");
+    sockets.push(socket);
   });
 });
