@@ -306,6 +306,10 @@ are sent as JSON objects.
 In our example, we will create a web application that lets users chat with each
 other.
 
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/10)
+* [Reference implementation](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/10)
+* [Exercise text](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/blob/exercise/10/start/README.md)
+
 #### Material from 2022
 
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/09)
@@ -489,7 +493,7 @@ For more information on deploying with Heroku Git (instead of GitHub), see [Depl
 2. In the root project, define `npm run build` and `npm start`
     * `npm pkg set scripts.build="npm run build:client"`
     * `npm pkg set scripts.build:client="cd client && npm run build"`
-    * `npm pkg set scripts.start "cd server && npm start"`
+    * `npm pkg set scripts.start="cd server && npm start"`
 3. In the client project, define `npm run build`
     * `cd client`
     * `npm pkg set scripts.build="parcel build index.html"`
@@ -939,29 +943,26 @@ const wsServer = new WebSocketServer({ noServer: true });
 // Keep a list of all incomings connections
 const sockets = [];
 let messageIndex = 0;
-wsServer.on("connection", (socket) => {
-  // Add this connection to the list of connections
-  sockets.push(socket);
-  // Set up the handling of messages from this sockets
-  socket.on("message", (msg) => {
-    // Destructor the incoming message
-    const { username, message } = JSON.parse(msg);
-    // Add fields from server side
-    const id = messageIndex++;
-    // broadcast a new message to all recipients
-    for (const recipient of sockets) {
-      recipient.send(JSON.stringify({ id, username, message }));
-    }
-  });
-});
 
 // Start express app
-const server = app.listen(3000, () => {
-  // Handle incoming clients
-  server.on("upgrade", (req, socket, head) => {
-    wsServer.handleUpgrade(req, socket, head, (socket) => {
-      // This will pass control to `wsServer.on("connection")`
-      wsServer.emit("connection", socket, req);
+const server = app.listen(3000);
+
+// Handle incoming clients
+server.on("upgrade", (req, socket, head) => {
+  // This request is not passed through the middleware chain, so
+  //  you have to duplicate any modifications to req here
+  wsServer.handleUpgrade(req, socket, head, (socket) => {
+    sockets.push(socket);
+    // Set up the handling of messages from this sockets
+    socket.on("message", (msg) => {
+      // Destructor the incoming message
+      const { username, message } = JSON.parse(msg);
+      // Add fields from server side
+      const id = messageIndex++;
+      // broadcast a new message to all recipients
+      for (const recipient of sockets) {
+        recipient.send(JSON.stringify({ id, username, message }));
+      }
     });
   });
 });
