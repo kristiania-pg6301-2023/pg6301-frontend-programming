@@ -1,12 +1,32 @@
 import express from "express";
+import cookieParser from "cookie-parser";
 import * as path from "path";
 import { WebSocketServer } from "ws";
 
 const app = express();
 
+const cookieSecret = "SECRET";
+app.use(cookieParser(cookieSecret));
+app.use(express.json());
+
+app.use((req, res, next) => {
+  const { username } = req.signedCookies;
+  req.user = { username };
+  next();
+});
+
 const loginRouter = express.Router();
 loginRouter.get("/api/login", (req, res) => {
-  res.sendStatus(401);
+  if (req.user) {
+    res.send(req.user);
+  } else {
+    res.sendStatus(401);
+  }
+});
+loginRouter.post("/api/login", (req, res) => {
+  const { username } = req.body;
+  res.cookie("username", username, { signed: true });
+  res.sendStatus(201);
 });
 
 app.use(loginRouter);
@@ -37,7 +57,7 @@ server.on("upgrade", (req, socket, head) => {
         s.send(message.toString());
       }
     });
-    socket.send("Hello");
+    socket.send("Hello " + req.user.username);
     sockets.push(socket);
   });
 });
