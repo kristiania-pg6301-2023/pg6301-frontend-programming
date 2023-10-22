@@ -11,6 +11,10 @@
 header {
   background-color: rebeccapurple;
   color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2em;
+  align-items: end;
 }
 
 main > div {

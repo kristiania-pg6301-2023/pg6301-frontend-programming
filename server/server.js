@@ -3,6 +3,14 @@ import * as path from "path";
 import { WebSocketServer } from "ws";
 
 const app = express();
+
+const loginRouter = express.Router();
+loginRouter.get("/api/login", (req, res) => {
+  res.sendStatus(401);
+});
+
+app.use(loginRouter);
+
 app.use(express.static("../client/dist"));
 app.use((req, res, next) => {
   if (req.method === "GET" && !req.path.startsWith("/api")) {
