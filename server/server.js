@@ -56,10 +56,11 @@ server.on("upgrade", (req, socket, head) => {
       socket.send(JSON.stringify({ authenticated: false }));
       return socket.close();
     }
-    socket.on("message", (message) => {
-      console.log("Received message", message.toString());
+    socket.on("message", (event) => {
+      const { username } = req.user;
+      const message = event.toString();
       for (const s of sockets) {
-        s.send(message.toString());
+        s.send(JSON.stringify({ message, username }));
       }
     });
     socket.send("Hello " + req.user.username);
