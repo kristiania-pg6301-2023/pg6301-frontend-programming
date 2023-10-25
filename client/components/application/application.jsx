@@ -60,7 +60,7 @@ export function ChatWindow({ username }) {
     const webSocket = new WebSocket("ws://" + window.location.host);
     webSocket.onmessage = (event) => {
       console.log(event.data);
-      setMessages((current) => [...current, event.data]);
+      setMessages((current) => [...current, JSON.parse(event.data)]);
     };
     setWebSocket(webSocket);
   }, []);
@@ -81,8 +81,10 @@ export function ChatWindow({ username }) {
       </header>
 
       <main>
-        {messages.map((message, index) => (
-          <li key={index}>{message}</li>
+        {messages.map(({ username, message }, index) => (
+          <li key={index}>
+            <strong>{username}</strong> {message}
+          </li>
         ))}
       </main>
       <footer>

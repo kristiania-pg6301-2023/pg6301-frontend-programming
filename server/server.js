@@ -48,7 +48,9 @@ server.on("upgrade", (req, socket, head) => {
   const { username } = signedCookies;
   wsServer.handleUpgrade(req, socket, head, (socket) => {
     sockets.push(socket);
-    socket.send(`Hello to "${username}" from the server`);
+    socket.send(
+      JSON.stringify({ message: `Hello to "${username}" from the server` }),
+    );
 
     socket.on("message", (buffer) => {
       const message = buffer.toString();
