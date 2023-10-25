@@ -5,6 +5,7 @@
     "dev:server": "cd server && npm run dev"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "prettier": "^3.0.3"
   }
 }
