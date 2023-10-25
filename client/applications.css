@@ -8,6 +8,13 @@
     grid-template-rows: auto 1fr auto;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
 main {
     padding: 0.5em;
     overflow-y: scroll;

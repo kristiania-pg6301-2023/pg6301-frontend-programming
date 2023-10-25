@@ -18,6 +18,14 @@ app.post("/api/login", (req, res) => {
   res.cookie("username", req.body.credentials, { signed: true });
   res.sendStatus(201);
 });
+app.get("/api/login", (req, res) => {
+  const { username } = req.signedCookies;
+  if (!username) {
+    res.sendStatus(401);
+  } else {
+    res.send({ username });
+  }
+});
 
 app.use((req, res, next) => {
   if (req.method === "GET" && !req.path.startsWith("/api")) {
