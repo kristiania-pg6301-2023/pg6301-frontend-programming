@@ -3,6 +3,19 @@ import { useEffect, useState } from "react";
 export function Application() {
   const [username, setUsername] = useState();
 
+  async function loadUsername() {
+    const res = await fetch("/api/login");
+    if (!res.ok) {
+      throw new Error("Failed to fetch user " + res.statusText);
+    }
+    const user = await res.json();
+    setUsername(user.username);
+  }
+
+  useEffect(() => {
+    loadUsername();
+  }, []);
+
   const [credentials, setCredentials] = useState("");
 
   async function handleLogin(e) {

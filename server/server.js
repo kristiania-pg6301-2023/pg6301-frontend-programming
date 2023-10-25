@@ -20,7 +20,7 @@ app.post("/api/login", (req, res) => {
 });
 
 app.use((req, res, next) => {
-  if (req.method === "GET") {
+  if (req.method === "GET" && !req.path.startsWith("/api")) {
     res.sendFile(path.resolve("../client/dist/index.html"));
   } else {
     next();
