@@ -1,6 +1,7 @@
 import express from "express";
 import * as path from "path";
 import cookieParser from "cookie-parser";
+import cookie from "cookie";
 import { WebSocketServer } from "ws";
 import dotenv from "dotenv";
 
@@ -42,15 +43,22 @@ const server = app.listen(process.env.PORT || 3000);
 const sockets = [];
 
 server.on("upgrade", (req, socket, head) => {
+  const cookies = cookie.parse(req.headers.cookie);
+  const signedCookies = cookieParser.signedCookies(cookies, cookieSecret);
+  const { username } = signedCookies;
   wsServer.handleUpgrade(req, socket, head, (socket) => {
     sockets.push(socket);
-    socket.send("Hello from the server");
+    socket.send(`Hello to "${username}" from the server`);
 
-    socket.on("message", (message) => {
-      console.log(message.toString());
-
+    socket.on("message", (buffer) => {
+      const message = buffer.toString();
       for (const s of sockets) {
-        s.send(message.toString());
+        s.send(
+          JSON.stringify({
+            username,
+            message,
+          }),
+        );
       }
     });
   });
