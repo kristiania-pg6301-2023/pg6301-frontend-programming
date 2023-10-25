@@ -1,10 +1,23 @@
 import express from "express";
 import * as path from "path";
+import cookieParser from "cookie-parser";
 import { WebSocketServer } from "ws";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
+const cookieSecret = process.env.COOKIE_SECRET;
+app.use(express.json());
+app.use(cookieParser(cookieSecret));
+
 app.use(express.static("../client/dist/"));
+
+app.post("/api/login", (req, res) => {
+  res.cookie("username", req.body.credentials, { signed: true });
+  res.sendStatus(201);
+});
 
 app.use((req, res, next) => {
   if (req.method === "GET") {
