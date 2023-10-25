@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+}
+
+#root {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto 1fr auto;
+}
+
+main {
+    padding: 0.5em;
+    overflow-y: scroll;
+}
+
+footer {
+    display: flex;
+}
+
+footer input {
+    flex: 1;
+}

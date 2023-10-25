@@ -77,7 +77,7 @@ export function Application() {
         </li>
       </main>
       <footer>
-        <input />
+        <input autoFocus />
         <button>Chat</button>
       </footer>
     </>
