@@ -6,7 +6,12 @@ export function Application() {
   const [webSocket, setWebSocket] = useState();
 
   useEffect(() => {
-    setWebSocket(new WebSocket("ws://" + window.location.origin));
+    const webSocket = new WebSocket("ws://" + window.location.host);
+    webSocket.onmessage = (event) => {
+      console.log(event.data);
+      setMessages((current) => [...current, event.data]);
+    };
+    setWebSocket(webSocket);
   }, []);
 
   function handleSubmit(e) {
