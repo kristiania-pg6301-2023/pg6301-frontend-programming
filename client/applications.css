@@ -13,7 +13,7 @@ main {
     overflow-y: scroll;
 }
 
-footer {
+footer form {
     display: flex;
 }
 
