@@ -19,7 +19,6 @@ export function Application() {
 
     webSocket.send(newMessage);
 
-    setMessages((current) => [...current, newMessage]);
     setNewMessage("");
   }
 
