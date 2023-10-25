@@ -27,6 +27,8 @@ The lectures will be recorded and the recordings will be available in Panopto in
 
 ### From last year
 
+<details>
+
 The course was taught in
 the [Spring of 2022 by Johannes Brodwall](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures)
 and in the Fall of 2022 by Bogdan Marculescu. In 2021, the first half of this course was taught by
@@ -36,6 +38,8 @@ and the second half by
 
 Lectures of 2023 that has a corresponding lecture in 2022 will have a reference to the code
 from that year's lecture.
+
+</details>
 
 ## Lectures
 
@@ -266,6 +270,7 @@ We will also revisit BrowserRouter and why fix how it was broken with Express.
 #### Useful links:
 
 * [Fireship.io video on Async/await and promises](https://www.youtube.com/watch?v=vn3tm0quoqE)
+* [The JavaScript Event Loop (Jake Archibald)](https://www.youtube.com/watch?v=cCOL7MC4Pl0)
 
 </details>
 
@@ -375,6 +380,8 @@ After all the steps, you will have a resulting structure that looks something li
 
 ### Creating the frontend project
 
+<details>
+
 1. Create a new directory. In IntelliJ, you can use File > New > Project. I recommend creating an Empty project
 2. When creating a project, make sure you add `node_modules`, `.parcel-cache` and `dist` to `.gitignore`
 3. Create a subdirectory for the client (`mkdir client`)
@@ -424,7 +431,11 @@ function Application() {
 }
  ```
 
+</details>
+
 ### Converting react to serve from express
+
+<details>
 
 1. Create a subdirectory on the top level (next to the `client` directory): `mkdir server`
 2. In the server directory, create the `package.json` file and add dependencies with the following commands:
@@ -463,7 +474,11 @@ When you can get this to work, you will need to master the following:
 * Make Express respond to API calls
 * Make React call API calls on the backend (using `fetch`)
 
+</details>
+
 ### Making the top level project work smoother
+
+<details>
 
 With the instructions above, you have to use two terminal windows, one for client and one for server.
 You can set up the top level directory above `client` and `server` to run both concurrently:
@@ -474,6 +489,8 @@ You can set up the top level directory above `client` and `server` to run both c
     2. `npm pkg set scripts.dev="concurrently npm:dev:client npm:dev:server"`
     3. `npm pkg set scripts.dev:client="cd client && npm run dev"`
     4. `npm pkg set scripts.dev:server="cd server && npm run dev"`
+
+</details>
 
 ### Deploy to Heroku
 
@@ -509,13 +526,13 @@ For more information on deploying with Heroku Git (instead of GitHub), see [Depl
 6. Create an application and configure to deploy to heroku
     1. Sign up at the [Heroku Dashboard](https://dashboard.heroku.com/apps/)
     2. [Create a new Heroku app](https://dashboard.heroku.com/new-app)
-    3. Under Deployment for your new app, select Heroku Git as Deployment Metho
+    3. Under Deployment for your new app, select Heroku Git as Deployment Method
 7. Download the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
 8. From the command line, push your repository to Heroku
     1. `heroku login`
     2. `heroku git:remote -a <app name>`
     3. `git push heroku`
-7. You can see the deployment log under Activity in the Heroku Dashboard for your app and the runtime log under More > View logs
+9. You can see the deployment log under Activity in the Heroku Dashboard for your app and the runtime log under More > View logs
 
 Common problems:
 
