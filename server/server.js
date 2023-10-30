@@ -22,16 +22,19 @@ new MongoClient(process.env.MONGODB_URL).connect().then(async (connection) => {
   console.log(await db.collection("users").find().toArray());
 });
 
-app.get("/api/config", (req, res) => {
+const userRouter = express.Router();
+
+userRouter.get("/api/config", (req, res) => {
   const user = req.user;
   res.send({ user, openid_configuration, client_id });
 });
-app.post("/api/login", (req, res) => {
+userRouter.post("/api/login", (req, res) => {
   const { access_token } = req.body;
   res.cookie("access_token", access_token);
   res.sendStatus(201);
 });
 
+app.use(userRouter);
 
 app.use(express.static("../client/dist/"));
 app.use((req, res, next) => {
