@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LoginButton } from "../login/loginButton";
 import { fetchJSON } from "../../lib/fetchJSON";
+import { LoginCallback } from "../login/loginCallback";
 
 export function Application() {
   async function loadConfig() {
@@ -14,6 +15,10 @@ export function Application() {
 
   if (!applicationConfig) {
     return <div>Loading...</div>;
+  }
+
+  if (window.location.pathname === "/login/callback") {
+    return <LoginCallback applicationConfig={applicationConfig} />;
   }
 
   if (!applicationConfig.user) {

@@ -1,4 +1,5 @@
 import express from "express";
+import * as path from "path";
 
 const openid_configuration =
   "https://accounts.google.com/.well-known/openid-configuration";
@@ -12,5 +13,13 @@ app.get("/api/config", (req, res) => {
   const user = req.user;
   res.send({ user, openid_configuration, client_id });
 });
+
+app.use((req, res, next) => {
+  if (req.method === "GET") {
+    res.sendFile(path.resolve("../client/dist/index.html"));
+  } else {
+    next();
+  }
+})
 
 app.listen(3000);
