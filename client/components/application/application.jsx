@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LoginButton } from "../login/loginButton";
 import { fetchJSON } from "../../lib/fetchJSON";
 import { LoginCallback } from "../login/loginCallback";
+import { ApplicationView } from "./applicationView";
 
 export function Application() {
   async function loadConfig() {
@@ -18,15 +19,19 @@ export function Application() {
   }
 
   if (window.location.pathname === "/login/callback") {
-    return <LoginCallback onLogin={async () => {
-      await loadConfig();
-      window.location = "/";
-    }} />;
+    return (
+      <LoginCallback
+        onLogin={async () => {
+          await loadConfig();
+          window.location = "/";
+        }}
+      />
+    );
   }
 
   if (!applicationConfig.user) {
     return <LoginButton applicationConfig={applicationConfig} />;
   }
 
-  return <h1>Application</h1>;
+  return <ApplicationView user={applicationConfig.user} />;
 }
