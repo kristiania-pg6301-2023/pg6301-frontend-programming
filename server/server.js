@@ -1,35 +1,20 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import * as path from "path";
-import { fetchJSON } from "./fetchJSON.js";
+import { userinfoMiddleware } from "./userinfoMiddleware.js";
+import dotenv from "dotenv";
 
-const openid_configuration =
-  "https://accounts.google.com/.well-known/openid-configuration";
-const client_id =
-  "34816606807-c674fr663n4s8lqjmtr5i444qnosva3b.apps.googleusercontent.com";
+dotenv.config();
+
+const openid_configuration = process.env.OPENID_CONFIGURATION;
+const client_id = process.env.CLIENT_ID;
 
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(async (req, res, next) => {
-  const { access_token } = req.cookies;
-  if (access_token) {
-    const { userinfo_endpoint } = await fetchJSON(openid_configuration);
-    const res = await fetch(userinfo_endpoint, {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    });
-    if (res.ok) {
-      req.user = await res.json();
-    } else if (res.status !== 401) {
-      throw new Error("Failed to fetch userinfo " + res.statusCode);
-    }
-  }
-  next();
-});
+app.use(userinfoMiddleware(openid_configuration));
 
 app.get("/api/config", (req, res) => {
   const user = req.user;
