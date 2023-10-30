@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import * as path from "path";
 import { userinfoMiddleware } from "./userinfoMiddleware.js";
 import dotenv from "dotenv";
+import { MongoClient } from "mongodb";
 
 dotenv.config();
 
@@ -15,6 +16,11 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(userinfoMiddleware(openid_configuration));
+
+new MongoClient(process.env.MONGODB_URL).connect().then(async (connection) => {
+  const db = connection.db("user_database");
+  console.log(await db.collection("users").find().toArray());
+});
 
 app.get("/api/config", (req, res) => {
   const user = req.user;
