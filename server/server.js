@@ -4,6 +4,7 @@ import * as path from "path";
 import { userinfoMiddleware } from "./userinfoMiddleware.js";
 import dotenv from "dotenv";
 import { MongoClient } from "mongodb";
+import { createAuthRouter } from "./authRouter.js";
 
 dotenv.config();
 
@@ -19,26 +20,13 @@ app.use(userinfoMiddleware(openid_configuration));
 
 new MongoClient(process.env.MONGODB_URL).connect().then(async (connection) => {
   const db = connection.db("user_database");
-  console.log(await db.collection("users").find().toArray());
+  db.collection("users").find().toArray().then(console.log);
+  app.use(createAuthRouter(db, { openid_configuration, client_id }));
 });
-
-const userRouter = express.Router();
-
-userRouter.get("/api/config", (req, res) => {
-  const user = req.user;
-  res.send({ user, openid_configuration, client_id });
-});
-userRouter.post("/api/login", (req, res) => {
-  const { access_token } = req.body;
-  res.cookie("access_token", access_token);
-  res.sendStatus(201);
-});
-
-app.use(userRouter);
 
 app.use(express.static("../client/dist/"));
 app.use((req, res, next) => {
-  if (req.method === "GET") {
+  if (req.method === "GET" && !req.path.startsWith("/api")) {
     res.sendFile(path.resolve("../client/dist/index.html"));
   } else {
     next();
