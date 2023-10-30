@@ -18,7 +18,10 @@ export function Application() {
   }
 
   if (window.location.pathname === "/login/callback") {
-    return <LoginCallback onLogin={loadConfig} />;
+    return <LoginCallback onLogin={async () => {
+      await loadConfig();
+      window.location = "/";
+    }} />;
   }
 
   if (!applicationConfig.user) {
