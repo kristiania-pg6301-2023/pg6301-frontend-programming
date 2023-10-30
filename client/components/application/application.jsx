@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import { LoginButton } from "../login/loginButton";
-
-async function fetchJSON(path) {
-  const res = await fetch(path);
-  if (!res.ok) {
-    throw new Error(`Failed to fetch ${path}: ${res.statusText}`);
-  }
-  return await res.json();
-}
+import { fetchJSON } from "../../lib/fetchJSON";
 
 export function Application() {
   async function loadConfig() {
@@ -24,7 +17,7 @@ export function Application() {
   }
 
   if (!applicationConfig.user) {
-    return <LoginButton />;
+    return <LoginButton applicationConfig={applicationConfig} />;
   }
 
   return <h1>Application</h1>;
