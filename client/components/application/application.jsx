@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { LoginButton } from "../login/loginButton";
 
 async function fetchJSON(path) {
   const res = await fetch(path);
@@ -21,5 +22,10 @@ export function Application() {
   if (!applicationConfig) {
     return <div>Loading...</div>;
   }
+
+  if (!applicationConfig.user) {
+    return <LoginButton />;
+  }
+
   return <h1>Application</h1>;
 }
