@@ -333,6 +333,9 @@ other.
 In this lecture, I will demonstrate how to set up an already created OpenID Connect server with Active Directory, then
 implement the necessary steps using another ID-provider, so the exact code is left as an exercise
 
+* [Starting point for lecture](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/reference/11)
+* [Commit log from live coding](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/commits/lecture/11)
+
 #### Material from 2022
 
 * [Commit log from live coding](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/commits/lectures/11)
