@@ -1,0 +1,34 @@
+@startuml
+
+title Token flow
+
+actor Browser
+box "Our stuff"
+    participant React
+    participant Server
+end box
+participant IdentityProvider
+
+Browser -> React: Clicks "login"
+React -> Server: get config
+React <-- Server: Discovery_uri, client_id
+React -> IdentityProvider: /.well-known/openid-configuration
+React <-- IdentityProvider: authorization_endpoint, ...
+React -> Browser: Generate authorization_uri
+Browser -> IdentityProvider: Redirect to authorization_endpoint response_type=token
+Browser <-> IdentityProvider: log in, give consent
+Browser <-- IdentityProvider: redirect to redirect_uri
+Browser -> React: redirect_uri with token
+React -> Server: POST /login with token
+React <-- Server: cookie with access token
+Browser <-- React
+Browser -> React: Clicks "Profile"
+React -> Server: GET /login
+Server -> IdentityProvider: /.well-known/openid-configuration
+Server <-- IdentityProvider: userinfo_endpoint, ...
+Server -> IdentityProvider: GET userinfo with access_token from cookie
+Server <-- IdentityProvider: userinfo
+React <-- Server: Login information
+Browser <-- React
+
+@enduml
