@@ -1,7 +1,8 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "server": "node server.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
