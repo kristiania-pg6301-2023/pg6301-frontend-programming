@@ -18,12 +18,12 @@ export function LoginButton({ applicationConfig }) {
         "?" +
         new URLSearchParams({
           response_mode: "fragment",
-          response_type: "code",
-          scope: "openid profile",
+          response_type: "token",
+          scope: "email profile",
           client_id,
           redirect_uri,
-          code_challenge,
-          code_challenge_method: "S256",
+          //code_challenge,
+          //code_challenge_method: "S256",
           state,
         }),
     );
