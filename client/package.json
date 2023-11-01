@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "parcel watch index.html"
+    "dev": "parcel watch index.html",
+    "build": "parcel build index.html"
   },
   "dependencies": {
     "react": "^18.2.0",
