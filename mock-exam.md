@@ -5,6 +5,9 @@ have been thought in the course: React, Express, Heroku, Mongodb, Open ID Connec
 this is a practical exam means that you are evaluated on the functionality of the running code that you deliver, rather
 than your theoretical mastery of the subjects
 
+You can use [this GitHub classroom repository](https://classroom.github.com/a/zrIPRlqJ) to get a more realistic
+experience of how you will need to use GitHub during the exam.
+
 ## The task
 
 Show movies saved in a MongoDB with React. Let users log in with Active Directory. Logged-in users can add new movies to
@@ -32,9 +35,9 @@ the `package.json`-files, `index.html` and `index.jsx`, login code, and `server.
 
 - [ ] Logon with Active Directory
 - [ ] Jest tests
-  - [ ] Snapshot tests
-  - [ ] Simulate + jest.fn
-  - [ ] Supertest
+    - [ ] Snapshot tests
+    - [ ] Simulate + jest.fn
+    - [ ] Supertest
 - [ ] GitHub Actions with coverage rapport
 - [ ] Deployment to Heroku
 - [ ] Mongodb
