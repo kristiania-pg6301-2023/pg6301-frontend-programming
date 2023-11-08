@@ -21,6 +21,7 @@ export function Application() {
   if (window.location.pathname === "/login/callback") {
     return (
       <LoginCallback
+        applicationConfig={applicationConfig}
         onLogin={async () => {
           await loadConfig();
           window.location = "/";
