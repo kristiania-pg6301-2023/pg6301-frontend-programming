@@ -347,7 +347,9 @@ implement the necessary steps using another ID-provider, so the exact code is le
 
 <details>
 
-We examine a solution that probably would qualify for a B on the exam
+We start with a basic application and develop the student's favorite functionality during the lecture.
+
+* [Commit log from lecture](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/lectures/12)
 
 #### Material from 2022
 
