@@ -349,7 +349,7 @@ implement the necessary steps using another ID-provider, so the exact code is le
 
 We start with a basic application and develop the student's favorite functionality during the lecture.
 
-* [Commit log from lecture](https://github.com/kristiania-pg6301-2022/pg6301-react-and-express-lectures/tree/lectures/12)
+* [Commit log from lecture](https://github.com/kristiania-pg6301-2023/pg6301-frontend-programming/tree/lectures/12)
 
 #### Material from 2022
 
