@@ -31,7 +31,7 @@ If you're smart, you construct the code of your app so that everything that has 
 with something else. Then you can reuse the code directly on the exam. This is especially relevant for
 the `package.json`-files, `index.html` and `index.jsx`, login code, and `server.js`.
 
-## Checklist of technologies 3you should include in your application
+## Checklist of technologies you should include in your application
 
 - [ ] Logon with Active Directory
 - [ ] Jest tests
