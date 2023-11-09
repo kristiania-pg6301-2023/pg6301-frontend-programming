@@ -1,7 +1,13 @@
 {
   "devDependencies": {
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-react": "^7.22.15",
+    "@types/jest": "^29.5.8",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
     "parcel": "^2.10.0",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "react-test-renderer": "^18.2.0"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -9,6 +15,18 @@
     "react-router-dom": "^6.16.0"
   },
   "scripts": {
-    "dev": "parcel watch index.html"
+    "dev": "parcel watch index.html",
+    "test": "jest"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ]
+    ]
   }
 }

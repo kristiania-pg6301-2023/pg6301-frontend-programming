@@ -3,7 +3,7 @@
 ## Alternatives:
 
 - [ ] Start at beginning
-- [ ] Start with Parcel and Express set up
+- [x] Start with Parcel and Express set up
 
 ## Tasks from mock exam
 
